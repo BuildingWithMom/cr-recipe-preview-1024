@@ -846,6 +846,581 @@
     "note": "",
     "evidence": "tier_search"
    }
+  ],
+  "all-purpose flour": [
+   {
+    "status": "VERIFIED",
+    "item_id": "19802852",
+    "product_name": "Great Value All-Purpose Enriched Flour, 2 lb Bag",
+    "package_size": "2 lb",
+    "per_pack": {
+     "vol": 336.0,
+     "wt": 32.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/GV-All-Purpose-Flour-2LB-Bag/19802852",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "361620601",
+    "product_name": "King Arthur Flour Unbleached All-Purpose Flour 5 lb. Bag",
+    "package_size": "5 lb",
+    "per_pack": {
+     "vol": 840.0,
+     "wt": 80.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/King-Arthur-Baking-Company-Unbleached-All-Purpose-Flour-5-lbs-Pack-of-2/361620601",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "771215827",
+    "product_name": "Great Value Organic All-Purpose Wheat Flour, 5 lb Bag",
+    "package_size": "5 lb",
+    "per_pack": {
+     "vol": 840.0,
+     "wt": 80.0
+    },
+    "price_usd": "5.47",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-All-Purpose-Flour-5-lb-Bag/771215827",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "black pepper": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44662571",
+    "product_name": "Great Value Ground Black Pepper, 6 oz",
+    "package_size": "6 oz",
+    "per_pack": {
+     "vol": 72.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Ground-Black-Pepper-6-oz/44662571",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44981962",
+    "product_name": "McCormick Pure Ground Black Pepper, 6.0 oz Can",
+    "package_size": "6.0 oz",
+    "per_pack": {
+     "vol": 72.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Pure-Ground-Black-Pepper-6-oz-Can/44981962",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "28926961",
+    "product_name": "Simply Organic Ground Black Pepper, Fine Spices Seasoning, 2.31 oz Bottle",
+    "package_size": "2.31 oz",
+    "per_pack": {
+     "vol": 27.72
+    },
+    "price_usd": "5.59",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Simply-Organic-Ground-Black-Pepper-Shelf-Stable-2-31-oz-Bottle/28926961",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "salt": [
+   {
+    "status": "VERIFIED",
+    "item_id": "849719519",
+    "product_name": "Redmond Real Salt Ancient Fine Sea Salt 16 oz",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 73.85
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Redmond-Real-Salt-Ancient-Fine-Sea-Salt-16-oz/849719519",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "sugar": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10291746",
+    "product_name": "Domino: Pure Cane Granulated Sugar, 4 Lb",
+    "package_size": "4 lb",
+    "per_pack": {
+     "vol": 430.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Domino-Pure-Cane-Granulated-Sugar-4-Lb/10291746",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "6147353738",
+    "product_name": "Wholesome Organic Evaporated Cane Sugar, 32 oz",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 215.0
+    },
+    "price_usd": "18.99",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Wholesome-Organic-Cane-Sugar-6-lbs/6147353738",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "brown sugar": [
+   {
+    "status": "VERIFIED",
+    "item_id": "16777845",
+    "product_name": "Crystal Sugar Light Brown Sugar, 2 lb Bag",
+    "package_size": "2 lb",
+    "per_pack": {
+     "vol": 200.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Crystal-Sugar-Light-Brown-Sugar-2-lb-Bag/16777845",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10801763",
+    "product_name": "Wholesome Live Sweetly Organic Light Brown Sugar, Evaporated Cane, Vegan, Natural, Healthy, 24 oz",
+    "package_size": "24 oz",
+    "per_pack": {
+     "vol": 150.0
+    },
+    "price_usd": "10.98",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Wholesome-Organic-Dark-Brown-Sugar-1-5-Lbs/10801763",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "olive oil": [
+   {
+    "status": "VERIFIED",
+    "item_id": "176946682",
+    "product_name": "Pompeian, Smooth Extra Virgin Olive Oil, 16 fl oz, First Cold Pressed",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 95.62
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Pompeian-Smooth-Extra-Virgin-Olive-Oil-16-fl-oz/176946682",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10320857",
+    "product_name": "Pompeian, Extra Virgin Olive Oil, 16 fl oz, Robust, First Cold Pressed",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 95.62
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Pompeian-Robust-Extra-Virgin-Olive-Oil-16-fl-oz/10320857",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "101453215",
+    "product_name": "Pompeian, Organic Extra Virgin Olive Oil, 16 fl oz, Robust Flavor",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Pompeian-Smooth-Extra-Virgin-Olive-Oil-68-fl-oz/101453215",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "avocado oil": [
+   {
+    "status": "VERIFIED",
+    "item_id": "755274997",
+    "product_name": "Chosen Foods, Avocado Oil, 16 fl oz, High Smoke Point",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 95.75
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Chosen-Foods-100-Pure-Avocado-Oil-33-8-fl-oz/755274997",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "chicken broth": [
+   {
+    "status": "VERIFIED",
+    "item_id": "194668698",
+    "product_name": "Great Value Organic Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Reduced-Sodium-Chicken-Broth-32-oz-Carton-Shelf-Stable-Ambient-Gluten-Free/194668698",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "15556209",
+    "product_name": "Swanson 100% Natural, Gluten-Free Chicken Broth, 32 Oz Carton",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "2.88",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Swanson-Organic-Chicken-Broth-32-oz/15556209",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "15570981",
+    "product_name": "Kitchen Basics, Chicken Stock, 32 oz, No artificial flavors",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Kitchen-Basics-Original-Chicken-Stock-32-oz-Carton/15570981",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "canned tomatoes": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10416052",
+    "product_name": "Great Value No Salt Added Diced Tomatoes, 14.5 oz",
+    "package_size": "14.5 oz",
+    "per_pack": {
+     "can": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-No-Salt-Added-Diced-Tomatoes-14-5-oz-Can/10416052",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "163667568",
+    "product_name": "Great Value Organic No Salt Added Diced Tomatoes, 14.5 oz",
+    "package_size": "14.5 oz",
+    "per_pack": {
+     "can": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-No-Salt-Added-Diced-Tomatoes-14-5-oz/163667568",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "tomato sauce": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10415500",
+    "product_name": "Great Value Tomato Sauce, 15 oz, Canned Tomatoes",
+    "package_size": "15 oz",
+    "per_pack": {
+     "wt": 15.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Tomato-Sauce-15-oz/10415500",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10415493",
+    "product_name": "Great Value No Salt Added Tomato Sauce, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "wt": 8.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-No-Salt-Added-Tomato-Sauce-8-oz/10415493",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "976872014",
+    "product_name": "Great Value Organic Tomato Sauce, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "wt": 8.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Tomato-Sauce-8-oz/976872014",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "black beans": [
+   {
+    "status": "VERIFIED",
+    "item_id": "31091075",
+    "product_name": "Goya, Black Beans, 15.5 oz, Kosher, Gluten-Free, versatile for recipes",
+    "package_size": "15.5 oz",
+    "per_pack": {
+     "can": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Goya-Black-Beans-15-5-Oz/31091075",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "19463919424",
+    "product_name": "Great Value Organic No Salt Added Black Beans, 15 oz",
+    "package_size": "15 oz",
+    "per_pack": {
+     "can": 1
+    },
+    "price_usd": "6.96",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/6-pack-Great-Value-Organic-Black-Beans-Canned-15-oz/19463919424",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "30859337",
+    "product_name": "Goya Low Sodium Black Beans, Nutritious, 15.5 Oz",
+    "package_size": "15.5 oz",
+    "per_pack": {
+     "can": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Goya-Black-Beans-Low-Sodium-15-5-Oz/30859337",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "spaghetti": [
+   {
+    "status": "VERIFIED",
+    "item_id": "35487172",
+    "product_name": "Great Value Half-Length Spaghetti, 16 oz",
+    "package_size": "16 oz",
+    "per_pack": {
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Half-Length-Spaghetti-16-oz/35487172",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "47757014",
+    "product_name": "Barilla Whole Grain Spaghetti, 100% Whole Wheat, 16 oz. Box",
+    "package_size": "16 oz",
+    "per_pack": {
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Barilla-Whole-Grain-Spaghetti-Pasta-16-oz/47757014",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "45653171",
+    "product_name": "Great Value Whole Wheat Spaghetti, 16 oz (Shelf Stable)",
+    "package_size": "16 oz",
+    "per_pack": {
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Whole-Wheat-Spaghetti-16-oz/45653171",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "noodles": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10534092",
+    "product_name": "Great Value Extra Wide Egg Noodles, 16 oz",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 384.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Extra-Wide-Egg-Noodles-16-oz/10534092",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "long-grain white rice": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10315394",
+    "product_name": "Great Value Long Grain Enriched Rice, 32 oz",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 216.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Long-Grain-Enriched-Rice-32-oz/10315394",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "127670415",
+    "product_name": "Mahatma Organic White Rice, 2 lb Bag, Long Grain, Gluten Free",
+    "package_size": "2 lb",
+    "per_pack": {
+     "vol": 216.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Mahatma-Organic-White-Rice-Gluten-Free-Long-Grain-Rice-2-lb-Bag/127670415",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
   ]
  }
 };if(typeof module!=="undefined"&&module.exports)module.exports=D;else root.CR_WALMART_BACKUPS=D;})(typeof window!=="undefined"?window:globalThis);
