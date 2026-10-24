@@ -14,7 +14,7 @@
 <main class="wrap">
 
 <h1>Plan &amp; shopping list</h1>
-<p class="lead">Choose recipes, set servings, and see one combined list. Amounts are added up only when the units are compatible; anything else is listed on its own line.</p>
+<p class="lead">Choose recipes, set servings, and see one combined list. Amounts are added up across recipes. When one recipe uses a count ("2 medium onions") and another a measure ("1 cup chopped"), they are combined into one line in whole items, rounded up, with the breakdown underneath. An item with no reliable conversion stays on its own line.</p>
 <div class="plan-layout">
 <section class="plan-pick"><h2>1. Pick recipes</h2><div id="plan-picker" class="picker"></div></section>
 <section class="plan-list"><h2>2. Your list</h2>
@@ -29,6 +29,7 @@
 <p id="instacart-note" class="note" hidden></p>
 <p id="walmart-disclosure" class="small walmart-disc"></p>
 <div id="walmart-note" class="note" hidden></div>
+<div id="walmart-subs" hidden></div>
 <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
 <div id="list-out"><p class="empty">No recipes picked yet.</p></div>
 <section id="have-wrap" hidden><h3 class="aisle have-h" data-flip="have-h">Have it (<span id="have-count">0</span>)</h3><div id="have-out"></div></section>
@@ -53,6 +54,7 @@
 <script src="js/lib.js"></script>
 <script src="data/recipes.js"></script>
 <script src="data/walmart_map.js"></script>
+<script src="data/walmart_alts.js"></script>
 <script src="js/walmart.js"></script>
 <script src="js/app.js"></script>
 </body></html>

@@ -63,7 +63,8 @@
   "product_name": "Fresh Basil, 0.5 oz Clamshell",
   "package_size": "0.5 oz clamshell",
   "per_pack": {
-   "vol": 48
+   "package": 1,
+   "vol": 16
   },
   "confidence": "medium"
  },
@@ -173,6 +174,7 @@
   "product_name": "Fresh Whole Carrots, 2 lb Bag",
   "package_size": "2 lb bag",
   "per_pack": {
+   "each": 10,
    "vol": 288
   },
   "confidence": "high"
@@ -425,6 +427,7 @@
   "product_name": "Fresh Dill, 0.5 oz Clamshell",
   "package_size": "0.5 oz clamshell",
   "per_pack": {
+   "package": 1,
    "vol": 24
   },
   "confidence": "medium"
@@ -436,6 +439,7 @@
   "product_name": "Fresh Thyme, 0.5 oz Clamshell",
   "package_size": "0.5 oz clamshell",
   "per_pack": {
+   "package": 1,
    "vol": 12
   },
   "confidence": "medium"
@@ -447,6 +451,7 @@
   "product_name": "Garlic Bulb Fresh Whole, Each",
   "package_size": "1 bulb",
   "per_pack": {
+   "head": 1,
    "clove": 10
   },
   "confidence": "high"
@@ -469,6 +474,7 @@
   "product_name": "Fresh Whole Green Onion, 1 Bunch",
   "package_size": "1 bunch",
   "per_pack": {
+   "bunch": 1,
    "vol": 48
   },
   "confidence": "high"
@@ -645,7 +651,7 @@
   "product_name": "Fresh Yellow Onions, 3 lb Bag",
   "package_size": "3 lb bag, yellow",
   "per_pack": {
-   "each": 7,
+   "each": 12,
    "vol": 432
   },
   "confidence": "high"
@@ -668,6 +674,7 @@
   "product_name": "Fresh Navel Orange, Each",
   "package_size": "1 navel orange (about 2 tbsp zest)",
   "per_pack": {
+   "each": 1,
    "vol": 6
   },
   "confidence": "high"
@@ -690,7 +697,8 @@
   "product_name": "Fresh Italian Parsley Bunch, Each",
   "package_size": "1 bunch, Italian flat-leaf",
   "per_pack": {
-   "vol": 48
+   "bunch": 1,
+   "vol": 36
   },
   "confidence": "medium"
  },
@@ -866,6 +874,7 @@
   "product_name": "Fresh Roma Tomato, Each",
   "package_size": "1 roma tomato (about 1/2 cup chopped)",
   "per_pack": {
+   "each": 0.5,
    "vol": 24
   },
   "confidence": "high"

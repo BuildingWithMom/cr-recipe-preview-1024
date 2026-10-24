@@ -329,6 +329,8 @@
         el('div', { class: 'lmain' }, [
           el('div', { class: 'ltop' }, [el('span', { class: 'lname', text: L.capital(r.label) }),
             el('span', { class: 'lamt', text: r.amount + (r.optionalAll ? ' (optional)' : '') })]),
+          (r.breakdown ? el('div', { class: 'lbreak small', text: r.breakdown }) : ''),
+          (r.note ? el('div', { class: 'lbreak small', text: r.note }) : ''),
           el('div', { class: 'lsub' }, sub)])];
       var main = kids[1];
       if (r.swappedFrom && r.swappedFrom.length) {
@@ -350,7 +352,7 @@
     function flipList(key, have) { flip(listRoot, renderList, { key: key, have: have }); }
     function renderList() {
       var sel = selection(); out.innerHTML = '';
-      if (!sel.length) { out.appendChild(el('p', { class: 'empty', text: 'No recipes picked yet. Tick a few on the left (or add them from the recipe pages).' })); haveWrap.hidden = true; return; }
+      if (!sel.length) { out.appendChild(el('p', { class: 'empty', text: 'No recipes picked yet. Tick a few on the left (or add them from the recipe pages).' })); haveWrap.hidden = true; var sb = document.getElementById('walmart-subs'); if (sb) { sb.innerHTML = ''; sb.hidden = true; } return; }
       var vr = visibleRows(sel);
       out.appendChild(el('p', { class: 'count', text: vr.need.length + ' items to buy from ' + sel.length + ' recipe' + (sel.length > 1 ? 's' : '') }));
       L.AISLES.forEach(function (a) {
@@ -361,6 +363,7 @@
       haveOut.innerHTML = ''; var ul2 = el('ul', { class: 'lrows' }); vr.got.forEach(function (r) { ul2.appendChild(renderRow(r, true)); });
       haveOut.appendChild(ul2); document.getElementById('have-count').textContent = vr.got.length; haveWrap.hidden = vr.got.length === 0;
       updateBadge();
+      if (window.CRWalmart && window.CRWalmart.renderAlts) window.CRWalmart.renderAlts(document.getElementById('walmart-subs'), vr.need);
     }
     function currentText() {
       var sel = selection(); var vr = visibleRows(sel);
