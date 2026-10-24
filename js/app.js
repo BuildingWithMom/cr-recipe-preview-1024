@@ -53,6 +53,14 @@
     var m = getSubs(); Object.keys(L.SUBS).forEach(function (k) { if (L.SUBS[k].avoid) delete m[k]; }); store.set('cr.subs', m);
   }
   function swaps() { return L.effectiveSwaps(getSubs(), getAuto()); }
+  /* Walmart tiers + where to buy (all stored on this device only) */
+  function WM() { return window.CRWalmart || null; }
+  function getTier() { var t = store.get('cr.tier', 'budget'); return WM() && WM().isTier(t) ? t : 'budget'; }
+  function setTier(t) { store.set('cr.tier', t); }
+  function getTierOver() { return store.get('cr.tierOver', {}); }
+  function setTierOver(item, t) { var m = getTierOver(); if (t) m[item] = t; else delete m[item]; store.set('cr.tierOver', m); }
+  function getSource() { return store.get('cr.source', 'walmart') === 'farm' ? 'farm' : 'walmart'; }
+  function setSource(s) { store.set('cr.source', s === 'farm' ? 'farm' : 'walmart'); }
   function getHave() { return store.get('cr.have', {}); }
   function setHave(h) { store.set('cr.have', h); }
   function inPlan(id) { return getPlan().indexOf(id) >= 0; }
@@ -288,6 +296,80 @@
     track('view_plan');
     var OPTS = [[0.5, '\u00bd\u00d7'], [1, '1\u00d7'], [1.5, '1\u00bd\u00d7'], [2, '2\u00d7'], [3, '3\u00d7']];
 
+    /* ---- Walmart tier + where-to-buy controls ---- */
+    var curRoute = null, walmartHomes = null;
+    var TIERSD = function () { return window.CR_WALMART_TIERS || null; };
+    function baseIx() { return WM() ? WM().indexMap(window.CR_WALMART_MAP || []) : {}; }
+    function walmartCfg() { return Object.assign({}, WM().CONFIG, { tiers: TIERSD(), tier: getTier(), tierOverrides: getTierOver() }); }
+    function walmartRowsNow() { return curRoute ? curRoute.walmartRows : currentText().rows; }
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    function renderBuyBoxes() {
+      var tb = document.getElementById('tier-box'), sb = document.getElementById('source-box'); if (!tb || !sb || !WM() || !TIERSD()) { if (tb) tb.hidden = true; if (sb) sb.hidden = true; return; }
+      tb.innerHTML = ''; sb.innerHTML = '';
+      var cur = getTier();
+      tb.appendChild(el('div', { class: 'buy-h' }, [el('strong', { text: 'Walmart picks: ' }), el('span', { class: 'small', text: 'choose one tier for the whole list, or change a single ingredient below.' })]));
+      var seg = el('div', { class: 'seg', role: 'radiogroup', 'aria-label': 'Walmart tier' });
+      WM().TIER_DEFS.forEach(function (d) {
+        var id = 'tier-' + d.id, inp = el('input', { type: 'radio', name: 'tier', id: id, value: d.id }); inp.checked = d.id === cur;
+        inp.addEventListener('change', function () { setTier(d.id); track('tier_change', { tier: d.id }); flipList(null, false); renderBuyBoxes(); });
+        seg.appendChild(inp); seg.appendChild(el('label', { for: id, text: d.label }));
+      });
+      tb.appendChild(seg);
+      var ul = el('ul', { class: 'tier-defs small' });
+      WM().TIER_DEFS.forEach(function (d) { ul.appendChild(el('li', {}, [el('strong', { text: d.label + ': ' }), d.blurb])); });
+      tb.appendChild(ul);
+      tb.appendChild(el('p', { class: 'small tier-foot', text: 'Many pantry items use the same pick in every tier. Prices are approximate, from public search results on Oct 24, 2026 \u2014 not live, and not specific to your store. A missing price means we did not see one.' }));
+      var s = getSource();
+      sb.appendChild(el('div', { class: 'buy-h' }, [el('strong', { text: 'Where to buy: ' })]));
+      var seg2 = el('div', { class: 'seg', role: 'radiogroup', 'aria-label': 'Where to buy' });
+      [['walmart', 'Walmart only'], ['farm', 'Farm fresh where possible']].forEach(function (o) {
+        var id = 'src-' + o[0], inp = el('input', { type: 'radio', name: 'src', id: id, value: o[0] }); inp.checked = o[0] === s;
+        inp.addEventListener('change', function () { setSource(o[0]); track('source_change', { source: o[0] }); flipList(null, false); renderBuyBoxes(); });
+        seg2.appendChild(inp); seg2.appendChild(el('label', { for: id, text: o[1] }));
+      });
+      sb.appendChild(seg2);
+      if (s === 'farm') sb.appendChild(el('p', { class: 'small', text: 'Meat goes to Tyner Pond Farm and eggs, dairy and some produce to Market Wagon where they plausibly carry it. Everything else, and anything out of stock, stays at Walmart. Common Roots has no partnership with either; they are named as places to buy only.' }));
+    }
+    function placeWalmartControls(slot) {
+      var ids = ['btn-walmart', 'walmart-disclosure', 'walmart-note'];
+      if (!walmartHomes) { walmartHomes = ids.map(function (id) { var n = document.getElementById(id), c = document.createComment(id); n.parentNode.insertBefore(c, n); return { id: id, marker: c }; }); }
+      walmartHomes.forEach(function (h) {
+        var n = document.getElementById(h.id);
+        if (slot) slot.appendChild(n); else if (n.parentNode !== h.marker.parentNode || n.previousSibling !== h.marker) h.marker.parentNode.insertBefore(n, h.marker.nextSibling);
+      });
+    }
+    function priceText(e) { return e && e.price_usd ? ', about $' + e.price_usd + '*' : ''; }
+    /* the "what we'd buy" line under a list row */
+    function pickLine(r, main) {
+      var W = WM(), F = window.CRFarm; if (!W) return;
+      var v = curRoute && curRoute.mode === 'farm' && F ? F.vendorOf(curRoute, r.item) : { vendor: 'walmart' };
+      if (v.vendor === 'tyner') {
+        main.appendChild(el('div', { class: 'lpick small' }, [el('span', { class: 'vtag tyner', text: 'Tyner Pond Farm' }), ' ' + v.line.qty + ' \u00d7 ' + v.line.title.split(' \u2013 ')[0] + (v.line.variant_title !== 'Default Title' ? ' (' + v.line.variant_title + ')' : '') + ', about $' + v.line.price + ' each (their list, Oct 24)']));
+        return;
+      }
+      if (v.vendor === 'market') {
+        main.appendChild(el('div', { class: 'lpick small' }, [el('span', { class: 'vtag market', text: 'Market Wagon' }), ' ' + (v.line.coverage === 'listed' ? 'listed on their Westfield page' : 'possible \u2014 confirm') + '; no price shown']));
+        return;
+      }
+      var tiers = TIERSD(), bx = baseIx(), tch = W.tierChoices(r.item, tiers, bx), res = W.resolveEntry(r.item, getTierOver()[r.item] || getTier(), tiers, bx);
+      if (!res) { main.appendChild(el('div', { class: 'lpick small none', text: 'Walmart: no verified item yet \u2014 shown in the manual list.' })); return; }
+      var e = res.entry, kids = [el('span', { class: 'vtag walmart', text: 'Walmart' }), ' ' + e.product_name + ' \u2014 ' + e.package_size + priceText(e)];
+      var tn = res.tier === 'base' ? '' : cap(res.tier);
+      if (res.fallback) kids.push(el('span', { class: 'fbk', text: ' (no ' + cap(res.requested) + ' option verified; using ' + tn + ')' }));
+      else if (tch.distinctCount <= 1 && tiers && tiers.items[r.item]) kids.push(el('span', { class: 'fbk', text: ' (same pick in every tier)' }));
+      if (v.reason) kids.push(el('div', { class: 'fbk', text: v.reason }));
+      var d = el('div', { class: 'lpick small' }, kids);
+      if (tch.distinctCount > 1) {
+        var ov = getTierOver()[r.item] || '';
+        var sel = el('select', { class: 'tierpick', 'aria-label': 'Tier for ' + r.label }); 
+        sel.appendChild(el('option', { value: '', text: 'Tier: plan (' + cap(getTier()) + ')' }));
+        W.TIER_DEFS.forEach(function (td) { var o = el('option', { value: td.id, text: td.label }); if (ov === td.id) o.selected = true; sel.appendChild(o); });
+        sel.addEventListener('change', function () { setTierOver(r.item, sel.value); track('tier_override', { item: r.item, tier: sel.value || 'plan' }); flipList(null, false); });
+        d.appendChild(document.createTextNode(' ')); d.appendChild(sel);
+      }
+      main.appendChild(d);
+    }
+
     function buildPicker() {
       picker.innerHTML = '';
       RECIPES.forEach(function (r) {
@@ -333,6 +415,7 @@
           (r.note ? el('div', { class: 'lbreak small', text: r.note }) : ''),
           el('div', { class: 'lsub' }, sub)])];
       var main = kids[1];
+      if (!gotSection) pickLine(r, main);
       if (r.swappedFrom && r.swappedFrom.length) {
         var o = L.subOption(r.swappedFrom[0], r.item);
         main.appendChild(el('div', { class: 'swapnote small' }, [
@@ -352,8 +435,10 @@
     function flipList(key, have) { flip(listRoot, renderList, { key: key, have: have }); }
     function renderList() {
       var sel = selection(); out.innerHTML = '';
-      if (!sel.length) { out.appendChild(el('p', { class: 'empty', text: 'No recipes picked yet. Tick a few on the left (or add them from the recipe pages).' })); haveWrap.hidden = true; var sb = document.getElementById('walmart-subs'); if (sb) { sb.innerHTML = ''; sb.hidden = true; } return; }
+      if (!sel.length) { out.appendChild(el('p', { class: 'empty', text: 'No recipes picked yet. Tick a few on the left (or add them from the recipe pages).' })); haveWrap.hidden = true; var sb = document.getElementById('walmart-subs'); if (sb) { sb.innerHTML = ''; sb.hidden = true; }
+        curRoute = null; if (WM()) placeWalmartControls(null); var sc0 = document.getElementById('source-cards'); if (sc0) { sc0.innerHTML = ''; sc0.hidden = true; } return; }
       var vr = visibleRows(sel);
+      curRoute = window.CRFarm ? window.CRFarm.route(vr.need, { mode: getSource() }) : null;
       out.appendChild(el('p', { class: 'count', text: vr.need.length + ' items to buy from ' + sel.length + ' recipe' + (sel.length > 1 ? 's' : '') }));
       L.AISLES.forEach(function (a) {
         var rs = vr.need.filter(function (r) { return r.aisle === a; }); if (!rs.length) return;
@@ -363,7 +448,18 @@
       haveOut.innerHTML = ''; var ul2 = el('ul', { class: 'lrows' }); vr.got.forEach(function (r) { ul2.appendChild(renderRow(r, true)); });
       haveOut.appendChild(ul2); document.getElementById('have-count').textContent = vr.got.length; haveWrap.hidden = vr.got.length === 0;
       updateBadge();
-      if (window.CRWalmart && window.CRWalmart.renderAlts) window.CRWalmart.renderAlts(document.getElementById('walmart-subs'), vr.need);
+      var wrows = walmartRowsNow();
+      if (window.CRFarm && curRoute) {
+        placeWalmartControls(null);   // put the Walmart controls back before the cards (which may hold them) are rebuilt
+        var slot = window.CRFarm.renderCards(document.getElementById('source-cards'), curRoute, {});
+        placeWalmartControls(slot);
+        var wb = document.getElementById('btn-walmart');
+        if (wb && (window.CR_WALMART_MAP || []).length) wb.textContent = curRoute.mode === 'farm' ? 'Add Walmart items to cart (' + wrows.filter(function (r) { return r.item !== 'water'; }).length + ')' : 'Add to Walmart cart';
+      }
+      if (window.CRWalmart && window.CRWalmart.renderAlts) {
+        var chosen = window.CRWalmart.buildCart(wrows, window.CR_WALMART_MAP || [], walmartCfg()).items.map(function (i) { return i.id; });
+        window.CRWalmart.renderAlts(document.getElementById('walmart-subs'), wrows, null, chosen);
+      }
     }
     function currentText() {
       var sel = selection(); var vr = visibleRows(sel);
@@ -385,14 +481,14 @@
     });
     if (window.CRWalmart) {
       window.CRWalmart.wire({ button: document.getElementById('btn-walmart'), note: document.getElementById('walmart-note'),
-        disclosure: document.getElementById('walmart-disclosure'), getRows: function () { return currentText().rows; }, track: track, toast: toast });
+        disclosure: document.getElementById('walmart-disclosure'), getRows: function () { return walmartRowsNow(); }, getTier: getTier, getOverrides: getTierOver, track: track, toast: toast });
     }
     document.getElementById('btn-staples').addEventListener('click', function () {
       var h = getHave(), sw = swaps(); RECIPES.forEach(function (r) { r.ingredients.forEach(function (i) { L.effectiveEntries(i, sw).forEach(function (e) { if (e.staple) h[e.item] = true; }); }); });
       setHave(h); track('pantry_staples_all'); flipList(null, false);
     });
     document.getElementById('btn-clear').addEventListener('click', function () { setPlan([]); buildPicker(); renderList(); });
-    buildPicker(); renderList(); renderSubPref(function () { flipList(null, false); });
+    buildPicker(); renderBuyBoxes(); renderList(); renderSubPref(function () { flipList(null, false); });
   }
 
   function initStats() {

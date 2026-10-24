@@ -116,3 +116,31 @@ select.swap{font-size:.82rem;min-height:30px;padding:2px 6px;border-radius:8px;c
 .subs-box{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:#fff}
 .subs-box summary{cursor:pointer;font-weight:700}
 .subs-item{margin-top:10px}.subs-item h4{margin:0 0 4px;font-size:1rem}.subs-item ul{margin:4px 0 0 18px;padding:0}.subs-item li{margin:3px 0}
+
+/* tiers + where to buy */
+.buy-box{margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.buy-h{margin-bottom:6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg label{display:inline-block;padding:8px 16px;border:1.5px solid var(--green);border-radius:99px;color:var(--green);font-weight:600;cursor:pointer;min-height:38px;box-sizing:border-box}
+.seg input:checked+label{background:var(--green);color:#fff}
+.seg input:focus-visible+label{outline:3px solid #e0a23a;outline-offset:2px}
+.tier-defs{margin:8px 0 0;padding-left:1.1rem}.tier-defs li{margin:2px 0}
+.tier-foot{margin:6px 0 0;color:var(--muted)}
+.lpick{margin-top:4px;color:#3d4a3f}
+.lpick .fbk{display:block;color:var(--muted);font-style:italic}
+.lpick .fbk:first-of-type{display:inline}
+.vtag{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:1px 8px;margin-right:2px;color:#fff;background:#0071ce}
+.vtag.tyner{background:#7a5a2f}.vtag.market{background:#3a7d44}
+select.tierpick{font-size:.78rem;min-height:28px;padding:1px 6px;border-radius:8px;color:var(--green);border-color:var(--leaf);margin-left:4px}
+.src-cards{display:grid;gap:12px;margin:12px 0}
+.src-card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+.src-card h3{margin:0 0 4px;font-size:1.05rem}
+.src-card.tyner{border-left:5px solid #7a5a2f}.src-card.market{border-left:5px solid #3a7d44}.src-card.walmart{border-left:5px solid #0071ce}
+.src-lines,.src-checklist{margin:6px 0 8px;padding-left:1.1rem}.src-checklist{list-style:none;padding-left:0}
+.src-checklist li{margin:6px 0;padding-bottom:6px;border-bottom:1px dashed var(--line)}
+.src-checklist label{cursor:pointer;font-weight:600}
+.src-prog{margin:8px 0}.src-prog progress{width:100%;max-width:340px;height:12px;vertical-align:middle}
+.pill.ok{background:#e3f1e1;color:#2b5a2f}.pill.maybe{background:#fdf0d5;color:#7a5a12}
+.tyner-btn{margin-top:4px}
+.walmart-slot .btn{margin:6px 0}
