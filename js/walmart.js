@@ -136,7 +136,12 @@
       if (w) { chosen = w; userSwap = chosen !== cands[0]; }
     }
     var idx = cands.indexOf(chosen), from = null;
-    if (!userSwap) { for (var k = 0; k < idx; k++) if (oos[String(cands[k].entry.item_id)]) { from = { item_id: cands[k].entry.item_id, product_name: cands[k].entry.product_name }; break; } }
+    if (!userSwap) {
+      // the shopper's own Swap choice is now out of stock: say that this is what it was replaced by
+      var sw = opts.swap != null ? cands.filter(function (c) { return String(c.entry.item_id) === String(opts.swap) && oos[String(c.entry.item_id)]; })[0] : null;
+      if (sw) from = { item_id: sw.entry.item_id, product_name: sw.entry.product_name };
+      else for (var k = 0; k < idx; k++) if (oos[String(cands[k].entry.item_id)]) { from = { item_id: cands[k].entry.item_id, product_name: cands[k].entry.product_name }; break; }
+    }
     return { entry: chosen.entry, tier: chosen.tier, requested: req, fallback: chosen.tier !== 'base' && chosen.tier !== req, shared: chosen.tier === 'base',
              kind: chosen.kind, swappedFrom: from, userSwap: userSwap, candidates: cands };
   }
