@@ -1,0 +1,1 @@
+/* placeholder, replaced by tools/build_walmart_backups.py */(function(root){var D={items:{}};if(typeof module!=="undefined"&&module.exports)module.exports=D;else root.CR_WALMART_BACKUPS=D;})(typeof window!=="undefined"?window:globalThis);

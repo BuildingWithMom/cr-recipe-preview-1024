@@ -286,11 +286,21 @@
     return t;
   }
 
-  /* ---------- browser wiring (called from app.js on the plan page) ---------- */
+  /* ---------- browser wiring (called from app.js on the plan page) ----------
+   * Click "Add to Walmart cart" -> a short checklist of the chosen items (qty, name, size, approximate price). Each row has a Swap dropdown (the
+   * item's backups and other tier picks) and an "Out of stock for me" button. Only the button inside the checklist opens Walmart, using the items
+   * as they stand then. Stock memory lives in localStorage only (see makeStockStore). */
+  function cap1(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : t; }
+  function optLabel(op) {
+    var kind = op.kind === 'backup' ? 'backup' : (op.tier === 'base' ? 'standard pick' : cap1(op.tier) + ' pick');
+    return op.name + ' \u2014 ' + op.size + (op.price ? ', about $' + op.price + '*' : '') + ' (' + kind + ')' + (op.out ? ' \u2014 marked out of stock' : '');
+  }
   function wire(o) {
     var doc = root.document; if (!doc || !o || !o.button) return;
-    var btn = o.button, note = o.note, disc = o.disclosure;
+    var btn = o.button, note = o.note, disc = o.disclosure, box = o.check;
     var map = root.CR_WALMART_MAP || [];
+    var stock = o.stock || makeStockStore(root.localStorage);
+    var opened = {}, lastMark = {}, status = '', undo = null, open = false;
     if (!CONFIG.enabled) { btn.hidden = true; if (disc) disc.hidden = true; return; }
     if (disc) disc.textContent = disclosureText();
     if (!countVerified(map)) btn.textContent = 'Add to Walmart cart (coming soon)';
@@ -300,31 +310,141 @@
       if (list && list.length) {
         var h = doc.createElement('p'); h.className = 'small'; h.textContent = 'Not added \u2014 pick these up yourself or search for them at Walmart:'; note.appendChild(h);
         var ul = doc.createElement('ul'); ul.className = 'unmapped';
-        list.forEach(function (u) { var li = doc.createElement('li'); li.textContent = (u.label.charAt(0).toUpperCase() + u.label.slice(1)) + (u.amount ? ' \u2014 ' + u.amount : ''); ul.appendChild(li); });
+        list.forEach(function (u) { var li = doc.createElement('li'); li.textContent = (u.label.charAt(0).toUpperCase() + u.label.slice(1)) + (u.amount ? ' \u2014 ' + u.amount : '') + (u.allOut ? ' (every option marked out of stock for you)' : ''); ul.appendChild(li); });
         note.appendChild(ul);
       }
+    }
+    function cfgNow() {
+      return Object.assign({}, CONFIG, { tiers: root.CR_WALMART_TIERS || null, tier: o.getTier ? o.getTier() : null, tierOverrides: o.getOverrides ? o.getOverrides() : {},
+        backups: root.CR_WALMART_BACKUPS || null, oos: stock.oos(), swaps: stock.swaps() });
+    }
+    function cartNow() { map = root.CR_WALMART_MAP || []; return buildCart(o.getRows(), map, cfgNow()); }
+    function el(tag, cls, text) { var n = doc.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function changed() { render(); if (o.onStockChange) o.onStockChange(); }
+
+    function markOut(item) {
+      var key = item.ingredients[0], now = Date.now();
+      if (lastMark[key] && now - lastMark[key] < 500) return;          // rapid double click: the second press would land on the freshly promoted backup
+      lastMark[key] = now;
+      if (!stock.mark(item.id, item.name)) return;
+      undo = { id: item.id, name: item.name };
+      var after = cartNow(), nxt = null;
+      after.items.forEach(function (it) { if (it.swappedFrom && String(it.swappedFrom.item_id) === String(item.id)) nxt = it; });
+      var gone = item.ingredients.filter(function (g) { return after.allOut.indexOf(g) >= 0; });
+      status = '\u201c' + item.name + '\u201d is marked out of stock for you.' + (nxt ? ' Switched to \u201c' + nxt.name + '\u201d.' : '') + (gone.length ? ' No in-stock options are left for ' + gone.join(', ') + '.' : '');
+      if (o.track) o.track('walmart_oos', { id: item.id });
+      changed();
+      var again = box && box.querySelector('[data-ing="' + (after.items.length ? (nxt ? nxt.ingredients[0] : '') : '') + '"] .wm-oos');
+      if (again) { again.disabled = true; setTimeout(function () { again.disabled = false; }, 500); }
+    }
+    function renderRow(item) {
+      var li = el('li', 'wm-row'); li.setAttribute('data-ing', item.ingredients[0]); li.setAttribute('data-id', item.id);
+      var main = el('div', 'wm-main');
+      main.appendChild(el('span', 'wm-qty', item.qty + '\u00d7'));
+      var nm = el('span', 'wm-name', ' ' + item.name); main.appendChild(nm);
+      main.appendChild(el('div', 'small wm-size', item.size + (item.price ? ', about $' + item.price + '*' : '') + (item.assumed ? ' \u2014 quantity is a best guess' : '')));
+      if (item.swappedFrom) main.appendChild(el('div', 'wm-flag oos', 'Swapped because you marked it out of stock (was: ' + item.swappedFrom.product_name + ')'));
+      else if (item.userSwap) main.appendChild(el('div', 'wm-flag', 'Swapped by you'));
+      if (item.fallback) main.appendChild(el('div', 'small wm-fb', 'No verified ' + cap1(item.requested) + ' option; using ' + cap1(item.tier) + '.'));
+      li.appendChild(main);
+      var ctl = el('div', 'wm-ctl');
+      var sel = el('select', 'wm-swap'); sel.setAttribute('aria-label', 'Swap ' + item.ingredients.join(', '));
+      (item.options && item.options.length ? item.options : [{ id: item.id, name: item.name, size: item.size, price: item.price, tier: item.tier, kind: item.kind }]).forEach(function (op) {
+        var oe = el('option', '', optLabel(op)); oe.value = op.id; if (op.out) oe.disabled = true; if (op.id === item.id) oe.selected = true; sel.appendChild(oe);
+      });
+      if (sel.options.length < 2) { sel.disabled = true; sel.title = 'No other verified options for this item'; }
+      sel.addEventListener('change', function () { stock.setSwap(item.ingredients, sel.value); status = ''; undo = null; if (o.track) o.track('walmart_swap', { item: item.ingredients[0], to: sel.value }); changed(); });
+      var lab = el('label', 'wm-swaplab small', 'Swap: '); lab.appendChild(sel); ctl.appendChild(lab);
+      var oosb = el('button', 'btn ghost small wm-oos', 'Out of stock for me'); oosb.type = 'button';
+      oosb.addEventListener('click', function () { markOut(item); });
+      ctl.appendChild(oosb); li.appendChild(ctl);
+      return li;
+    }
+    function render() {
+      if (!box) return;
+      var res = cartNow(); box.innerHTML = '';
+      if (!open || (res.mode !== 'link' && !res.allOut.length)) { box.hidden = true; return; }
+      box.hidden = false;
+      box.appendChild(el('h3', 'wm-h', 'Check your Walmart items (' + res.items.length + ')'));
+      box.appendChild(el('p', 'small', 'We can\u2019t see stock at your store. Swap an item if you prefer another, or press \u201cOut of stock for me\u201d and we\u2019ll switch to the next backup and remember that on this device. Prices are approximate (public search results, Oct 24, 2026).'));
+      var live = el('p', 'wm-status', status); live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite'); live.hidden = !status;
+      if (undo) { var ub = el('button', 'btn ghost small wm-undo', 'Undo'); ub.type = 'button'; ub.addEventListener('click', function () { stock.unmark(undo.id); status = 'Back in stock: \u201c' + undo.name + '\u201d.'; undo = null; changed(); }); live.appendChild(doc.createTextNode(' ')); live.appendChild(ub); }
+      box.appendChild(live);
+      var ul = el('ul', 'wm-rows');
+      res.items.forEach(function (it) { ul.appendChild(renderRow(it)); });
+      res.unmapped.filter(function (u) { return u.allOut; }).forEach(function (u) {
+        var li = el('li', 'wm-row wm-allout'); li.setAttribute('data-ing', u.ingredient);
+        var m = el('div', 'wm-main'); m.appendChild(el('strong', '', cap1(u.label) + (u.amount ? ' \u2014 ' + u.amount : '') + ': '));
+        m.appendChild(doc.createTextNode('no in-stock options, buy locally or '));
+        var fa = el('a', 'wm-farm', 'try farm fresh'); fa.href = '#source-box';
+        fa.addEventListener('click', function (e) { e.preventDefault(); if (o.goFarm) o.goFarm(); });
+        m.appendChild(fa); m.appendChild(doc.createTextNode('. '));
+        m.appendChild(el('span', 'small', 'All verified options for this item are marked out of stock for you.'));
+        li.appendChild(m); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      var foot = el('div', 'wm-foot');
+      var fresh = res.items.filter(function (it) { return !opened[it.id]; });
+      var ob = el('button', 'btn dark wm-open', ''); ob.type = 'button'; ob.id = 'wm-open';
+      var any = Object.keys(opened).length > 0;
+      if (!res.items.length) { ob.textContent = 'Nothing to add'; ob.disabled = true; }
+      else if (any && !fresh.length) { ob.textContent = 'Already opened: nothing new to add'; ob.disabled = true; }
+      else if (any) ob.textContent = 'Add ' + fresh.length + ' changed item' + (fresh.length === 1 ? '' : 's') + ' to Walmart';
+      else ob.textContent = 'Open Walmart cart (' + res.items.length + ' item' + (res.items.length === 1 ? '' : 's') + ')';
+      ob.addEventListener('click', function () { openCart(); });
+      foot.appendChild(ob);
+      var cb = el('button', 'btn ghost small wm-close', 'Close'); cb.type = 'button'; cb.addEventListener('click', function () { open = false; opened = {}; status = ''; undo = null; render(); }); foot.appendChild(cb);
+      box.appendChild(foot);
+      if (any) box.appendChild(el('p', 'small', 'Items already sent to Walmart can\u2019t be removed from here. If one was out of stock, delete it in your Walmart cart; only changed items are added again.'));
+      var list = stock.list();
+      var det = el('details', 'wm-oos-list'); if (list.length) det.open = false;
+      det.appendChild(el('summary', '', 'Marked out of stock on this device (' + list.length + ')'));
+      if (!list.length) det.appendChild(el('p', 'small', 'Nothing yet. Items you mark are skipped on every list until you reset.'));
+      var ul2 = el('ul', 'wm-oos-items');
+      list.forEach(function (it) {
+        var li = el('li', '', it.name || ('Walmart item ' + it.id) + ' ');
+        var bk = el('button', 'btn ghost small wm-back', 'Back in stock'); bk.type = 'button'; bk.setAttribute('data-id', it.id);
+        bk.addEventListener('click', function () { stock.unmark(it.id); status = ''; undo = null; changed(); });
+        li.appendChild(doc.createTextNode(' ')); li.appendChild(bk); ul2.appendChild(li);
+      });
+      det.appendChild(ul2);
+      var rb = el('button', 'btn ghost small wm-reset', 'Reset out-of-stock list'); rb.type = 'button'; rb.disabled = !list.length;
+      rb.addEventListener('click', function () { stock.reset(); status = 'Out-of-stock list cleared.'; undo = null; if (o.track) o.track('walmart_oos_reset', {}); changed(); });
+      det.appendChild(rb); box.appendChild(det);
+    }
+    function openCart() {
+      var res = cartNow(), fresh = res.items.filter(function (it) { return !opened[it.id]; });
+      if (!fresh.length) return;
+      var urls = linksFor(fresh, CONFIG), again = Object.keys(opened).length > 0;
+      var tl = res.tier ? cap1(res.tier) : '';
+      var lines = [(again ? 'Adding ' : 'Opening Walmart with ') + fresh.length + ' item' + (fresh.length === 1 ? '' : 's') + (again ? ' to Walmart' : '') + ' added (' + fresh.map(function (i) { return i.qty + '\u00d7 ' + i.name; }).join('; ') + ').'];
+      if (tl) lines.push('Picks are from the ' + tl + ' tier unless you changed an ingredient. Prices shown on the list are approximate, from public search results on Oct 24, 2026, not live; Walmart\u2019s price at your store is what counts.');
+      var fb = fresh.filter(function (i) { return i.fallback; });
+      if (fb.length) lines.push('No ' + tl + ' option has been verified for ' + fb.map(function (i) { return i.ingredient; }).join(', ') + ', so the nearest tier was used.');
+      var sw = fresh.filter(function (i) { return i.swappedFrom; });
+      if (sw.length) lines.push('Swapped because you marked them out of stock: ' + sw.map(function (i) { return i.swappedFrom.product_name + ' \u2192 ' + i.name; }).join('; ') + '.');
+      if (urls.length > 1) lines.push('Your list is long, so it is split across ' + urls.length + ' Walmart links. Allow pop-ups to open them all.');
+      if (fresh.some(function (i) { return i.assumed; })) lines.push('A few quantities are best guesses (marked in the notes of the match table); double-check them in your cart.');
+      if (res.alternatives.length) lines.push('If anything is missing from your Walmart cart (' + res.alternatives.map(function (a) { return a.label; }).join(', ') + '), see "Out of stock? Substitutes" below.');
+      lines.push(CONFIG.previewNote);
+      show(lines, res.unmapped);
+      fresh.forEach(function (it) { opened[it.id] = it.qty; });
+      urls.forEach(function (u) { try { root.open(u, '_blank', 'noopener'); } catch (e) {} });
+      if (o.track) o.track('walmart_open', { items: fresh.length });
+      render();
     }
     btn.addEventListener('click', function () {
       var rows = o.getRows();
       if (!rows.length) { if (o.toast) o.toast('Pick a recipe first.'); return; }
-      map = root.CR_WALMART_MAP || [];
-      var res = buildCart(rows, map, Object.assign({}, CONFIG, { tiers: root.CR_WALMART_TIERS || null, tier: o.getTier ? o.getTier() : null,
-        tierOverrides: o.getOverrides ? o.getOverrides() : {} }));
+      var res = cartNow();
       if (o.track) o.track('walmart_click', { mode: res.mode, items: res.items.length, unmapped: res.unmapped.length });
-      if (res.mode === 'coming_soon') { show(['Walmart cart link coming soon: we are still matching ingredients to Walmart items, so this button does not add anything yet.'], null); return; }
-      if (res.mode === 'none_mapped') { show(['None of the items on this list have a Walmart match yet.'], res.unmapped); return; }
-      var tl = res.tier ? (res.tier.charAt(0).toUpperCase() + res.tier.slice(1)) : '';
-      var lines = ['Opening Walmart with ' + res.items.length + ' item' + (res.items.length === 1 ? '' : 's') + ' added (' + res.items.map(function (i) { return i.qty + '\u00d7 ' + i.name; }).join('; ') + ').'];
-      if (tl) lines.push('Picks are from the ' + tl + ' tier unless you changed an ingredient. Prices shown on the list are approximate, from public search results on Oct 24, 2026, not live; Walmart\u2019s price at your store is what counts.');
-      var fb = res.items.filter(function (i) { return i.fallback; });
-      if (fb.length) lines.push('No ' + tl + ' option has been verified for ' + fb.map(function (i) { return i.ingredient; }).join(', ') + ', so the nearest tier was used.');
-      if (res.urls.length > 1) lines.push('Your list is long, so it is split across ' + res.urls.length + ' Walmart links. Allow pop-ups to open them all.');
-      if (res.items.some(function (i) { return i.assumed; })) lines.push('A few quantities are best guesses (marked in the notes of the match table); double-check them in your cart.');
-      if (res.alternatives.length) lines.push('If anything is missing from your Walmart cart (' + res.alternatives.map(function (a) { return a.label; }).join(', ') + '), see "Out of stock? Substitutes" below.');
-      lines.push(CONFIG.previewNote);
-      show(lines, res.unmapped);
-      res.urls.forEach(function (u) { try { root.open(u, '_blank', 'noopener'); } catch (e) {} });
+      if (res.mode === 'coming_soon') { open = false; render(); show(['Walmart cart link coming soon: we are still matching ingredients to Walmart items, so this button does not add anything yet.'], null); return; }
+      if (res.mode === 'none_mapped' && !res.allOut.length) { open = false; render(); show(['None of the items on this list have a Walmart match yet.'], res.unmapped); return; }
+      note.hidden = true; note.innerHTML = ''; opened = {}; status = ''; undo = null; open = true; render();
+      if (box && box.scrollIntoView) { try { box.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {} }
     });
+    /* the list changed under the checklist (tier, source or plan): keep an open checklist in step, but never open one by itself */
+    return { refresh: function () { if (open) render(); } };
   }
 
   var api = { CONFIG: CONFIG, buildCart: buildCart, packFraction: packFraction, ceilPacks: ceilPacks, rowKey: rowKey, usable: usable,

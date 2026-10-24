@@ -144,3 +144,31 @@ select.tierpick{font-size:.78rem;min-height:28px;padding:1px 6px;border-radius:8
 .pill.ok{background:#e3f1e1;color:#2b5a2f}.pill.maybe{background:#fdf0d5;color:#7a5a12}
 .tyner-btn{margin-top:4px}
 .walmart-slot .btn{margin:6px 0}
+
+/* Walmart pre-cart checklist, swap dropdown, out-of-stock memory */
+.wm-check{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff}
+.wm-check[hidden]{display:none}
+.wm-h{margin:0 0 4px;font-size:1.05rem}
+.wm-rows{list-style:none;margin:10px 0;padding:0}
+.wm-row{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+.wm-row:first-child{border-top:0}
+.wm-main{flex:1 1 260px;min-width:0}
+.wm-qty{font-weight:700;color:#2f4a3a}
+.wm-name{font-weight:600}
+.wm-flag{display:inline-block;margin-top:3px;padding:2px 8px;border-radius:999px;background:#eef3e6;color:#2f4a3a;font-size:.82rem}
+.wm-flag.oos{background:#fff1d6;color:#7a4a00}
+.wm-fb{color:var(--muted);font-style:italic}
+.wm-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1 1 240px;justify-content:flex-end}
+.wm-swaplab{display:flex;align-items:center;gap:4px;flex:1 1 200px;min-width:0}
+.wm-swap{min-width:0;width:100%;max-width:100%;font:inherit;font-size:.88rem;padding:5px 6px}
+.wm-allout{background:#fff8e6;border-radius:8px;padding:9px 10px}
+.wm-allout .wm-farm,.lpick .wm-farm{color:#c2562f;font-weight:700}
+.wm-status{margin:8px 0 0;padding:7px 10px;border-radius:8px;background:#eef3e6;font-size:.92rem}
+.wm-status[hidden]{display:none}
+.wm-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+.wm-open[disabled]{opacity:.55;cursor:default}
+.wm-oos-list{margin-top:10px;font-size:.92rem}
+.wm-oos-list summary{cursor:pointer;font-weight:600}
+.wm-oos-items{margin:6px 0;padding-left:18px}
+.wm-oos-items li{margin:3px 0}
+@media (max-width:520px){.wm-ctl{justify-content:flex-start}}

@@ -300,7 +300,8 @@
     var curRoute = null, walmartHomes = null;
     var TIERSD = function () { return window.CR_WALMART_TIERS || null; };
     function baseIx() { return WM() ? WM().indexMap(window.CR_WALMART_MAP || []) : {}; }
-    function walmartCfg() { return Object.assign({}, WM().CONFIG, { tiers: TIERSD(), tier: getTier(), tierOverrides: getTierOver() }); }
+    var stock = WM() ? WM().makeStockStore(window.localStorage) : null, walmartUI = null;
+    function walmartCfg() { return Object.assign({}, WM().CONFIG, { tiers: TIERSD(), tier: getTier(), tierOverrides: getTierOver(), backups: window.CR_WALMART_BACKUPS || null, oos: stock.oos(), swaps: stock.swaps() }); }
     function walmartRowsNow() { return curRoute ? curRoute.walmartRows : currentText().rows; }
     function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
     function renderBuyBoxes() {
@@ -311,7 +312,7 @@
       var seg = el('div', { class: 'seg', role: 'radiogroup', 'aria-label': 'Walmart tier' });
       WM().TIER_DEFS.forEach(function (d) {
         var id = 'tier-' + d.id, inp = el('input', { type: 'radio', name: 'tier', id: id, value: d.id }); inp.checked = d.id === cur;
-        inp.addEventListener('change', function () { setTier(d.id); track('tier_change', { tier: d.id }); flipList(null, false); renderBuyBoxes(); });
+        inp.addEventListener('change', function () { setTier(d.id); stock.clearSwaps(); track('tier_change', { tier: d.id }); flipList(null, false); renderBuyBoxes(); });
         seg.appendChild(inp); seg.appendChild(el('label', { for: id, text: d.label }));
       });
       tb.appendChild(seg);
@@ -331,13 +332,14 @@
       if (s === 'farm') sb.appendChild(el('p', { class: 'small', text: 'Meat goes to Tyner Pond Farm and eggs, dairy and some produce to Market Wagon where they plausibly carry it. Everything else, and anything out of stock, stays at Walmart. Common Roots has no partnership with either; they are named as places to buy only.' }));
     }
     function placeWalmartControls(slot) {
-      var ids = ['btn-walmart', 'walmart-disclosure', 'walmart-note'];
+      var ids = ['btn-walmart', 'walmart-disclosure', 'walmart-check', 'walmart-note'];
       if (!walmartHomes) { walmartHomes = ids.map(function (id) { var n = document.getElementById(id), c = document.createComment(id); n.parentNode.insertBefore(c, n); return { id: id, marker: c }; }); }
       walmartHomes.forEach(function (h) {
         var n = document.getElementById(h.id);
         if (slot) slot.appendChild(n); else if (n.parentNode !== h.marker.parentNode || n.previousSibling !== h.marker) h.marker.parentNode.insertBefore(n, h.marker.nextSibling);
       });
     }
+    function goFarm() { setSource('farm'); track('source_change', { source: 'farm', from: 'oos' }); flipList(null, false); renderBuyBoxes(); var t = document.getElementById('source-box'); if (t && t.scrollIntoView) { try { t.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {} } }
     function priceText(e) { return e && e.price_usd ? ', about $' + e.price_usd + '*' : ''; }
     /* the "what we'd buy" line under a list row */
     function pickLine(r, main) {
@@ -351,9 +353,17 @@
         main.appendChild(el('div', { class: 'lpick small' }, [el('span', { class: 'vtag market', text: 'Market Wagon' }), ' ' + (v.line.coverage === 'listed' ? 'listed on their Westfield page' : 'possible \u2014 confirm') + '; no price shown']));
         return;
       }
-      var tiers = TIERSD(), bx = baseIx(), tch = W.tierChoices(r.item, tiers, bx), res = W.resolveEntry(r.item, getTierOver()[r.item] || getTier(), tiers, bx);
+      var tiers = TIERSD(), bx = baseIx(), tch = W.tierChoices(r.item, tiers, bx);
+      var res = W.resolveStock(r.item, getTierOver()[r.item] || getTier(), tiers, bx, { backups: window.CR_WALMART_BACKUPS, oos: stock.oos(), swap: stock.swaps()[r.item] });
+      if (res && res.allOut) {
+        var fl = el('a', { href: '#source-box', class: 'wm-farm', text: 'try farm fresh' });
+        fl.addEventListener('click', function (ev) { ev.preventDefault(); goFarm(); });
+        main.appendChild(el('div', { class: 'lpick small none' }, ['Walmart: no in-stock options (all marked out of stock for you), buy locally or ', fl, '.'])); return;
+      }
       if (!res) { main.appendChild(el('div', { class: 'lpick small none', text: 'Walmart: no verified item yet \u2014 shown in the manual list.' })); return; }
       var e = res.entry, kids = [el('span', { class: 'vtag walmart', text: 'Walmart' }), ' ' + e.product_name + ' \u2014 ' + e.package_size + priceText(e)];
+      if (res.swappedFrom) kids.push(el('span', { class: 'fbk', text: ' (swapped because you marked it out of stock: ' + res.swappedFrom.product_name + ')' }));
+      else if (res.userSwap) kids.push(el('span', { class: 'fbk', text: ' (swapped by you)' }));
       var tn = res.tier === 'base' ? '' : cap(res.tier);
       if (res.fallback) kids.push(el('span', { class: 'fbk', text: ' (no ' + cap(res.requested) + ' option verified; using ' + tn + ')' }));
       else if (tch.distinctCount <= 1 && tiers && tiers.items[r.item]) kids.push(el('span', { class: 'fbk', text: ' (same pick in every tier)' }));
@@ -364,7 +374,7 @@
         var sel = el('select', { class: 'tierpick', 'aria-label': 'Tier for ' + r.label }); 
         sel.appendChild(el('option', { value: '', text: 'Tier: plan (' + cap(getTier()) + ')' }));
         W.TIER_DEFS.forEach(function (td) { var o = el('option', { value: td.id, text: td.label }); if (ov === td.id) o.selected = true; sel.appendChild(o); });
-        sel.addEventListener('change', function () { setTierOver(r.item, sel.value); track('tier_override', { item: r.item, tier: sel.value || 'plan' }); flipList(null, false); });
+        sel.addEventListener('change', function () { setTierOver(r.item, sel.value); stock.clearSwaps([r.item]); track('tier_override', { item: r.item, tier: sel.value || 'plan' }); flipList(null, false); });
         d.appendChild(document.createTextNode(' ')); d.appendChild(sel);
       }
       main.appendChild(d);
@@ -457,6 +467,7 @@
         if (wb && (window.CR_WALMART_MAP || []).length) wb.textContent = curRoute.mode === 'farm' ? 'Add Walmart items to cart (' + wrows.filter(function (r) { return r.item !== 'water'; }).length + ')' : 'Add to Walmart cart';
       }
       if (window.CRWalmart && window.CRWalmart.renderAlts) {
+        if (walmartUI) walmartUI.refresh();
         var chosen = window.CRWalmart.buildCart(wrows, window.CR_WALMART_MAP || [], walmartCfg()).items.map(function (i) { return i.id; });
         window.CRWalmart.renderAlts(document.getElementById('walmart-subs'), wrows, null, chosen);
       }
@@ -480,8 +491,9 @@
       });
     });
     if (window.CRWalmart) {
-      window.CRWalmart.wire({ button: document.getElementById('btn-walmart'), note: document.getElementById('walmart-note'),
-        disclosure: document.getElementById('walmart-disclosure'), getRows: function () { return walmartRowsNow(); }, getTier: getTier, getOverrides: getTierOver, track: track, toast: toast });
+      walmartUI = window.CRWalmart.wire({ button: document.getElementById('btn-walmart'), note: document.getElementById('walmart-note'), check: document.getElementById('walmart-check'),
+        disclosure: document.getElementById('walmart-disclosure'), getRows: function () { return walmartRowsNow(); }, getTier: getTier, getOverrides: getTierOver, track: track, toast: toast,
+        stock: stock, goFarm: goFarm, onStockChange: function () { flipList(null, false); } });
     }
     document.getElementById('btn-staples').addEventListener('click', function () {
       var h = getHave(), sw = swaps(); RECIPES.forEach(function (r) { r.ingredients.forEach(function (i) { L.effectiveEntries(i, sw).forEach(function (e) { if (e.staple) h[e.item] = true; }); }); });
