@@ -339,14 +339,14 @@
     "per_pack": {
      "wt": 48.06
     },
-    "price_usd": "",
-    "price_source": "",
+    "price_usd": "12.24",
+    "price_source": "search snippet, Oct 24, 2026",
     "source_url": "https://www.walmart.com/ip/Pork-Loin-Country-Style-Ribs-Bone-In-2-3-3-8-lb-Tray/46491653",
     "source_type": "search_result_ip_url",
     "seen": "2026-10-24",
     "for": "any",
     "note": "variable-weight pack; quantity is an estimate",
-    "evidence": "tier_search"
+    "evidence": "websearch search: ws pork ribs"
    }
   ],
   "cod fillet": [
@@ -567,19 +567,19 @@
    {
     "status": "VERIFIED",
     "item_id": "10450340",
-    "product_name": "Great Value Heavy Whipping Cream, 32 oz Carton",
+    "product_name": "Great Value Heavy Whipping Cream, 32 oz Carton, Ultra-Pasteurized",
     "package_size": "32 oz",
     "per_pack": {
      "vol": 192.0
     },
-    "price_usd": "",
-    "price_source": "",
+    "price_usd": "4.74",
+    "price_source": "search snippet, Oct 24, 2026",
     "source_url": "https://www.walmart.com/ip/Great-Value-Heavy-Whipping-Cream-32-oz-Carton-Refrigerated/10450340",
     "source_type": "search_result_ip_url",
     "seen": "2026-10-24",
     "for": "budget",
     "note": "",
-    "evidence": "first_search"
+    "evidence": "websearch search: ws heavy cream"
    }
   ],
   "cheddar cheese": [
@@ -1384,6 +1384,23 @@
     "for": "budget",
     "note": "",
     "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "13399545",
+    "product_name": "Great Value Whole Wheat Egg Noodles, Extra-Wide, 12 oz Bag",
+    "package_size": "12 oz",
+    "per_pack": {
+     "vol": 288.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Whole-Wheat-Egg-Noodles-12-oz/13399545",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "whole wheat egg noodles, extra-wide",
+    "evidence": "websearch search: ws noodles"
    }
   ],
   "long-grain white rice": [
@@ -1420,6 +1437,1466 @@
     "for": "better",
     "note": "",
     "evidence": "tier_search"
+   }
+  ],
+  "asparagus spear": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44391242",
+    "product_name": "Marketside Fresh Asparagus Spears 10 oz, Steamer Bag",
+    "package_size": "10 oz",
+    "per_pack": {
+     "wt": 10.0
+    },
+    "price_usd": "3.62",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Marketside-Fresh-Asparagus-Spears-10-oz/44391242",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws asparagus"
+   }
+  ],
+  "balsamic vinegar": [
+   {
+    "status": "VERIFIED",
+    "item_id": "55345177",
+    "product_name": "Colavita Balsamic Vinegar Of Modena Igp, 8.5 Fl Oz",
+    "package_size": "8.5 fl oz",
+    "per_pack": {
+     "vol": 51.3
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Colavita-Balsamic-Vinegar-Of-Modena-Igp-8-5-Fl-Oz/55345177",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "55345178",
+    "product_name": "Colavita Sweet Tangy Balsamic Vinegar of Modena IGP, 17 Fluid Ounce, Glass Bottle",
+    "package_size": "17 fl oz glass bottle",
+    "per_pack": {
+     "vol": 102
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Colavita-Aged-Balsamic-Vinegar-Of-Modena-Igp-8-5-Fl-Oz/55345178",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "basil": [
+   {
+    "status": "VERIFIED",
+    "item_id": "3362616751",
+    "product_name": "Fresh Basil, 1.5 oz Clamshell",
+    "package_size": "1.5 oz",
+    "per_pack": {
+     "package": 3.0,
+     "vol": 48.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Basil-1-5-oz-Clamshell/3362616751",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "base",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "bittersweet chocolate": [
+   {
+    "status": "VERIFIED",
+    "item_id": "191197558",
+    "product_name": "Great Value Semi-Sweet Chocolate Baking Bar, Gluten Free, 4 oz Box",
+    "package_size": "4 oz",
+    "per_pack": {
+     "wt": 4.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Semi-Sweet-Chocolate-Baking-Bar-Box-4-oz/191197558",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "semi-sweet baking bar: a bit sweeter than bittersweet, still works in most recipes",
+    "evidence": "websearch search: ws chocolate"
+   }
+  ],
+  "bread crumb": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10320643",
+    "product_name": "Progresso, Bread Crumbs, Plain, Cooking Ingredient, Canister, 15 oz",
+    "package_size": "15 oz",
+    "per_pack": {
+     "vol": 180.0
+    },
+    "price_usd": "2.66",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Progresso-Bread-Crumbs-Plain-Pantry-Staple-15-oz/10320643",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws bread crumbs"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "7641558008",
+    "product_name": "Progresso, Bread Crumbs, Plain, 15 Oz.",
+    "package_size": "15 oz",
+    "per_pack": {
+     "vol": 180.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Progresso-Bread-Crumbs-Plain-15-Oz/7641558008",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws bread crumbs"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "21656980",
+    "product_name": "Great Value Plain Panko Bread Crumbs, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Plain-Panko-Bread-Crumbs-8-oz/21656980",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "dry breadcrumb": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10320643",
+    "product_name": "Progresso, Bread Crumbs, Plain, Cooking Ingredient, Canister, 15 oz",
+    "package_size": "15 oz",
+    "per_pack": {
+     "vol": 180.0
+    },
+    "price_usd": "2.66",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Progresso-Bread-Crumbs-Plain-Pantry-Staple-15-oz/10320643",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws bread crumbs"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "7641558008",
+    "product_name": "Progresso, Bread Crumbs, Plain, 15 Oz.",
+    "package_size": "15 oz",
+    "per_pack": {
+     "vol": 180.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Progresso-Bread-Crumbs-Plain-15-Oz/7641558008",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws bread crumbs"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "21656980",
+    "product_name": "Great Value Plain Panko Bread Crumbs, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Plain-Panko-Bread-Crumbs-8-oz/21656980",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "carrot": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10451315",
+    "product_name": "Fresh Produce, Baby Peeled Carrots, 1lb Bag, Washed, Ready to Eat",
+    "package_size": "1lb",
+    "per_pack": {
+     "each": 5.0,
+     "vol": 144.0
+    },
+    "price_usd": "1.32",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/1lb-Baby-Peeled-Carrots/10451315",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "baby peeled carrots: about 1 lb; chop as needed",
+    "evidence": "websearch search: ws baby carrots"
+   }
+  ],
+  "catsup": [
+   {
+    "status": "VERIFIED",
+    "item_id": "406608510",
+    "product_name": "Great Value Real Sugar Tomato Ketchup, 32 oz",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Real-Sugar-Tomato-Ketchup-32-oz/406608510",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44391309",
+    "product_name": "Great Value Tomato Ketchup, 38 oz",
+    "package_size": "38 oz",
+    "per_pack": {
+     "vol": 228.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Tomato-Ketchup-38-oz/44391309",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "cauliflower": [
+   {
+    "status": "VERIFIED",
+    "item_id": "344728564",
+    "product_name": "Marketside Cauliflower Florets, 12 oz, washed, ready to eat",
+    "package_size": "12 oz",
+    "per_pack": {
+     "wt": 12.0
+    },
+    "price_usd": "2.58",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Marketside-Fresh-Cauliflower-Florets-12-oz/344728564",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "florets only (washed): a whole head is about 6 cups of florets, check the recipe",
+    "evidence": "websearch search: ws cauliflower"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "396108153",
+    "product_name": "Marketside Organic Fresh Cauliflower Florets, 12 oz",
+    "package_size": "12 oz",
+    "per_pack": {
+     "wt": 12.0
+    },
+    "price_usd": "3.77",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Marketside-Organic-Fresh-Cauliflower-Florets-12-oz/396108153",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "organic florets only: a whole head is about 6 cups of florets, check the recipe",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "145161944",
+    "product_name": "Organic Cauliflower Florets 12oz",
+    "package_size": "12oz",
+    "per_pack": {
+     "wt": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Organic-Cauliflower-Florets-12oz/145161944",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "organic florets only: a whole head is about 6 cups of florets, check the recipe",
+    "evidence": "websearch search: ws cauliflower"
+   }
+  ],
+  "celery": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10402651",
+    "product_name": "Fresh Celery Hearts, Each",
+    "package_size": "1 each, celery hearts",
+    "per_pack": null,
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Celery-Hearts-Each/10402651",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "46866239",
+    "product_name": "Organic Fresh Celery Hearts, Each",
+    "package_size": "1 each, organic celery hearts",
+    "per_pack": null,
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Organic-Fresh-Celery-Hearts-Each/46866239",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "websearch search: ws celery"
+   }
+  ],
+  "celery seed": [
+   {
+    "status": "VERIFIED",
+    "item_id": "112115868",
+    "product_name": "Great Value Organic Celery Seeds, 1.8 oz, 1 Count",
+    "package_size": "1.8 oz",
+    "per_pack": {
+     "vol": 25.58
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Celery-Seeds-1-8-oz/112115868",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "chili powder": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10308933",
+    "product_name": "McCormick Chili Powder, 9.25 oz, Robust Blend for Mexican Dishes",
+    "package_size": "9.25 oz",
+    "per_pack": {
+     "vol": 98.67
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Chili-Powder-9-25-oz/10308933",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10308078",
+    "product_name": "McCormick, Chili Powder, 2.5 oz Bottle, Kosher, for Homemade Chili",
+    "package_size": "2.5 oz",
+    "per_pack": {
+     "vol": 26.67
+    },
+    "price_usd": "2.34",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Chili-Powder-2-5-oz-Bottle/10308078",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "855716889",
+    "product_name": "McCormick Non-GMO Kosher Chili Powder, 4.5 oz Bottle",
+    "package_size": "4.5 oz",
+    "per_pack": {
+     "vol": 48.0
+    },
+    "price_usd": "2.10",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Chili-Powder/855716889",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "chili sauce": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10533372",
+    "product_name": "Great Value Chili Sauce, 12 fl oz Bottle",
+    "package_size": "12 fl oz",
+    "per_pack": {
+     "vol": 72.0
+    },
+    "price_usd": "1.52",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Chili-Sauce-12-fl-oz-Bottle/10533372",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "websearch search: ws chili sauce"
+   }
+  ],
+  "cider vinegar": [
+   {
+    "status": "VERIFIED",
+    "item_id": "22089926",
+    "product_name": "Heinz Unfiltered Apple Cider Vinegar, 32 fl oz",
+    "package_size": "32 fl oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "10.99",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Heinz-Unfiltered-All-Natural-Apple-Cider-Vinegar-32-fl-oz/22089926",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "32590745",
+    "product_name": "Bragg Organic Apple Cider Vinegar with The Mother, Raw and Unfiltered, 32 fl oz",
+    "package_size": "32 fl oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Bragg-Organic-Apple-Cider-Vinegar-with-the-Mother-Raw-and-Unfiltered-32-fl-oz/32590745",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "54891542",
+    "product_name": "Great Value Organic Raw Unfiltered Apple Cider Vinegar, 32 fl oz",
+    "package_size": "32 fl oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Raw-Unfiltered-Apple-Cider-Vinegar-32-fl-oz/54891542",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "cooking spray": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10315268",
+    "product_name": "Great Value Butter Cooking Spray, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Butter-Cooking-Spray-8-ounces/10315268",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "960318144",
+    "product_name": "Pompeian Keto Blend Extra Virgin Olive Oil & Avocado Oil Cooking Spray - 5 fl oz",
+    "package_size": "5 fl oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Pompeian-Keto-Blend-Extra-Virgin-Olive-Oil-Avocado-Oil-Cooking-Spray-5-fl-oz-1-Count/960318144",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "102047632",
+    "product_name": "Pompeian 100% Avocado Oil Non-Stick Cooking Spray, 5 oz",
+    "package_size": "5 oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "20.98",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Pompeian-100-Avocado-Oil-Non-Stick-Cooking-Spray-5-oz/102047632",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "crouton": [
+   {
+    "status": "VERIFIED",
+    "item_id": "139322563",
+    "product_name": "Great Value Cheese & Garlic Seasoned Croutons, 5 oz Resealable Bag",
+    "package_size": "5 oz",
+    "per_pack": {
+     "vol": 240.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Cheese-Garlic-Seasoned-Croutons-5-oz-Resealable-Bag-Ready-To-Eat/139322563",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "cucumber": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44390996",
+    "product_name": "Fresh Long English Cucumber, Each",
+    "package_size": "1 each, long English cucumber",
+    "per_pack": {
+     "each": 1
+    },
+    "price_usd": "0.98",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Long-English-Cucumber-Each/44390996",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws cucumber"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "546740780",
+    "product_name": "Marketside Organic Cucumbers, 2 Count",
+    "package_size": "2 count",
+    "per_pack": {
+     "each": 2.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Marketside-Organic-Cucumbers-2-Count/546740780",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "704747922",
+    "product_name": "Fresh Produce, Organic Mini Cucumbers, 16 oz, USDA Organic",
+    "package_size": "16 oz",
+    "per_pack": null,
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Organic-Mini-Cucumbers-1-Pound-Bag/704747922",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "tier_search"
+   }
+  ],
+  "dried oregano": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10535040",
+    "product_name": "McCormick, Kosher Oregano Leaves, 0.75 oz Bottle, Dried Herb",
+    "package_size": "0.75 oz",
+    "per_pack": {
+     "vol": 20.69
+    },
+    "price_usd": "2.48",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Oregano-Leaves-0-75-oz-Bottle/10535040",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws oregano"
+   }
+  ],
+  "dried thyme": [
+   {
+    "status": "VERIFIED",
+    "item_id": "50597553",
+    "product_name": "Great Value Organic Thyme Leaves, 0.6 oz",
+    "package_size": "0.6 oz",
+    "per_pack": {
+     "vol": 16.8
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Thyme-Leaves-0-6-oz/50597553",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "15880267472",
+    "product_name": "McCormick Gourmet Organic Ground Thyme, 1.25 Oz",
+    "package_size": "1.25 oz",
+    "per_pack": {
+     "vol": 35.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Gourmet-Organic-TWE5-nbsp-Ground-Thyme-1-25-Oz/15880267472",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "ground thyme (finer than dried leaves): use about half as much",
+    "evidence": "tier_search"
+   }
+  ],
+  "garlic": [
+   {
+    "status": "VERIFIED",
+    "item_id": "55014398",
+    "product_name": "Fresh Garlic Sleeve, 3 Count, Spice World",
+    "package_size": "3 count",
+    "per_pack": {
+     "head": 3.0,
+     "clove": 30.0
+    },
+    "price_usd": "1.48",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Spice-World-Fresh-Garlic-Sleeve-3-Count/55014398",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "3 bulbs per sleeve",
+    "evidence": "websearch search: ws garlic sleeve"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44391024",
+    "product_name": "Spice World Fresh Peeled Garlic, 6 oz, Pouch",
+    "package_size": "6 oz",
+    "per_pack": null,
+    "price_usd": "3.07",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Spice-World-Fresh-Peeled-Garlic-6-oz-Pouch/44391024",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "peeled cloves: about 6 oz, many more cloves than a head; use as needed",
+    "evidence": "websearch search: ws peeled garlic"
+   }
+  ],
+  "garlic powder": [
+   {
+    "status": "VERIFIED",
+    "item_id": "5089963039",
+    "product_name": "Mccormick Garlic Powder, 8.75 Oz",
+    "package_size": "8.75 oz",
+    "per_pack": {
+     "vol": 81.33
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Mccormick-Garlic-Powder-8-75-Oz/5089963039",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "482697508",
+    "product_name": "McCormick, Kosher Garlic Powder, 8.75 oz Bottle, Ground, All-Purpose",
+    "package_size": "8.75 oz",
+    "per_pack": {
+     "vol": 81.33
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Garlic-Powder-8-75-oz-Bottle/482697508",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "green onion": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44391051",
+    "product_name": "Marketside Fresh Green Onions Bunch for Cooking and Garnishing",
+    "package_size": "1 bunch",
+    "per_pack": {
+     "bunch": 1,
+     "vol": 48
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Marketside-Organic-Green-Onions/44391051",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "888403777",
+    "product_name": "Marketside Fresh Green Onions Bunch for Cooking and Garnishing",
+    "package_size": "1 bunch",
+    "per_pack": {
+     "bunch": 1,
+     "vol": 48
+    },
+    "price_usd": "1.97",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Marketside-Organic-Green-Onions-1-Each/888403777",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "ground cumin": [
+   {
+    "status": "VERIFIED",
+    "item_id": "172164322",
+    "product_name": "McCormick, Ground Cumin, 14 oz Bottle, Kosher, Earthy Warmth",
+    "package_size": "14 oz",
+    "per_pack": {
+     "vol": 186.67
+    },
+    "price_usd": "6.98",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Ground-Cumin/172164322",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "5209089360",
+    "product_name": "McCormick Ground Cumin, 4.5 Oz",
+    "package_size": "4.5 oz",
+    "per_pack": {
+     "vol": 60.0
+    },
+    "price_usd": "11.50",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Ground-Cumin-4-5-Oz/5209089360",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "564519710",
+    "product_name": "Great Value Ground Cumin, 2.5 oz",
+    "package_size": "2.5 oz",
+    "per_pack": {
+     "vol": 34.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Ground-Cumin-4-5-oz/564519710",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "ground red pepper": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10535056",
+    "product_name": "McCormick, Ground Cayenne Red Pepper, 1 oz Bottle, Kosher",
+    "package_size": "1 oz",
+    "per_pack": {
+     "vol": 15.38
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Non-GMO-Kosher-Ground-Cayenne-Red-Pepper-1-oz-Bottle/10535056",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws cayenne"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "51691164",
+    "product_name": "McCormick Ground Cayenne Red Pepper, 14 oz",
+    "package_size": "14 oz",
+    "per_pack": {
+     "vol": 215.38
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Ground-Cayenne-Red-Pepper-14-oz/51691164",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws cayenne"
+   }
+  ],
+  "honey": [
+   {
+    "status": "VERIFIED",
+    "item_id": "25460590",
+    "product_name": "Nature Nate's, Raw Honey, 16 fl oz, Unfiltered Natural",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 64.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Nature-Nate-s-Honey-100-Pure-Raw-and-Unfiltered-Honey-16-fl-oz-Gluten-Free-Honey/25460590",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws honey"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "1675779594",
+    "product_name": "Sue Bee Pure Honey, Raw Unfiltered Southeast Honey, 80 oz",
+    "package_size": "80 oz",
+    "per_pack": {
+     "vol": 320.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Sue-Bee-Pure-Honey-Raw-Unfiltered-Southeast-Honey-80-oz/1675779594",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "hot pepper sauce": [
+   {
+    "status": "VERIFIED",
+    "item_id": "15446510687",
+    "product_name": "Texas Pete Original Hot Sauce, 12 Fl Oz",
+    "package_size": "12 fl oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Texas-Pete-Original-Hot-Sauce-12-Fl-Oz/15446510687",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "Texas Pete: a hot-sauce substitute",
+    "evidence": "websearch search: ws hot sauce"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "53952984",
+    "product_name": "Original Louisiana Brand Hot Sauce, Perfectly Balanced Flavor, 6 fl oz Bottle",
+    "package_size": "6 fl oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "1.67",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/The-Original-Louisiana-Brand-Hot-Sauce-Original-6-fl-oz-Bottle/53952984",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "Louisiana-style hot sauce: a hot-sauce substitute",
+    "evidence": "websearch search: ws hot sauce"
+   }
+  ],
+  "tabasco sauce": [
+   {
+    "status": "VERIFIED",
+    "item_id": "19872170623",
+    "product_name": "Franks RedHot Original Hot Sauce, 12 fl",
+    "package_size": "12 fl oz bottle (Frank's RedHot)",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Franks-RedHot-Original-Hot-Sauce-12-fl/19872170623",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "15446510687",
+    "product_name": "Texas Pete Original Hot Sauce, 12 Fl Oz",
+    "package_size": "12 fl oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Texas-Pete-Original-Hot-Sauce-12-Fl-Oz/15446510687",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "Texas Pete: a hot-sauce substitute",
+    "evidence": "websearch search: ws hot sauce"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "53952984",
+    "product_name": "Original Louisiana Brand Hot Sauce, Perfectly Balanced Flavor, 6 fl oz Bottle",
+    "package_size": "6 fl oz",
+    "per_pack": {
+     "none": 1
+    },
+    "price_usd": "1.67",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/The-Original-Louisiana-Brand-Hot-Sauce-Original-6-fl-oz-Bottle/53952984",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "Louisiana-style hot sauce: a hot-sauce substitute",
+    "evidence": "websearch search: ws hot sauce"
+   }
+  ],
+  "lemon": [
+   {
+    "status": "VERIFIED",
+    "item_id": "41752773",
+    "product_name": "Fresh Lemon, Each",
+    "package_size": "1 each",
+    "per_pack": {
+     "each": 1
+    },
+    "price_usd": "0.64",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Lemon-Each/41752773",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws lemon"
+   }
+  ],
+  "lemon juice": [
+   {
+    "status": "VERIFIED",
+    "item_id": "105504965",
+    "product_name": "ReaLemon 100% Natural Strength Lemon Juice, 8 OZ Bottle",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 48.0
+    },
+    "price_usd": "4.49",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/ReaLemon-100-Lemon-Juice/105504965",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws realemon"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10294762",
+    "product_name": "ReaLemon 100% Lemon Juice, 32 fl oz bottle",
+    "package_size": "32 fl oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "3.62",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Realemon-100-from-Concentrate-Natural-Strength-Lemon-Juice-32-oz/10294762",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws realemon"
+   }
+  ],
+  "onion": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44391105",
+    "product_name": "Fresh Sweet Onions, 3 lb Bag",
+    "package_size": "3 lb",
+    "per_pack": {
+     "each": 12.0,
+     "vol": 432.0
+    },
+    "price_usd": "3.30",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Sweet-Onions-3-lb-Bag/44391105",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws sweet/white onion"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "172435859",
+    "product_name": "Fresh White Onions, 3 lb Bag",
+    "package_size": "3 lb",
+    "per_pack": {
+     "each": 12.0,
+     "vol": 432.0
+    },
+    "price_usd": "3.25",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-White-Onions-3-lb-Bag/172435859",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws sweet/white onion"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44390992",
+    "product_name": "Fresh Whole Sweet Onion, Each",
+    "package_size": "1 each, sweet onion",
+    "per_pack": {
+     "each": 1,
+     "vol": 36
+    },
+    "price_usd": "0.70",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Whole-Sweet-Onion-Each/44390992",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws sweet/white onion"
+   }
+  ],
+  "onion powder": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10535034",
+    "product_name": "McCormick Kosher Onion Powder, 2.62 oz Bottle, Plastic, Sharp Flavor",
+    "package_size": "2.62 oz",
+    "per_pack": {
+     "vol": 30.63
+    },
+    "price_usd": "3.86",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Onion-Powder-2-62-oz-Bottle/10535034",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws onion powder"
+   }
+  ],
+  "orange rind": [
+   {
+    "status": "VERIFIED",
+    "item_id": "5256904046",
+    "product_name": "Fresh Organic Oranges, 3 lb Bag",
+    "package_size": "3 lb",
+    "per_pack": null,
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Organic-Oranges-3-lb-Bag/5256904046",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44391012",
+    "product_name": "FIELDPACK UNBRANDED, Fresh Navel Oranges, Plastic, 4 lb Bag",
+    "package_size": "4 lb",
+    "per_pack": null,
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Navel-Oranges-4-lb-Bag/44391012",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "tier_search"
+   }
+  ],
+  "parsley": [
+   {
+    "status": "VERIFIED",
+    "item_id": "2963413236",
+    "product_name": "Fresh Parsley, 0.5 oz Clamshell",
+    "package_size": "0.5 oz",
+    "per_pack": null,
+    "price_usd": "1.73",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Parsley-0-5-oz-Clamshell/2963413236",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "websearch search: ws parsley"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44391167",
+    "product_name": "Fresh Cut Parsley, Bunch",
+    "package_size": "1 bunch, curly parsley",
+    "per_pack": {
+     "bunch": 1,
+     "vol": 36
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Curly-Parsley-Bunch-Each/44391167",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws parsley"
+   }
+  ],
+  "prune": [
+   {
+    "status": "VERIFIED",
+    "item_id": "1940649753",
+    "product_name": "Great Value Unsweetened Pitted Prunes Canister 16 oz",
+    "package_size": "16 oz",
+    "per_pack": {
+     "each": 46.67
+    },
+    "price_usd": "5.97",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Unsweetened-Pitted-Prunes-Canister-16-oz/1940649753",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "websearch search: ws prunes"
+   }
+  ],
+  "quick cooking barley": [
+   {
+    "status": "VERIFIED",
+    "item_id": "717655159",
+    "product_name": "Bob's Red Mill Dry Uncooked Pearl Barley, Premium Quality, 30 oz Pkg",
+    "package_size": "30 oz",
+    "per_pack": {
+     "vol": 196.36
+    },
+    "price_usd": "3.22",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Bob-s-Red-Mill-Pearl-Barley-30-oz-Pkg/717655159",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "regular pearl barley, not quick-cooking: simmers about 40 to 50 minutes",
+    "evidence": "websearch search: ws barley"
+   }
+  ],
+  "red onion": [
+   {
+    "status": "VERIFIED",
+    "item_id": "21656758",
+    "product_name": "Fresh Red Onions, 3 lb, Bag",
+    "package_size": "3 lb",
+    "per_pack": null,
+    "price_usd": "3.33",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Red-Onions-3-lb-Bag/21656758",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "evidence": "websearch search: ws red onions"
+   }
+  ],
+  "red pepper": [
+   {
+    "status": "VERIFIED",
+    "item_id": "189907444",
+    "product_name": "Fresh Organic Sweet Bell Peppers, 2 Count",
+    "package_size": "2 count",
+    "per_pack": {
+     "each": 2.0,
+     "vol": 96.0
+    },
+    "price_usd": "3.46",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Organic-Color-Bell-Peppers-2-Count/189907444",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "mixed-color bell peppers (not red only): pick out the red ones",
+    "evidence": "websearch search: ws color peppers"
+   }
+  ],
+  "soy sauce": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10452919",
+    "product_name": "Kikkoman, Less Sodium Soy Sauce, 15 oz Bottle, Light Flavor",
+    "package_size": "15 oz",
+    "per_pack": {
+     "vol": 90.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Kikkoman-Less-Sodium-Soy-Sauce-15-oz/10452919",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "less-sodium soy sauce",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "15056122",
+    "product_name": "Great Value Less Sodium Soy Sauce, 15 fl oz",
+    "package_size": "15 fl oz",
+    "per_pack": {
+     "vol": 90.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Less-Sodium-Soy-Sauce-15-fl-oz/15056122",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "less-sodium soy sauce",
+    "evidence": "first_search"
+   }
+  ],
+  "tomato": [
+   {
+    "status": "VERIFIED",
+    "item_id": "44390955",
+    "product_name": "Fresh Tomato on the Vine, Bag (1.9 lbs/Bag Est.)",
+    "package_size": "1.9 lbs",
+    "per_pack": {
+     "each": 4.75,
+     "vol": 228.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Fresh-Tomato-on-the-Vine-Bag-1-9-lbs-Bag-Est/44390955",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws tomato"
+   }
+  ],
+  "vanilla extract": [
+   {
+    "status": "VERIFIED",
+    "item_id": "40166060",
+    "product_name": "Nielsen-Massey Pure Vanilla Extract, 2 oz",
+    "package_size": "2 oz",
+    "per_pack": {
+     "vol": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Nielsen-Massey-Pure-Vanilla-Extract-8-oz/40166060",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "28433616",
+    "product_name": "McCormick Pure Vanilla Extract, 16 fl oz Bottle, Madagascar vanilla",
+    "package_size": "16 fl oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "36.00",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-All-Natural-Pure-Vanilla-Extract-16-fl-oz/28433616",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "yellow mustard": [
+   {
+    "status": "VERIFIED",
+    "item_id": "25904063",
+    "product_name": "Great Value Yellow Mustard, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 48.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Yellow-Mustard-8-oz/25904063",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "51871266",
+    "product_name": "Great Value Organic Yellow Mustard, 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 48.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Yellow-Mustard-8-oz/51871266",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "lemon zest": [
+   {
+    "status": "VERIFIED",
+    "item_id": "41752773",
+    "product_name": "Fresh Lemon, Each",
+    "package_size": "1 each",
+    "per_pack": {
+     "each": 1
+    },
+    "price_usd": "0.64",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Fresh-Lemon-Each/41752773",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "websearch search: ws lemon"
+   }
+  ],
+  "powdered sugar": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10290721",
+    "product_name": "C&H, Premium Cane Powdered Sugar, 2 lb, Kosher Gluten Free",
+    "package_size": "2 lb",
+    "per_pack": {
+     "vol": 360.0
+    },
+    "price_usd": "3.74",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/C-H-Pure-Cane-Powdered-Confectioners-Sugar-2-Lb/10290721",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "websearch search: ws powdered sugar"
+   }
+  ],
+  "dijon mustard": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10535292",
+    "product_name": "Grey Poupon Country Dijon Coarse Ground Mustard, 8 oz. Jar",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 48.0
+    },
+    "price_usd": "4.12",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Grey-Poupon-Country-Dijon-Mustard-8-oz/10535292",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "coarse-ground (country) Dijon",
+    "evidence": "websearch search: ws dijon"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "766836840",
+    "product_name": "Maille Mustard Dijon Originale Squeeze 8.9 oz",
+    "package_size": "8.9 oz",
+    "per_pack": {
+     "vol": 53.4
+    },
+    "price_usd": "8.47",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Maille-Mustard-Dijon-Originale-Squeeze-8-9-oz/766836840",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "websearch search: ws dijon"
    }
   ]
  }
