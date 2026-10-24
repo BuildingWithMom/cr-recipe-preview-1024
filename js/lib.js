@@ -162,28 +162,112 @@
   }
   function pluralUnit(u) { return u === 'each' ? '' : (u + 's'); }
 
+
+  /* ---------- substitution framework ----------
+   * Conservative table of straightforward 1:1 swaps (same amount in, same amount out).
+   * Keys are shopping-list item keys (the same keys used in each recipe's "m" entries).
+   *  - avoid:   item people may want to avoid by default (powers the "never use" preference); first option is the default swap
+   *  - match:   how the item appears in ingredient and method text
+   *  - options: swap choices, first = default. Each: id (also the merge key), name (shown), aisle, staple, note (flavor/behavior)
+   * Never add tree nuts as an option (family allergy). A test enforces this. */
+  var SUBS = {
+    'vegetable oil': { label: 'vegetable oil', avoid: true, match: /\b(?:vegetable|canola|salad) oil\b/i, options: [
+      { id: 'avocado oil', name: 'avocado oil', aisle: 'Pantry & grains', staple: true,
+        note: 'Mild flavor and a high smoke point, so it cooks like vegetable oil.' },
+      { id: 'olive oil', name: 'olive oil', aisle: 'Pantry & grains', staple: true,
+        note: 'Fruitier than vegetable oil. Fine for sautéing; in baking you may taste it.' }] },
+    'sour cream': { label: 'sour cream', match: /\bsour cream\b/i, options: [
+      { id: 'plain greek yogurt', name: 'plain Greek yogurt', aisle: 'Dairy & eggs', staple: false,
+        note: 'Tangier and thicker. Stir it in off the heat and do not let it boil, or it can curdle.' }] },
+    'chicken broth': { label: 'chicken broth', match: /\bchicken broth\b/i, options: [
+      { id: 'vegetable broth', name: 'vegetable broth', aisle: 'Canned & jarred', staple: false,
+        note: 'Lighter, slightly sweeter flavor.' }] }
+  };
+  var NUT_RE = /almond|walnut|pecan|cashew|pistachio|hazelnut|macadamia|brazil nut|pine nut|chestnut|praline|nut\b/i;
+
+  function subOptions(item) { var s = SUBS[item]; return s ? s.options : []; }
+  function subOption(item, optId) {
+    var o = subOptions(item); for (var i = 0; i < o.length; i++) if (o[i].id === optId) return o[i]; return null;
+  }
+  /** Effective swaps {item: optionId}. explicit = saved choices ({item: id | 'orig'}); auto = "never use" preference on. */
+  function effectiveSwaps(explicit, auto) {
+    var out = {}; explicit = explicit || {};
+    Object.keys(SUBS).forEach(function (item) {
+      var c = explicit[item];
+      if (c === 'orig') return;
+      if (c && subOption(item, c)) { out[item] = c; return; }
+      if (auto && SUBS[item].avoid) out[item] = SUBS[item].options[0].id;
+    });
+    return out;
+  }
+  /** Replace swapped item names in free text (ingredient line or method step). Single pass, so a swap never re-swaps. */
+  function swapText(text, swaps) {
+    var hits = [];
+    Object.keys(swaps || {}).forEach(function (item) {
+      var s = SUBS[item], o = s && subOption(item, swaps[item]); if (!o) return;
+      var re = new RegExp(s.match.source, 'gi'), m;
+      while ((m = re.exec(text)) !== null) hits.push({ i: m.index, len: m[0].length, to: o.name, src: m[0] });
+    });
+    hits.sort(function (a, b) { return a.i - b.i; });
+    var out = '', pos = 0;
+    hits.forEach(function (h) {
+      if (h.i < pos) return;
+      var to = /^[A-Z]/.test(h.src) ? h.to.charAt(0).toUpperCase() + h.to.slice(1) : h.to;
+      out += text.slice(pos, h.i) + to; pos = h.i + h.len;
+    });
+    return out + text.slice(pos);
+  }
+  /** The wording an ingredient line used for a swappable item (e.g. "canola oil"), or null. */
+  function originalWording(text, item) {
+    var s = SUBS[item]; if (!s) return null; var m = text.match(s.match); return m ? m[0].toLowerCase() : null;
+  }
+  /** One merge entry after applying a swap (quantity and unit family are unchanged: swaps are 1:1). */
+  function swapEntry(e, optId) {
+    var o = subOption(e.item, optId); if (!o) return e;
+    var n = {}; Object.keys(e).forEach(function (k) { n[k] = e[k]; });
+    n.item = o.id; n.name = o.name; n.plural = undefined; n.aisle = o.aisle; n.staple = o.staple; n.swappedFrom = e.item;
+    return n;
+  }
+  /** The entries of an ingredient line with swaps applied. */
+  function effectiveEntries(ing, swaps) {
+    return ing.m.map(function (e) { return swaps && swaps[e.item] ? swapEntry(e, swaps[e.item]) : e; });
+  }
+  /** The first swappable item on an ingredient line, or null. */
+  function swappableItem(ing) {
+    for (var i = 0; i < ing.m.length; i++) if (SUBS[ing.m[i].item]) return ing.m[i].item;
+    return null;
+  }
+  /** Which swappable items appear in which recipes (for reporting). */
+  function swapIndex(recipes) {
+    var out = {};
+    recipes.forEach(function (r) { r.ingredients.forEach(function (ing) { ing.m.forEach(function (e) {
+      if (SUBS[e.item]) { (out[e.item] = out[e.item] || []); if (out[e.item].indexOf(r.id) < 0) out[e.item].push(r.id); } }); }); });
+    return out;
+  }
+
   /**
    * Merge ingredients across selected recipes.
    * selection: [{id, factor}], recipes: array of recipe objects.
    * Rows merge when item AND unit family match (volume, weight, same count unit+size).
    * Incompatible units become separate rows.
    */
-  function mergeSelection(recipes, selection) {
+  function mergeSelection(recipes, selection, swaps) {
     var byId = {}; recipes.forEach(function (r) { byId[r.id] = r; });
     var map = {}, order = [];
     selection.forEach(function (s) {
       var r = byId[s.id]; if (!r) return;
       r.ingredients.forEach(function (ing) {
-        ing.m.forEach(function (e) {
+        effectiveEntries(ing, swaps).forEach(function (e) {
           var key = e.item + '|' + e.fam;
           var row = map[key];
           if (!row) {
             row = map[key] = { key: key, item: e.item, name: e.name, plural: e.plural, fam: e.fam, qty: 0, cu: e.cu, size: e.size,
-              noqty: e.noqty, aisle: e.aisle, staple: e.staple, optionalAll: true, recipes: [] };
+              noqty: e.noqty, aisle: e.aisle, staple: e.staple, optionalAll: true, recipes: [], swappedFrom: [] };
             order.push(key);
           }
           row.qty += (e.qty || 0) * s.factor;
           if (!e.optional) row.optionalAll = false;
+          if (e.swappedFrom && row.swappedFrom.indexOf(e.swappedFrom) < 0) row.swappedFrom.push(e.swappedFrom);
           if (row.recipes.indexOf(r.title) < 0) row.recipes.push(r.title);
         });
       });
@@ -236,6 +320,8 @@
 
   var api = { fmtQty: fmtQty, parseNum: parseNum, scaleText: scaleText, scaleStep: scaleStep, fmtVol: fmtVol, fmtWt: fmtWt,
               fmtAmount: fmtAmount, mergeSelection: mergeSelection, listToText: listToText, instacartPayload: instacartPayload,
-              capital: capital, AISLES: AISLES };
+              capital: capital, AISLES: AISLES,
+              SUBS: SUBS, NUT_RE: NUT_RE, subOptions: subOptions, subOption: subOption, effectiveSwaps: effectiveSwaps, swapText: swapText,
+              originalWording: originalWording, swapEntry: swapEntry, effectiveEntries: effectiveEntries, swappableItem: swappableItem, swapIndex: swapIndex };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.CRLib = api;
 })(typeof window !== 'undefined' ? window : globalThis);

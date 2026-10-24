@@ -18,6 +18,7 @@
 <div class="plan-layout">
 <section class="plan-pick"><h2>1. Pick recipes</h2><div id="plan-picker" class="picker"></div></section>
 <section class="plan-list"><h2>2. Your list</h2>
+<div class="sub-pref" data-sub-pref></div>
 <div class="actions">
 <button id="btn-copy" class="btn">Copy list</button>
 <button id="btn-instacart" class="btn dark">Send to Instacart</button>
@@ -27,7 +28,7 @@
 <p id="instacart-note" class="note" hidden></p>
 <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
 <div id="list-out"><p class="empty">No recipes picked yet.</p></div>
-<details id="have-wrap" hidden><summary>Items you already have (<span id="have-count">0</span>)</summary><div id="have-out"></div></details>
+<section id="have-wrap" hidden><h3 class="aisle have-h" data-flip="have-h">Have it (<span id="have-count">0</span>)</h3><div id="have-out"></div></section>
 <p class="small">Pantry staples (salt, pepper, oil and similar) are marked but not assumed: tick "I have it" for anything you won't need to buy. Your choices are remembered on this device.</p>
 </section></div>
 <script>window.CR_PAGE="plan";</script>
