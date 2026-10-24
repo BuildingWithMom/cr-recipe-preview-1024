@@ -528,5 +528,7 @@
 
   updateBadge(); initSignup();
   if (page === 'home') initHome(); else if (page === 'recipe') initRecipe(); else if (page === 'plan') initPlan(); else if (page === 'stats') initStats();
-  window.CR = { track: track, CONFIG: CONFIG, sendToInstacart: sendToInstacart, store: store };
+  window.CR = { track: track, CONFIG: CONFIG, sendToInstacart: sendToInstacart, store: store,
+    // used by js/weekui.js (My week, My Kitchen)
+    swaps: swaps, factorOf: factorOf, setFactor: setFactor, getPlan: getPlan, setPlan: setPlan, updateBadge: updateBadge, servingsLabel: servingsLabel };
 })();
