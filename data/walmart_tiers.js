@@ -1549,6 +1549,526 @@
     "seen": "2026-10-24",
     "note": ""
    }
+  },
+  "soy sauce": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "10315653",
+    "product_name": "Great Value Brewed Soy Sauce, 15 fl oz, Kosher",
+    "package_size": "15 fl oz bottle",
+    "per_pack": {
+     "vol": 90
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Naturally-Brewed-Soy-Sauce-15-fl-oz/10315653",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10452918",
+    "product_name": "Kikkoman Naturally Brewed Soy Sauce, 15 fl oz",
+    "package_size": "15 fl oz, naturally brewed (Kikkoman)",
+    "per_pack": {
+     "vol": 90
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Kikkoman-Soy-Sauce-15-0-FL-OZ/10452918",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "516980398",
+    "product_name": "Kikkoman Organic Soy Sauce, 15 oz",
+    "package_size": "15 oz, organic (Kikkoman Organic)",
+    "per_pack": {
+     "vol": 90
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Kikkoman-Organic-Soy-Sauce-15-oz/516980398",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "vanilla extract": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "585133649",
+    "product_name": "Great Value Pure Vanilla Extract, 4 fl oz",
+    "package_size": "4 fl oz bottle, pure",
+    "per_pack": {
+     "vol": 24
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Pure-Vanilla-Extract-4-fl-oz-Liquid-Ambient-Plastic-Container/585133649",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "53859852",
+    "product_name": "McCormick All Natural Pure Vanilla Extract, 4 fl oz",
+    "package_size": "4 fl oz, pure (McCormick)",
+    "per_pack": {
+     "vol": 24
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-All-Natural-Pure-Vanilla-Extract-4-fl-oz/53859852",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "124479141",
+    "product_name": "Nielsen-Massey Pure Vanilla Extract, 4 oz",
+    "package_size": "4 oz, pure (Nielsen-Massey)",
+    "per_pack": {
+     "vol": 24
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Nielsen-Massey-Pure-Vanilla-Extract-4-oz/124479141",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "spaghetti": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "10534115",
+    "product_name": "Great Value Spaghetti, 16 oz",
+    "package_size": "16 oz box",
+    "per_pack": {
+     "wt": 16
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Spaghetti-16oz/10534115",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10309153",
+    "product_name": "Barilla Classic Spaghetti Pasta, 16 oz",
+    "package_size": "16 oz box (Barilla)",
+    "per_pack": {
+     "wt": 16
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Barilla-Classic-Non-GMO-Kosher-Certified-Spaghetti-Pasta-16-oz/10309153",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "brown sugar": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "10315012",
+    "product_name": "Great Value Light Brown Sugar, 32 oz",
+    "package_size": "32 oz (2 lb) bag",
+    "per_pack": {
+     "vol": 200
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Light-Brown-Sugar-32-oz/10315012",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10291797",
+    "product_name": "Domino Premium Pure Cane Light Brown Sugar, 2 lb",
+    "package_size": "2 lb bag, light (Domino)",
+    "per_pack": {
+     "vol": 200
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Domino-Premium-Pure-Cane-Light-Brown-Sugar-2-lb/10291797",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "10801762",
+    "product_name": "Wholesome Organic Light Brown Sugar, 24 oz",
+    "package_size": "24 oz, organic light (Wholesome)",
+    "per_pack": {
+     "vol": 150
+    },
+    "price_usd": "10.67",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Wholesome-Live-Sweetly-Organic-Light-Brown-Sugar-24-oz/10801762",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": "teaspoons per bag estimated from weight"
+   }
+  },
+  "cider vinegar": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "10451000",
+    "product_name": "Great Value Apple Cider Vinegar, 32 fl oz",
+    "package_size": "32 fl oz bottle",
+    "per_pack": {
+     "vol": 192
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Apple-Cider-Vinegar-32-fl-oz/10451000",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "14869670",
+    "product_name": "Heinz All Natural Apple Cider Vinegar, 32 fl oz",
+    "package_size": "32 fl oz (Heinz)",
+    "per_pack": {
+     "vol": 192
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Heinz-All-Natural-Apple-Cider-Vinegar-with-5-Acidity-32-fl-oz-Bottle/14869670",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "743503034",
+    "product_name": "Bragg Organic Apple Cider Vinegar, 32 fl oz",
+    "package_size": "32 fl oz, organic raw unfiltered with the mother (Bragg)",
+    "per_pack": {
+     "vol": 192
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Bragg-Organic-Apple-Cider-Vinegar-Raw-Unfiltered-Non-GMO-Certified-32-0-FL-OZ-3-Pack/743503034",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "tomato sauce": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "10415487",
+    "product_name": "Great Value Tomato Sauce, 8 oz Can",
+    "package_size": "8 oz can",
+    "per_pack": {
+     "wt": 8
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Tomato-Sauce-8-oz-Can/10415487",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10295084",
+    "product_name": "Hunt's Tomato Sauce, 8 oz Can",
+    "package_size": "8 oz can (Hunt's)",
+    "per_pack": {
+     "wt": 8
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Hunt-s-Tomato-Sauce-8-oz-Can/10295084",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "10324237",
+    "product_name": "Muir Glen Organic Tomato Sauce, 15 oz Can",
+    "package_size": "15 oz can, organic (Muir Glen)",
+    "per_pack": {
+     "wt": 15
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Muir-Glen-Organic-Tomato-Sauce-Canned-Sauce-15-oz/10324237",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "long-grain white rice": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "801697534",
+    "product_name": "Great Value Long Grain Enriched Rice, 2 lbs",
+    "package_size": "2 lb bag",
+    "per_pack": {
+     "vol": 216
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Long-Grain-Enriched-Rice-2-lbs/801697534",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "14940615",
+    "product_name": "Mahatma Enriched Extra Long Grain White Rice, 2 lb Bag",
+    "package_size": "2 lb bag, extra long grain (Mahatma)",
+    "per_pack": {
+     "vol": 216
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Mahatma-Gluten-Free-Enriched-Extra-Long-Grain-White-Rice-2-lb-Bag/14940615",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "52796448",
+    "product_name": "Mahatma Organic Long Grain White Rice, 2 lb Bag",
+    "package_size": "2 lb bag, organic long grain white (Mahatma Organic)",
+    "per_pack": {
+     "vol": 216
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Mahatma-Rice-Organic-Long-Grain-White-Rice-2-lb-Bag/52796448",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "chili powder": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "157643393",
+    "product_name": "Great Value Chili Powder, 3 oz",
+    "package_size": "3 oz jar",
+    "per_pack": {
+     "vol": 32
+    },
+    "price_usd": "1.08",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Chili-Powder-3-oz/157643393",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10308893",
+    "product_name": "McCormick Chili Powder, 4.5 oz",
+    "package_size": "4.5 oz (McCormick)",
+    "per_pack": {
+     "vol": 48
+    },
+    "price_usd": "4.94",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/McCormick-Non-GMO-Kosher-Chili-Powder-4-5-oz-Bottle/10308893",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": "teaspoons per bottle estimated from weight"
+   }
+  },
+  "ground cumin": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "985501095",
+    "product_name": "Great Value Ground Cumin, 2.5 oz",
+    "package_size": "2.5 oz jar",
+    "per_pack": {
+     "vol": 34
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Ground-Cumin-2-5-oz/985501095",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "39340099",
+    "product_name": "McCormick Ground Cumin, 1.5 oz",
+    "package_size": "1.5 oz (McCormick)",
+    "per_pack": {
+     "vol": 20
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Ground-Cumin-1-5-oz-Bottle/39340099",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": "teaspoons per bottle estimated from weight"
+   }
+  },
+  "garlic powder": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "676979470",
+    "product_name": "Great Value Garlic Powder, 3.4 oz",
+    "package_size": "3.4 oz jar",
+    "per_pack": {
+     "vol": 32
+    },
+    "price_usd": "1.08",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Garlic-Powder-3-4-oz/676979470",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10535033",
+    "product_name": "McCormick Garlic Powder, 3.12 oz",
+    "package_size": "3.12 oz (McCormick)",
+    "per_pack": {
+     "vol": 29
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/McCormick-Kosher-Garlic-Powder-3-12-oz-Bottle/10535033",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": "teaspoons per bottle estimated from weight"
+   }
+  },
+  "balsamic vinegar": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "128822499",
+    "product_name": "Great Value Balsamic Vinegar of Modena, 8.45 fl oz",
+    "package_size": "8.45 fl oz bottle",
+    "per_pack": {
+     "vol": 51
+    },
+    "price_usd": "3.92",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/reviews/product/128822499",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "10535480",
+    "product_name": "Colavita Balsamic Vinegar of Modena IGP, 17 fl oz",
+    "package_size": "17 fl oz (Colavita)",
+    "per_pack": {
+     "vol": 102
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Colavita-Balsamic-Vinegar-Of-Modena-Igp-17-Fl-Oz/10535480",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   },
+   "best": {
+    "tier": "best",
+    "status": "VERIFIED",
+    "item_id": "31511549",
+    "product_name": "Colavita Organic Balsamic Vinegar of Modena IGP, 17 fl oz",
+    "package_size": "17 fl oz, organic (Colavita Organic)",
+    "per_pack": {
+     "vol": 102
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Colavita-Organic-Balsamic-Vinegar-Of-Modena-Igp-17-Fl-Oz/31511549",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
+  },
+  "honey": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "20647992",
+    "product_name": "Great Value Honey, 12 oz, Plastic Bear Bottle",
+    "package_size": "12 oz bear bottle",
+    "per_pack": {
+     "vol": 48
+    },
+    "price_usd": "3.72",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Honey-12-oz-Plastic-Bear/20647992",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "42294356",
+    "product_name": "Sue Bee Honey Bear, 12 oz",
+    "package_size": "12 oz bear (Sue Bee)",
+    "per_pack": {
+     "vol": 48
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Sue-Bee-Honey-Bear-12-oz-Bottle/42294356",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": ""
+   }
   }
  },
  "note": "Item ids come from real walmart.com URLs in public search results on Oct 24, 2026. Prices are approximate snippets, never live. Verified does not mean in stock at your store."
