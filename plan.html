@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping list plan · Common Roots</title>
+<meta name="description" content="Recipes to groceries in one tap.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23c2562f%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head><body>
+<header class="site-header"><div class="wrap bar">
+<a class="logo" href="index.html" aria-label="Common Roots home"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 29V14" stroke="#2f4a3a" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 15C16 9 11 6 5 7c0 6 4 9 11 8z" fill="#7a9a5b"/><path d="M16 12c0-5 4-8 10-8 0 5-3 8-10 8z" fill="#c2562f"/><path d="M16 22c-2 2-5 3-8 3M16 24c2 1 5 1 8 0" stroke="#2f4a3a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span>Common Roots</span></a>
+<nav><a href="index.html">Recipes</a><a href="plan.html" class="plan-link">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>Plan &amp; shopping list</h1>
+<p class="lead">Choose recipes, set servings, and see one combined list. Amounts are added up only when the units are compatible; anything else is listed on its own line.</p>
+<div class="plan-layout">
+<section class="plan-pick"><h2>1. Pick recipes</h2><div id="plan-picker" class="picker"></div></section>
+<section class="plan-list"><h2>2. Your list</h2>
+<div class="actions">
+<button id="btn-copy" class="btn">Copy list</button>
+<button id="btn-instacart" class="btn dark">Send to Instacart</button>
+<button id="btn-staples" class="btn ghost small">Mark pantry staples as "have"</button>
+<button id="btn-clear" class="btn ghost small">Clear plan</button>
+</div>
+<p id="instacart-note" class="note" hidden></p>
+<p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
+<div id="list-out"><p class="empty">No recipes picked yet.</p></div>
+<details id="have-wrap" hidden><summary>Items you already have (<span id="have-count">0</span>)</summary><div id="have-out"></div></details>
+<p class="small">Pantry staples (salt, pepper, oil and similar) are marked but not assumed: tick "I have it" for anything you won't need to buy. Your choices are remembered on this device.</p>
+</section></div>
+<script>window.CR_PAGE="plan";</script>
+</main>
+<footer class="site-footer"><div class="wrap">
+<section class="signup" aria-labelledby="su-h">
+<h2 id="su-h">New recipes, now and then</h2>
+<form id="signup-form" action="#" method="post" novalidate>
+<!-- TODO: replace action="#" with a real email-service endpoint before launch. Preview only stores the address in this browser. -->
+<label class="sr-only" for="su-email">Email address</label>
+<input id="su-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+<button type="submit" class="btn">Sign up</button>
+</form>
+<p id="signup-msg" class="small" role="status" aria-live="polite">Preview: addresses are saved only in this browser for now.</p>
+</section>
+<p class="about"><strong>Common Roots:</strong> recipes to groceries in one tap.</p>
+<p class="small">Allergen note: none of these recipes list tree nuts as an ingredient. Always check packaged-food labels, since brands and recipes change.</p>
+</div></footer>
+<script src="js/lib.js"></script>
+<script src="data/recipes.js"></script>
+<script src="js/app.js"></script>
+</body></html>
