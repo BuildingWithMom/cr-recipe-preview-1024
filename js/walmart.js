@@ -293,7 +293,7 @@
   function cap1(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : t; }
   function optLabel(op) {
     var kind = op.kind === 'backup' ? 'backup' : (op.tier === 'base' ? 'standard pick' : cap1(op.tier) + ' pick');
-    return op.name + ' \u2014 ' + op.size + (op.price ? ', about $' + op.price + '*' : '') + ' (' + kind + ')' + (op.out ? ' \u2014 marked out of stock' : '');
+    return op.name + (op.size && op.name.toLowerCase().indexOf(String(op.size).toLowerCase()) < 0 ? ' \u2014 ' + op.size : '') + (op.price ? ', about $' + op.price + '*' : '') + ' (' + kind + ')' + (op.out ? ' \u2014 marked out of stock' : '');
   }
   function wire(o) {
     var doc = root.document; if (!doc || !o || !o.button) return;
