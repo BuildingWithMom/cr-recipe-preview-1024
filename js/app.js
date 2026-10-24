@@ -329,7 +329,7 @@
         seg2.appendChild(inp); seg2.appendChild(el('label', { for: id, text: o[1] }));
       });
       sb.appendChild(seg2);
-      if (s === 'farm') sb.appendChild(el('p', { class: 'small', text: 'Meat goes to Tyner Pond Farm and eggs, dairy and some produce to Market Wagon where they plausibly carry it. Everything else, and anything out of stock, stays at Walmart. Common Roots has no partnership with either; they are named as places to buy only.' }));
+      if (s === 'farm') sb.appendChild(el('p', { class: 'small', text: 'Meat goes to Tyner Pond Farm. Eggs and produce go to Shrock Family Farm or Priest Family Farm (both sell through Market Wagon) when one of them lists the item. Everything else, and anything out of stock, stays at Walmart. Common Roots has no partnership with any of them; they are named as places to buy only.' }));
     }
     function placeWalmartControls(slot) {
       var ids = ['btn-walmart', 'walmart-disclosure', 'walmart-check', 'walmart-note'];
@@ -350,7 +350,7 @@
         return;
       }
       if (v.vendor === 'market') {
-        main.appendChild(el('div', { class: 'lpick small' }, [el('span', { class: 'vtag market', text: 'Market Wagon' }), ' ' + (v.line.coverage === 'listed' ? 'listed on their Westfield page' : 'possible \u2014 confirm') + '; no price shown']));
+        main.appendChild(el('div', { class: 'lpick small' }, [el('span', { class: 'vtag market', text: v.line.farmName }), ' look for \u201c' + v.line.name + '\u201d on Market Wagon; no price shown (stock and prices change)']));
         return;
       }
       var tiers = TIERSD(), bx = baseIx(), tch = W.tierChoices(r.item, tiers, bx);

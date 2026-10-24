@@ -111,138 +111,149 @@
  "marketwagon": {
   "name": "Market Wagon",
   "zip": "46074",
-  "market_page": "https://marketwagon.com/farmers-markets/westfield-farmers-market/46074/25",
-  "pages": {
-   "eggs": "https://marketwagon.com/pasture-raised-eggs-in-westfield-in",
-   "dairy": "https://marketwagon.com/milk-delivery-in-westfield-in",
-   "produce": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-   "market": "https://marketwagon.com/farmers-markets/westfield-farmers-market/46074/25"
-  },
-  "order_by": "Wednesday 1:00 AM",
-  "delivery_day": "Thursday",
-  "timing_note": "to confirm: ordering deadline and delivery day were read from their Westfield page",
-  "items": {
-   "egg": {
-    "coverage": "listed",
-    "page": "eggs",
-    "url": "https://marketwagon.com/pasture-raised-eggs-in-westfield-in",
-    "note": "Pasture-raised eggs are listed on their Westfield page."
+  "delivery_note": "Delivery date shows after you enter 46074; last seen Tue Oct 27; confirm at checkout.",
+  "checked": "Sat Oct 24, 2026, read-only, by hand",
+  "stock_note": "Stock changes; confirm at checkout. Prices are not shown here because they change.",
+  "farms": [
+   {
+    "id": "shrock",
+    "name": "Shrock Family Farm",
+    "place": "Selma, IN",
+    "url": "https://shop.marketwagon.com/collections/vendor/1286",
+    "also_sells": "Cherry tomatoes (mixed, pint), sweet bell peppers, jalapeños, curly and Lacinato kale, chives, zucchini, butternut and spaghetti squash, fennel.",
+    "potted_note": "Thyme and rosemary there are potted herb plants (transplants), not cut herbs, so they are not on your checklist.",
+    "sold_out_note": "",
+    "items": {
+     "egg": {
+      "name": "Eggs (Pasture-Raised, 1 dozen)",
+      "note": ""
+     },
+     "egg yolk": {
+      "name": "Eggs (Pasture-Raised, 1 dozen)",
+      "note": "Uses the same dozen of eggs."
+     },
+     "tomato": {
+      "name": "Tomatoes - Red - 1 lb, slicing",
+      "note": "Slicing tomatoes; stock changes with the season."
+     },
+     "green onion": {
+      "name": "Green Onions",
+      "note": ""
+     },
+     "garlic": {
+      "name": "Garlic",
+      "note": ""
+     },
+     "celery": {
+      "name": "Celery Bunch",
+      "note": ""
+     },
+     "green pepper": {
+      "name": "Green bell peppers - 1 lb",
+      "note": "Sold by the pound."
+     },
+     "parsley": {
+      "name": "Parsley - bunch, Italian",
+      "note": ""
+     },
+     "onion": {
+      "name": "Sweet Candy Onions",
+      "note": "Sweet candy onions: milder than a yellow cooking onion."
+     }
+    },
+    "options": {}
    },
-   "egg yolk": {
-    "coverage": "listed",
-    "page": "eggs",
-    "url": "https://marketwagon.com/pasture-raised-eggs-in-westfield-in",
-    "note": "Comes from the same dozen of eggs."
-   },
-   "milk": {
-    "coverage": "listed",
-    "page": "dairy",
-    "url": "https://marketwagon.com/milk-delivery-in-westfield-in",
-    "note": "Whole milk is listed (check size and whether it is pasteurized)."
-   },
-   "heavy cream": {
-    "coverage": "listed",
-    "page": "dairy",
-    "url": "https://marketwagon.com/milk-delivery-in-westfield-in",
-    "note": "Heavy cream was seen in our research; confirm it is in stock."
-   },
-   "plain greek yogurt": {
-    "coverage": "possible",
-    "page": "dairy",
-    "url": "https://marketwagon.com/milk-delivery-in-westfield-in",
-    "note": "Plain yogurt is listed; whether it is Greek style varies, so confirm."
-   },
-   "tomato": {
-    "coverage": "listed",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Tomatoes are listed, but fresh local tomatoes are out of season in late October, so confirm."
-   },
-   "butter": {
-    "coverage": "possible",
-    "page": "dairy",
-    "url": "https://marketwagon.com/milk-delivery-in-westfield-in",
-    "note": "Some dairy vendors may carry butter; confirm."
-   },
-   "cheddar cheese": {
-    "coverage": "possible",
-    "page": "dairy",
-    "url": "https://marketwagon.com/milk-delivery-in-westfield-in",
-    "note": "Some dairy vendors may carry cheddar; confirm."
-   },
-   "honey": {
-    "coverage": "possible",
-    "page": "market",
-    "url": "https://marketwagon.com/farmers-markets/westfield-farmers-market/46074/25",
-    "note": "Honey vendors are common at farmers markets; confirm."
-   },
-   "carrot": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Likely in season; confirm."
-   },
-   "onion": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Likely in season; confirm."
-   },
-   "red onion": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Likely in season; confirm."
-   },
-   "garlic": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Likely in season; confirm."
-   },
-   "celery": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Maybe; confirm."
-   },
-   "cauliflower": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Likely in season; confirm."
-   },
-   "green pepper": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Late-season; confirm."
-   },
-   "red pepper": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Late-season; confirm."
-   },
-   "cucumber": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Maybe (greenhouse); confirm."
-   },
-   "parsley": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Maybe; confirm."
-   },
-   "green onion": {
-    "coverage": "possible",
-    "page": "produce",
-    "url": "https://marketwagon.com/organic-and-conventional-vegetables-in-westfield-in",
-    "note": "Maybe; confirm."
+   {
+    "id": "priest",
+    "name": "Priest Family Farm",
+    "place": "Henry County, IN",
+    "url": "https://shop.marketwagon.com/collections/vendor/1055",
+    "also_sells": "Jalapeños, roasting potatoes, sweet potatoes (about 2 lb), chicken thighs, winter squash, apples.",
+    "potted_note": "",
+    "sold_out_note": "Cabbage, broccoli, green beans, banana, shishito and serrano peppers and canning tomatoes were sold out when we looked, so nothing on your list is routed there.",
+    "items": {
+     "egg": {
+      "name": "Eggs, Farm Fresh, Pasture-Raised Brown",
+      "note": ""
+     },
+     "egg yolk": {
+      "name": "Eggs, Farm Fresh, Pasture-Raised Brown",
+      "note": "Uses the same dozen of eggs."
+     },
+     "tomato": {
+      "name": "Tomatoes-Slicing ~1lb",
+      "note": ""
+     },
+     "cucumber": {
+      "name": "Cucumbers-Salad",
+      "note": ""
+     },
+     "onion": {
+      "name": "Candy Onion-Large / Medium (~1#)",
+      "note": "Candy onions: milder than a yellow cooking onion."
+     },
+     "green pepper": {
+      "name": "Pepper-Green Bell",
+      "note": ""
+     },
+     "red pepper": {
+      "name": "Pepper-Red Bell",
+      "note": ""
+     },
+     "garlic": {
+      "name": "Garlic-Medium Bulb",
+      "note": ""
+     }
+    },
+    "options": {
+     "chicken breast": {
+      "name": "Free-Range, Non-GMO Chicken Breast, Boneless & Skinless (Family Size) 1.2-1.5 lb",
+      "note": "An option beside Tyner Pond Farm; one family-size pack is about 1.2 to 1.5 lb."
+     }
+    }
    }
+  ],
+  "routes": {
+   "egg": [
+    "shrock",
+    "priest"
+   ],
+   "egg yolk": [
+    "shrock",
+    "priest"
+   ],
+   "tomato": [
+    "shrock",
+    "priest"
+   ],
+   "green onion": [
+    "shrock"
+   ],
+   "garlic": [
+    "priest",
+    "shrock"
+   ],
+   "celery": [
+    "shrock"
+   ],
+   "green pepper": [
+    "shrock",
+    "priest"
+   ],
+   "parsley": [
+    "shrock"
+   ],
+   "onion": [
+    "priest",
+    "shrock"
+   ],
+   "cucumber": [
+    "priest"
+   ],
+   "red pepper": [
+    "priest"
+   ]
   },
-  "not_covered_note": "Not expected at a local market: citrus (lemon, orange), asparagus (a spring crop), fish, and shelf-stable pantry items."
+  "not_covered_note": "Not routed to the farms: lemons and oranges, asparagus, fish, dairy, carrots, cauliflower, honey, shelf-stable pantry items, and anything we did not see listed."
  }
 };if(typeof module!=="undefined"&&module.exports)module.exports=D;else root.CR_FARM=D;})(typeof window!=="undefined"?window:globalThis);
