@@ -20,7 +20,24 @@
     "seen": "2026-10-24",
     "for": "budget",
     "note": "",
-    "evidence": "backup_search:Great Value 85% lean ground beef 1 lb"
+    "evidence": "brave search: Great Value 85% lean ground beef 1 lb"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "959024059",
+    "product_name": "All Natural* 80% Lean/20% Fat Ground Beef Chuck, 2.25 lb Tray",
+    "package_size": "2.25 lb",
+    "per_pack": {
+     "wt": 36.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/80-Lean-20-Fat-Ground-Beef-Chuck-2-25-lb-Tray-Fresh-All-Natural/959024059",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
    },
    {
     "status": "VERIFIED",
@@ -37,24 +54,7 @@
     "seen": "2026-10-24",
     "for": "best",
     "note": "",
-    "evidence": "backup_search:frozen ground beef 80/20 Great Value 1 lb"
-   },
-   {
-    "status": "VERIFIED",
-    "item_id": "133893542",
-    "product_name": "Marketside Organic Grass-Fed Ground Beef 93% Lean 7% Fat 1 lb USDA Organic No Hormones or Antibiotics",
-    "package_size": "1 lb",
-    "per_pack": {
-     "wt": 16.0
-    },
-    "price_usd": "",
-    "price_source": "",
-    "source_url": "https://www.walmart.com/ip/Marketside-Organic-Grass-Fed-Ground-Beef-93-Lean-7-Fat-1-lb/133893542",
-    "source_type": "search_result_ip_url",
-    "seen": "2026-10-24",
-    "for": "best",
-    "note": "",
-    "evidence": "backup_search:ground beef 93% lean 1 lb tray"
+    "evidence": "brave search: frozen ground beef 80/20 Great Value 1 lb"
    }
   ],
   "ground turkey": [
@@ -73,7 +73,7 @@
     "seen": "2026-10-24",
     "for": "budget",
     "note": "",
-    "evidence": "backup_search:Great Value ground turkey 93 7 1 lb"
+    "evidence": "brave search: Great Value ground turkey 93 7 1 lb"
    },
    {
     "status": "VERIFIED",
@@ -90,21 +90,760 @@
     "seen": "2026-10-24",
     "for": "budget",
     "note": "",
-    "evidence": "backup_search:Jennie-O lean ground turkey 93"
+    "evidence": "brave search: Jennie-O lean ground turkey 93"
    },
    {
     "status": "VERIFIED",
-    "item_id": "51777942",
-    "product_name": "Farm to Family by Butterball 93% Lean/7% Fat Fresh Ground Turkey",
-    "package_size": "Farm to Family by Butterball 93% Lean/7% Fat Fresh Ground Turkey",
-    "per_pack": null,
-    "price_usd": "6.36",
-    "price_source": "search snippet, Oct 24, 2026",
-    "source_url": "https://www.walmart.com/ip/Farm-to-Family-by-Butterball-93-7-Lean-Ground-Turkey-No-Antibiotics-Ever-1-lb/51777942",
+    "item_id": "826479176",
+    "product_name": "JENNIE-O Ground Turkey All Natural, 93/7%, Roll, 1 Pound",
+    "package_size": "1 pound",
+    "per_pack": {
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/JENNIE-O-Ground-Turkey-93-7-Chub-16-oz/826479176",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "brave search: Great Value ground turkey 93 7 1 lb"
+   }
+  ],
+  "chicken breast": [
+   {
+    "status": "VERIFIED",
+    "item_id": "338508084",
+    "product_name": "Freshness Guaranteed Thin-Sliced Boneless Skinless Chicken Breasts, 0.8 - 3.5 lb Tray",
+    "package_size": "0.8 - 3.5 lb",
+    "per_pack": {
+     "each": 4.3,
+     "wt": 34.4
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Freshness-Guaranteed-Thin-Sliced-Boneless-Skinless-Chicken-Breasts-1-7-3-0-lb-Tray/338508084",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "brave search: Great Value boneless skinless chicken breast fresh tray"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "25294832",
+    "product_name": "Tyson Trimmed & Ready, Fresh, All Natural, Boneless Skinless Chicken Breast Portions, 1.3 - 1.7 lb Tray",
+    "package_size": "1.3 - 1.7 lb",
+    "per_pack": {
+     "each": 2.25,
+     "wt": 24.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Tyson-Trimmed-Ready-All-Natural-Boneless-Skinless-Chicken-Breast-Portions-1-3-2-25-lb-Tray/25294832",
     "source_type": "search_result_ip_url",
     "seen": "2026-10-24",
     "for": "better",
-    "note": "package size not comparable with the pick it backs up: quantity assumed 1 package",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "brave search: Tyson boneless skinless chicken breast frozen"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "42294613",
+    "product_name": "Perdue Harvestland, Free Range, Fresh Boneless Chicken Breasts, 1.3-1.9 lb. Tray",
+    "package_size": "1.3-1.9 lb",
+    "per_pack": {
+     "each": 2.4,
+     "wt": 25.6
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Perdue-Harvestland-Free-Range-Fresh-Boneless-Chicken-Breasts-1-3-2-8-lb-Tray/42294613",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "brave search: boneless skinless chicken breast Perdue fresh"
+   }
+  ],
+  "roasted chicken": [
+   {
+    "status": "VERIFIED",
+    "item_id": "906875248",
+    "product_name": "Freshness Guaranteed Traditional Shredded Rotisserie Chicken Breasts, 16 oz",
+    "package_size": "16 oz refrigerated shredded rotisserie chicken (about 3 cups)",
+    "per_pack": {
+     "each": 1
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Freshness-Guaranteed-Traditional-Shredded-Rotisserie-Chicken-Breasts-16-oz-18g-of-Protein-No-Artificial-Ingredients-Gluten-Free-Refrigerated/906875248",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "about 1 pack per whole rotisserie chicken",
+    "evidence": "alts_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "731218927",
+    "product_name": "Great Value Premium Chunk Chicken Breast with Rib Meat in Water, 12.5 oz Can",
+    "package_size": "12.5 oz can, canned chunk chicken breast (about 2 to 2 1/2 cups)",
+    "per_pack": {
+     "each": 0.67
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Premium-Chunk-Chicken-Breast-No-Antibiotics-Ever-12-5-Ounce-Can/731218927",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "about 1 1/2 cans per whole rotisserie chicken",
+    "evidence": "alts_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "50067993",
+    "product_name": "Tyson All Natural, Fresh, Boneless, Skinless Chicken Breasts, 1.75 - 3.0 lb Tray",
+    "package_size": "fresh boneless skinless chicken breast tray, 1.75-3.0 lb (cook and shred)",
+    "per_pack": {
+     "each": 1.5
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Tyson-All-Natural-Fresh-Boneless-Skinless-Chicken-Breasts-1-75-3-0-lb/50067993",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "cook and shred; about 1.5 lb raw per rotisserie chicken, check the tray weight",
+    "evidence": "brave search: Tyson boneless skinless chicken breast frozen"
+   }
+  ],
+  "bacon": [
+   {
+    "status": "VERIFIED",
+    "item_id": "15754220",
+    "product_name": "HORMEL BLACK LABEL Bacon, Thick Cut, Gluten Free, Refrigerated, 16 oz Plastic Package",
+    "package_size": "16 oz",
+    "per_pack": {
+     "slice": 14.0,
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/HORMEL-BLACK-LABEL-Bacon-Thick-Cut-Gluten-Free-Refrigerated-16-oz-Plastic-Package/15754220",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10290981",
+    "product_name": "HORMEL BLACK LABEL Original Bacon, Gluten Free, Refrigerated, 16 oz Plastic Package",
+    "package_size": "16 oz",
+    "per_pack": {
+     "slice": 14.0,
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/HORMEL-BLACK-LABEL-Original-Bacon-Gluten-Free-Refrigerated-16-oz-Plastic-Package/10290981",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "42067723",
+    "product_name": "Applegate Uncured Reduced Sodium Bacon, 8 Oz.",
+    "package_size": "8 oz",
+    "per_pack": {
+     "slice": 8.0,
+     "wt": 8.0
+    },
+    "price_usd": "4.84",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Applegate-Uncured-Reduced-Sodium-Bacon-8-Oz/42067723",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "round steak": [
+   {
+    "status": "VERIFIED",
+    "item_id": "39944479",
+    "product_name": "Thin Sliced Eye of Round Beef Steak, 7- 8 per Tray, Fresh, 0.56 - 1.75 lb",
+    "package_size": "0.56 - 1.75 lb",
+    "per_pack": {
+     "wt": 15.79
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Beef-Eye-Round-Steak-Thin-0-56-1-75-lb-Tray/39944479",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "1888939985",
+    "product_name": "Bottom Round for Stir Fry, Choice Angus Beef, Tray, Fresh, 0.75 - 1.35 lb",
+    "package_size": "0.75 - 1.35 lb",
+    "per_pack": {
+     "wt": 14.36
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Beef-Choice-Angus-Bottom-Round-for-Stir-Fry-0-75-1-2-lb-Tray/1888939985",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "first_search"
+   }
+  ],
+  "beef short rib": [
+   {
+    "status": "VERIFIED",
+    "item_id": "136650131",
+    "product_name": "Chuck Short Ribs, Choice Angus Beef, Bone-in, 3 - 4 per Tray, Fresh, 1.1 - 2.3 lb",
+    "package_size": "1.1 - 2.3 lb",
+    "per_pack": {
+     "wt": 25.5
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Beef-Choice-Angus-Short-Ribs-Bone-in-1-1-2-1-lb-Tray/136650131",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "tier_search"
+   }
+  ],
+  "pork country-style rib": [
+   {
+    "status": "VERIFIED",
+    "item_id": "46491653",
+    "product_name": "Pork Loin Country Style Ribs, Bone-In, 2.3 - 3.8 lb, Tray",
+    "package_size": "2.3 - 3.8 lb",
+    "per_pack": {
+     "wt": 48.06
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Pork-Loin-Country-Style-Ribs-Bone-In-2-3-3-8-lb-Tray/46491653",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "variable-weight pack; quantity is an estimate",
+    "evidence": "tier_search"
+   }
+  ],
+  "cod fillet": [
+   {
+    "status": "VERIFIED",
+    "item_id": "163322576",
+    "product_name": "Marketside Wild Caught Skinless Cod Loins 16 oz Frozen with Large Flakes and Tender-Firm Texture",
+    "package_size": "16 oz",
+    "per_pack": {
+     "each": 2.0
+    },
+    "price_usd": "12.57",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Sam-s-Choice-Frozen-Wild-Caught-Alaskan-Cod-Loins-1-lb/163322576",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "egg": [
+   {
+    "status": "VERIFIED",
+    "item_id": "108807760",
+    "product_name": "Great Value Large Brown Eggs 12 Count Grade",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "4.16",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Large-Brown-Eggs-12-count-24-oz/108807760",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10324125",
+    "product_name": "Eggland's Best Large White Eggs, 12 Count, Protein-Packed Carton",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Eggland-s-Best-Large-White-Eggs-12-Count/10324125",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "134714692",
+    "product_name": "Happy Egg Co. Organic Free-Range Large Brown Eggs, 12 Count, USDA Organic",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Happy-Egg-Co-Organic-Free-Range-Large-Brown-Eggs-12-Count-Dozen/134714692",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "egg yolk": [
+   {
+    "status": "VERIFIED",
+    "item_id": "108807760",
+    "product_name": "Great Value Large Brown Eggs 12 Count Grade",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "4.16",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Large-Brown-Eggs-12-count-24-oz/108807760",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10324125",
+    "product_name": "Eggland's Best Large White Eggs, 12 Count, Protein-Packed Carton",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Eggland-s-Best-Large-White-Eggs-12-Count/10324125",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "134714692",
+    "product_name": "Happy Egg Co. Organic Free-Range Large Brown Eggs, 12 Count, USDA Organic",
+    "package_size": "12 count",
+    "per_pack": {
+     "each": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Happy-Egg-Co-Organic-Free-Range-Large-Brown-Eggs-12-Count-Dozen/134714692",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "milk": [
+   {
+    "status": "VERIFIED",
+    "item_id": "141424236",
+    "product_name": "Great Value Organic Whole Unflavored Milk, 1 Gallon",
+    "package_size": "1 gallon",
+    "per_pack": {
+     "vol": 768.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Organic-Whole-Unflavored-Milk-1-Gallon/141424236",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "44390983",
+    "product_name": "Horizon Organic Vitamin D Whole Milk, Grade A, 1 gal, Pasteurized",
+    "package_size": "1 gal",
+    "per_pack": {
+     "vol": 768.0
+    },
+    "price_usd": "9.97",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Horizon-Organic-Vitamin-D-Whole-Milk-1-Gallon/44390983",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "butter": [
+   {
+    "status": "VERIFIED",
+    "item_id": "22301243",
+    "product_name": "Challenge Butter, Salted Butter, 16 oz, 4 Sticks",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Challenge-Butter-Salted-Butter-16-oz-4-Sticks/22301243",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10824266",
+    "product_name": "Land O Lakes Salted Stick Butter, 16 oz box, 4 Sticks",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Land-O-Lakes-Half-Stick-Salted-Butter-1-lb/10824266",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10898800",
+    "product_name": "Horizon Organic Salted Butter Sticks 16 oz 4 Sticks Made with Organic Sweet Cream",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "7.57",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Horizon-Organic-Salted-Butter-Sticks-16-Oz-4-Count/10898800",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "best",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "heavy cream": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10450340",
+    "product_name": "Great Value Heavy Whipping Cream, 32 oz Carton",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Heavy-Whipping-Cream-32-oz-Carton-Refrigerated/10450340",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   }
+  ],
+  "cheddar cheese": [
+   {
+    "status": "VERIFIED",
+    "item_id": "128256220",
+    "product_name": "Great Value Extra Sharp Cheddar Shredded Cheese 8 oz with Rich Flavor Sharp Melts",
+    "package_size": "8 oz",
+    "per_pack": {
+     "wt": 8.0
+    },
+    "price_usd": "1.97",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Shredded-Extra-Sharp-Cheddar-Cheese-8-oz/128256220",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10452477",
+    "product_name": "Great Value Sharp Cheddar Finely Shredded Cheese, 16 oz Bag",
+    "package_size": "16 oz",
+    "per_pack": {
+     "wt": 16.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Finely-Shredded-Sharp-Cheddar-Cheese-16-oz/10452477",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10315520",
+    "product_name": "Cabot Creamery Shredded Seriously Sharp Cheddar Cheese 8 oz",
+    "package_size": "8 oz",
+    "per_pack": {
+     "wt": 8.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Seriously-Sharp-Shredded-Cheddar-Cheese-8-oz/10315520",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "parmesan cheese": [
+   {
+    "status": "VERIFIED",
+    "item_id": "181548595",
+    "product_name": "Great Value Grated Parmesan and Romano Cheese, 8 oz Shaker",
+    "package_size": "8 oz",
+    "per_pack": {
+     "vol": 135.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Grated-Parmesan-and-Romano-Cheese-8-oz-Bottle/181548595",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "19400150",
+    "product_name": "Great Value Grated Parmesan Cheese, 16 oz Bottle",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 270.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Grated-Parmesan-Cheese-16-oz-Bottle/19400150",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "first_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "5290163216",
+    "product_name": "Kraft Parmesan Grated Cheese, 16 oz Shaker",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 270.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Kraft-Grated-Parmesan-Cheese-Shaker-3-oz-Bottle/5290163216",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "plain greek yogurt": [
+   {
+    "status": "VERIFIED",
+    "item_id": "21291511",
+    "product_name": "Chobani Non-Fat Greek Yogurt Plain 32 oz Tub",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Chobani-Non-Fat-Greek-Yogurt-Plain-32-Oz-Tub/21291511",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "19857845",
+    "product_name": "FAGE Total All Natural Nonfat Plain Greek Strained Yogurt, 32 oz",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/FAGE-Total-All-Natural-Nonfat-Plain-Greek-Strained-Yogurt-32-oz/19857845",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "870137919",
+    "product_name": "Chobani Low-Fat Greek Yogurt Plain 32 oz Tub",
+    "package_size": "32 oz",
+    "per_pack": {
+     "vol": 192.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Chobani-Low-Fat-Greek-Yogurt-Plain-32-Oz-Tub/870137919",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "sour cream": [
+   {
+    "status": "VERIFIED",
+    "item_id": "10315017",
+    "product_name": "Great Value Light Sour Cream 16 oz Tub, Lower Fat & Calories, Gluten-Free",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Great-Value-Light-Sour-Cream-16-oz-Tub-Refrigerated/10315017",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "budget",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "10309451",
+    "product_name": "Daisy Pure and Natural Sour Cream, 16 oz (1 lb) Tub (Refrigerated)",
+    "package_size": "16 oz",
+    "per_pack": {
+     "vol": 96.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Daisy-Pure-and-Natural-Light-Sour-Cream-50-Less-Fat-16-oz-1-lb-Tub-Refrigerated/10309451",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "43365585",
+    "product_name": "Daisy Pure and Natural Sour Cream, 14 oz Pouch (Refrigerated)",
+    "package_size": "14 oz",
+    "per_pack": {
+     "vol": 84.0
+    },
+    "price_usd": "2.64",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Daisy-Pure-and-Natural-Squeeze-Sour-Cream-14-oz-Pouch-Refrigerated/43365585",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "better",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
+  "crumbles feta cheese": [
+   {
+    "status": "VERIFIED",
+    "item_id": "45067851",
+    "product_name": "Litehouse Simply Artisan Feta Cheese Crumbles 4 oz. Tub",
+    "package_size": "4 oz",
+    "per_pack": {
+     "wt": 4.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/Litehouse-Simply-Artisan-Feta-Cheese-Crumbles-4-oz-Tub/45067851",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "34729673",
+    "product_name": "Frigo Crumbled Feta Cheese, 5 oz Refrigerated Plastic Cup",
+    "package_size": "5 oz",
+    "per_pack": {
+     "wt": 5.0
+    },
+    "price_usd": "3.28",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Frigo-Crumbleed-Feta-Cheese-5-Oz/34729673",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
+    "evidence": "tier_search"
+   },
+   {
+    "status": "VERIFIED",
+    "item_id": "122250650",
+    "product_name": "President Crumbled Feta Cheese, 12 oz (Refrigerated)",
+    "package_size": "12 oz",
+    "per_pack": {
+     "wt": 12.0
+    },
+    "price_usd": "",
+    "price_source": "",
+    "source_url": "https://www.walmart.com/ip/President-Crumbled-Feta-Cheese-12-oz-Refrigerated/122250650",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "any",
+    "note": "",
     "evidence": "tier_search"
    }
   ]
