@@ -9,7 +9,7 @@
 </head><body>
 <header class="site-header"><div class="wrap bar">
 <a class="logo" href="index.html" aria-label="Common Roots home"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 29V14" stroke="#2f4a3a" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 15C16 9 11 6 5 7c0 6 4 9 11 8z" fill="#7a9a5b"/><path d="M16 12c0-5 4-8 10-8 0 5-3 8-10 8z" fill="#c2562f"/><path d="M16 22c-2 2-5 3-8 3M16 24c2 1 5 1 8 0" stroke="#2f4a3a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span>Common Roots</span></a>
-<nav><a href="index.html">Recipes</a><a href="plan.html" class="plan-link">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
+<nav aria-label="Main"><a href="index.html" data-nav="home">Recipes</a><a href="kitchen.html" data-nav="kitchen">My Kitchen</a><a href="week.html" class="week-link" data-nav="week">My week <span id="week-count" class="badge" hidden>0</span></a><a href="plan.html" class="plan-link" data-nav="plan">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
 </div></header>
 <main class="wrap">
 
@@ -18,7 +18,7 @@
 <p>Pick a few dishes, adjust the servings, and get one combined shopping list with the amounts added up.</p>
 <div class="sub-pref" data-sub-pref></div>
 <p class="note nutfree"><strong>Tree-nut free.</strong> None of these 20 recipes list tree nuts as an ingredient. Check packaged-food labels as you shop.</p>
-<p><a class="btn" href="plan.html">Build a shopping list</a></p>
+<p><a class="btn" href="plan.html">Build a shopping list</a> <a class="btn ghost" href="week.html">Plan my week</a></p>
 </section>
 <div class="chips" role="group" aria-label="Filter by category"><button class="chip on" data-filter="all">All 20</button><button class="chip" data-filter="Main dish">Main dish</button><button class="chip" data-filter="Soup">Soup</button><button class="chip" data-filter="Side">Side</button><button class="chip" data-filter="Salad">Salad</button><button class="chip" data-filter="Breakfast">Breakfast</button><button class="chip" data-filter="Dessert">Dessert</button></div>
 <section class="grid" id="recipe-grid">
@@ -27,140 +27,160 @@
 <h3>Lemon Chicken With Thyme</h3>
 <p class="meta">Serves 4 · 11 ingredients</p>
 <p class="src">Adapted from Extra Light Cookie Flyer</p></a>
-<button class="btn small ghost plan-toggle" data-id="lemon-chicken-with-thyme" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="lemon-chicken-with-thyme" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="lemon-chicken-with-thyme">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="raspberry-balsamic-glazed-chicken">
 <a class="card-link" href="recipes/raspberry-balsamic-glazed-chicken.html"><div class="card-band"><span class="tag">Main dish · Chicken</span></div>
 <h3>Raspberry-Balsamic Glazed Chicken</h3>
 <p class="meta">Serves 4 · 9 ingredients</p>
 <p class="src">Adapted from Cooking Light</p></a>
-<button class="btn small ghost plan-toggle" data-id="raspberry-balsamic-glazed-chicken" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="raspberry-balsamic-glazed-chicken" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="raspberry-balsamic-glazed-chicken">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="pulled-chicken-sandwiches">
 <a class="card-link" href="recipes/pulled-chicken-sandwiches.html"><div class="card-band"><span class="tag">Main dish · Chicken</span></div>
 <h3>Pulled Chicken Sandwiches</h3>
 <p class="meta">Serves 12 · 9 ingredients</p>
 <p class="src">Adapted from Better Homes and Gardens</p></a>
-<button class="btn small ghost plan-toggle" data-id="pulled-chicken-sandwiches" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="pulled-chicken-sandwiches" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="pulled-chicken-sandwiches">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="ground-beef-in-sour-cream-and-tomato-sauce">
 <a class="card-link" href="recipes/ground-beef-in-sour-cream-and-tomato-sauce.html"><div class="card-band"><span class="tag">Main dish · Beef</span></div>
 <h3>Ground Beef in Sour Cream and Tomato Sauce</h3>
 <p class="meta">Serves 4 · 10 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="ground-beef-in-sour-cream-and-tomato-sauce" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="ground-beef-in-sour-cream-and-tomato-sauce" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="ground-beef-in-sour-cream-and-tomato-sauce">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="deviled-swiss-steak">
 <a class="card-link" href="recipes/deviled-swiss-steak.html"><div class="card-band"><span class="tag">Main dish · Beef</span></div>
 <h3>Deviled Swiss Steak</h3>
 <p class="meta">Serves 8 · 13 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="deviled-swiss-steak" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="deviled-swiss-steak" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="deviled-swiss-steak">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="crock-pot-sloppy-joes">
 <a class="card-link" href="recipes/crock-pot-sloppy-joes.html"><div class="card-band"><span class="tag">Main dish · Beef</span></div>
 <h3>Crock Pot Sloppy Joes</h3>
 <p class="meta">Serves 16-20 · 12 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="crock-pot-sloppy-joes" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="crock-pot-sloppy-joes" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="crock-pot-sloppy-joes">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="cod-dijon">
 <a class="card-link" href="recipes/cod-dijon.html"><div class="card-band"><span class="tag">Main dish · Fish</span></div>
 <h3>Cod Dijon</h3>
 <p class="meta">Serves 4 · 6 ingredients</p>
 <p class="src">Adapted from a frozen cod package</p></a>
-<button class="btn small ghost plan-toggle" data-id="cod-dijon" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="cod-dijon" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="cod-dijon">+ Add to my week</button></div>
 </article>
 <article class="card cat-main-dish" data-cat="Main dish" data-id="barbecued-spare-ribs">
 <a class="card-link" href="recipes/barbecued-spare-ribs.html"><div class="card-band"><span class="tag">Main dish · Pork</span></div>
 <h3>Barbecued Spare Ribs</h3>
 <p class="meta">Serves 8 · 12 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="barbecued-spare-ribs" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="barbecued-spare-ribs" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="barbecued-spare-ribs">+ Add to my week</button></div>
 </article>
 <article class="card cat-soup" data-cat="Soup" data-id="tortellini-basil-soup">
 <a class="card-link" href="recipes/tortellini-basil-soup.html"><div class="card-band"><span class="tag">Soup</span></div>
 <h3>Tortellini-Basil Soup</h3>
 <p class="meta">Serves 7 · 9 ingredients</p>
 <p class="src">Adapted from Cooking Light</p></a>
-<button class="btn small ghost plan-toggle" data-id="tortellini-basil-soup" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="tortellini-basil-soup" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="tortellini-basil-soup">+ Add to my week</button></div>
 </article>
 <article class="card cat-soup" data-cat="Soup" data-id="beef-barley-soup">
 <a class="card-link" href="recipes/beef-barley-soup.html"><div class="card-band"><span class="tag">Soup</span></div>
 <h3>Beef Barley Soup</h3>
 <p class="meta">Serves 10 · 7 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="beef-barley-soup" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="beef-barley-soup" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="beef-barley-soup">+ Add to my week</button></div>
 </article>
 <article class="card cat-soup" data-cat="Soup" data-id="turkey-and-black-bean-chili">
 <a class="card-link" href="recipes/turkey-and-black-bean-chili.html"><div class="card-band"><span class="tag">Soup</span></div>
 <h3>Turkey and Black Bean Chili</h3>
 <p class="meta">Serves 5 · 12 ingredients</p>
 <p class="src">Adapted from Cooking Light (1997)</p></a>
-<button class="btn small ghost plan-toggle" data-id="turkey-and-black-bean-chili" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="turkey-and-black-bean-chili" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="turkey-and-black-bean-chili">+ Add to my week</button></div>
 </article>
 <article class="card cat-side" data-cat="Side" data-id="honey-glazed-carrots">
 <a class="card-link" href="recipes/honey-glazed-carrots.html"><div class="card-band"><span class="tag">Side · Vegetable</span></div>
 <h3>Honey-Glazed Carrots</h3>
 <p class="meta">Serves 8 · 7 ingredients</p>
 <p class="src">Adapted from Cooking Light (December 2005)</p></a>
-<button class="btn small ghost plan-toggle" data-id="honey-glazed-carrots" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="honey-glazed-carrots" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="honey-glazed-carrots">+ Add to my week</button></div>
 </article>
 <article class="card cat-side" data-cat="Side" data-id="roasted-asparagus-with-balsamic-browned-butter">
 <a class="card-link" href="recipes/roasted-asparagus-with-balsamic-browned-butter.html"><div class="card-band"><span class="tag">Side · Vegetable</span></div>
 <h3>Roasted Asparagus with Balsamic Browned Butter</h3>
 <p class="meta">Serves 8 · 7 ingredients</p>
 <p class="src">Adapted from Cooking Light (September 2001)</p></a>
-<button class="btn small ghost plan-toggle" data-id="roasted-asparagus-with-balsamic-browned-butter" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="roasted-asparagus-with-balsamic-browned-butter" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="roasted-asparagus-with-balsamic-browned-butter">+ Add to my week</button></div>
 </article>
 <article class="card cat-side" data-cat="Side" data-id="cauliflower-and-green-onion-mash">
 <a class="card-link" href="recipes/cauliflower-and-green-onion-mash.html"><div class="card-band"><span class="tag">Side · Vegetable</span></div>
 <h3>Cauliflower and Green Onion Mash</h3>
 <p class="meta">Serves 8 · 8 ingredients</p>
 <p class="src">Adapted from Eating Well</p></a>
-<button class="btn small ghost plan-toggle" data-id="cauliflower-and-green-onion-mash" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="cauliflower-and-green-onion-mash" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="cauliflower-and-green-onion-mash">+ Add to my week</button></div>
 </article>
 <article class="card cat-side" data-cat="Side" data-id="greek-spaghetti-with-tomatoes-and-feta">
 <a class="card-link" href="recipes/greek-spaghetti-with-tomatoes-and-feta.html"><div class="card-band"><span class="tag">Side · Pasta</span></div>
 <h3>Greek Spaghetti with Tomatoes and Feta</h3>
 <p class="meta">Serves 4 · 10 ingredients</p>
 <p class="src">Adapted from Cooking Light (September 1995)</p></a>
-<button class="btn small ghost plan-toggle" data-id="greek-spaghetti-with-tomatoes-and-feta" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="greek-spaghetti-with-tomatoes-and-feta" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="greek-spaghetti-with-tomatoes-and-feta">+ Add to my week</button></div>
 </article>
 <article class="card cat-side" data-cat="Side" data-id="rice-and-noodle-pilaf">
 <a class="card-link" href="recipes/rice-and-noodle-pilaf.html"><div class="card-band"><span class="tag">Side · Rice &amp; noodles</span></div>
 <h3>Rice and Noodle Pilaf</h3>
 <p class="meta">Serves 4 · 6 ingredients</p>
 <p class="src">Adapted from Eating Well, Rush Hour Cookbook</p></a>
-<button class="btn small ghost plan-toggle" data-id="rice-and-noodle-pilaf" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="rice-and-noodle-pilaf" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="rice-and-noodle-pilaf">+ Add to my week</button></div>
 </article>
 <article class="card cat-salad" data-cat="Salad" data-id="sweet-and-sour-cucumber">
 <a class="card-link" href="recipes/sweet-and-sour-cucumber.html"><div class="card-band"><span class="tag">Salad</span></div>
 <h3>Sweet and Sour Cucumber</h3>
 <p class="meta">Serves 8 · 6 ingredients</p>
 <p class="src">Adapted from Cooking Light</p></a>
-<button class="btn small ghost plan-toggle" data-id="sweet-and-sour-cucumber" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="sweet-and-sour-cucumber" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="sweet-and-sour-cucumber">+ Add to my week</button></div>
 </article>
 <article class="card cat-breakfast" data-cat="Breakfast" data-id="egg-casserole">
 <a class="card-link" href="recipes/egg-casserole.html"><div class="card-band"><span class="tag">Breakfast</span></div>
 <h3>Egg Casserole</h3>
 <p class="meta">Serves 10 · 7 ingredients</p>
 <p class="src">Family recipe</p></a>
-<button class="btn small ghost plan-toggle" data-id="egg-casserole" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="egg-casserole" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="egg-casserole">+ Add to my week</button></div>
 </article>
 <article class="card cat-dessert" data-cat="Dessert" data-id="chocolate-mousse">
 <a class="card-link" href="recipes/chocolate-mousse.html"><div class="card-band"><span class="tag">Dessert</span></div>
 <h3>Chocolate Mousse</h3>
 <p class="meta">Serves 6 · 6 ingredients</p>
 <p class="src">Adapted from Cooking Classy</p></a>
-<button class="btn small ghost plan-toggle" data-id="chocolate-mousse" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="chocolate-mousse" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="chocolate-mousse">+ Add to my week</button></div>
 </article>
 <article class="card cat-dessert" data-cat="Dessert" data-id="lemon-pie-bars">
 <a class="card-link" href="recipes/lemon-pie-bars.html"><div class="card-band"><span class="tag">Dessert · Bars</span></div>
 <h3>Lemon Pie Bars</h3>
 <p class="meta">Serves 24 · 7 ingredients</p>
 <p class="src">Adapted from Allrecipes.com</p></a>
-<button class="btn small ghost plan-toggle" data-id="lemon-pie-bars" aria-pressed="false">+ Add to plan</button>
+<div class="card-actions"><button class="btn small ghost plan-toggle" data-id="lemon-pie-bars" aria-pressed="false">+ Add to plan</button>
+<button class="btn small ghost week-add" data-id="lemon-pie-bars">+ Add to my week</button></div>
 </article>
 </section>
 <script>window.CR_PAGE="home";</script>
@@ -182,4 +202,8 @@
 <script src="js/lib.js"></script>
 <script src="data/recipes.js"></script>
 <script src="js/app.js"></script>
+<script src="data/freshness.js"></script>
+<script src="data/videos.js"></script>
+<script src="js/week.js"></script>
+<script src="js/weekui.js"></script>
 </body></html>

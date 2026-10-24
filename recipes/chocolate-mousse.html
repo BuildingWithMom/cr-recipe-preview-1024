@@ -9,7 +9,7 @@
 </head><body>
 <header class="site-header"><div class="wrap bar">
 <a class="logo" href="../index.html" aria-label="Common Roots home"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 29V14" stroke="#2f4a3a" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 15C16 9 11 6 5 7c0 6 4 9 11 8z" fill="#7a9a5b"/><path d="M16 12c0-5 4-8 10-8 0 5-3 8-10 8z" fill="#c2562f"/><path d="M16 22c-2 2-5 3-8 3M16 24c2 1 5 1 8 0" stroke="#2f4a3a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span>Common Roots</span></a>
-<nav><a href="../index.html">Recipes</a><a href="../plan.html" class="plan-link">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
+<nav aria-label="Main"><a href="../index.html" data-nav="home">Recipes</a><a href="../kitchen.html" data-nav="kitchen">My Kitchen</a><a href="../week.html" class="week-link" data-nav="week">My week <span id="week-count" class="badge" hidden>0</span></a><a href="../plan.html" class="plan-link" data-nav="plan">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
 </div></header>
 <main class="wrap">
 
@@ -22,12 +22,13 @@
 <span class="serv-label" id="serv-label">Serves 6</span>
 </div>
 <p class="small" id="scale-note" hidden>Only ingredient amounts change. Adjust pan size and cooking times yourself when scaling up or down.</p>
+<section id="video-slot" class="video-slot" aria-label="Video" hidden></section>
 <div class="two-col">
 <section><h2>Ingredients</h2>
 <div class="sub-pref" data-sub-pref></div>
 <ul class="ings" id="ings"><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">4 large egg yolks</span></label></li><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">1/4 cup (50g) granulated sugar</span></label></li><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">2 cups (475ml) heavy cream, divided, plus more for topping if desired</span></label></li><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">1 pinch sea salt (optional)</span></label></li><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">2 tsp (10ml) vanilla extract</span></label></li><li class="ing"><label><input type="checkbox" class="have"> <span class="txt">7 oz. bittersweet chocolate, chopped small</span></label></li></ul>
 <p class="small">Tick "I have it" for items already in your kitchen. They move to the bottom and are left off your list.</p>
-<div class="actions"><button class="btn" id="btn-add-plan">+ Add to plan</button><button class="btn ghost" id="btn-copy-recipe">Copy this list</button></div>
+<div class="actions"><button class="btn" id="btn-add-plan">+ Add to plan</button><button class="btn ghost week-add" data-id="chocolate-mousse">+ Add to my week</button><button class="btn ghost" id="btn-copy-recipe">Copy this list</button><a class="btn ghost" id="print-recipe" href="../week.html#print=recipe-chocolate-mousse">Print recipe card</a></div>
 <p id="toast" class="toast" role="status" aria-live="polite" hidden></p></section>
 <section><h2>Method</h2><ol class="steps" id="steps"><li>In a medium bowl, use an electric hand mixer to whip the egg yolks and granulated sugar on high speed until pale and fluffy, about 2 minutes.</li><li>In a 2-quart saucepan over low heat, warm 3/4 cup of the heavy cream and the salt. Don&#x27;t let it boil.</li><li>While whisking the egg mixture, slowly pour in the warm cream mixture to temper the yolks. Then pour the combined mixture back into the saucepan.</li><li>Cook over low heat, whisking constantly, until the mixture thickens slightly and reaches 160°F on an instant-read thermometer, usually about 3 to 5 minutes. If you see small lumps, strain through a sieve and return to the saucepan.</li><li>Off the heat, add the chocolate and vanilla. Stir well until the chocolate is melted.</li><li>Pour into a clean medium bowl, cover, and chill, stirring about every 10 to 15 minutes, until it reaches 70°F (or is no longer warm), about 30 to 40 minutes total.</li><li>Whip the remaining heavy cream until very stiff peaks form. Fold the whipped cream into the chocolate mixture until combined.</li><li>Pipe or spoon into dessert cups and chill 2 hours.</li><li>Top with sweetened whipped cream if desired, and garnish with shaved or grated chocolate.</li></ol>
 <h3>Good to know</h3><ul class="tips" id="tips"><li>For a whipped topping, whip about 1/2 cup of cream with 1 tablespoon of sugar.</li><li>Semi-sweet chocolate makes it less intensely chocolatey. For more chocolate flavor and less sweetness, reduce the sugar to 2 tablespoons.</li><li>Don&#x27;t let the chocolate mixture get too cold. It can harden and turn lumpy when you fold in the whipped cream.</li><li>A chilled bowl helps the cream whip faster and fluffier.</li></ul>
@@ -51,4 +52,8 @@
 <script src="../js/lib.js"></script>
 <script src="../data/recipes.js"></script>
 <script src="../js/app.js"></script>
+<script src="../data/freshness.js"></script>
+<script src="../data/videos.js"></script>
+<script src="../js/week.js"></script>
+<script src="../js/weekui.js"></script>
 </body></html>
