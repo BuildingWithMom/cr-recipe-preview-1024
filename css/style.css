@@ -262,3 +262,4 @@ nav a[aria-current=page]{color:var(--terra);text-decoration:underline;text-under
 }
 .btn.small{color:#fff}.btn.ghost.small{color:var(--green)}.btn.ghost.small:hover,.btn.ghost.small.on,.btn.small.on{color:#fff}
 .btn.small.dark{color:#fff}
+.chapters .chapter{margin-right:.6em;font-weight:600}
