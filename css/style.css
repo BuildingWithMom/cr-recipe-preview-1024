@@ -108,3 +108,6 @@ select.swap{font-size:.82rem;min-height:30px;padding:2px 6px;border-radius:8px;c
 .pref{display:flex;gap:10px;align-items:flex-start;background:var(--sand);border-radius:var(--r);padding:8px 12px;cursor:pointer;font-size:.92rem}
 .pref .small{display:inline}
 @media print{.site-header,.site-footer,.actions,.adjuster,.chips{display:none}}
+.walmart-disc{margin:.4rem 0 .6rem;color:#5b5b52}
+#walmart-note p{margin:.25rem 0}
+#walmart-note ul.unmapped{margin:.25rem 0 0;padding-left:1.2rem}

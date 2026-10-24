@@ -380,6 +380,10 @@
           'Instacart link coming soon: this button does not create a cart yet. For now, paste the list into Instacart or your store\u2019s app.';
       });
     });
+    if (window.CRWalmart) {
+      window.CRWalmart.wire({ button: document.getElementById('btn-walmart'), note: document.getElementById('walmart-note'),
+        disclosure: document.getElementById('walmart-disclosure'), getRows: function () { return currentText().rows; }, track: track, toast: toast });
+    }
     document.getElementById('btn-staples').addEventListener('click', function () {
       var h = getHave(), sw = swaps(); RECIPES.forEach(function (r) { r.ingredients.forEach(function (i) { L.effectiveEntries(i, sw).forEach(function (e) { if (e.staple) h[e.item] = true; }); }); });
       setHave(h); track('pantry_staples_all'); flipList(null, false);
