@@ -3,15 +3,14 @@
  * it only builds a .ics file and Google Calendar links for the shopper to use. */
 (function () {
   'use strict';
-  var W = window.CRWeek, L = window.CRLib, CRapp = window.CR, RECIPES = window.CR_RECIPES || [];
-  if (!W || !L || !CRapp) return;
+  var W = window.CRWeek, L = window.CRLib, CRapp = window.CR, RECIPES = window.CR_RECIPES;
   var byId = {}; RECIPES.forEach(function (r) { byId[r.id] = r; });
   var page = window.CR_PAGE;
-  var ROOT = (function () { var s = document.currentScript && document.currentScript.src; return s ? s.replace(/js\/weekui\.js(\?.*)?$/, '') : location.href.replace(/[^\/]*$/, ''); })();
+  var ROOT = document.currentScript.src.replace(/js\/weekui\.js(\?.*)?$/, '');
 
   function el(tag, attrs, kids) {
     var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
+    Object.keys(attrs).forEach(function (k) {
       if (k === 'class') e.className = attrs[k]; else if (k === 'text') e.textContent = attrs[k];
       else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), attrs[k]); else if (attrs[k] !== false && attrs[k] != null) e.setAttribute(k, attrs[k]);
     });
@@ -19,12 +18,13 @@
     return e;
   }
   function track(n, p) { try { CRapp.track(n, p); } catch (e) {} }
+  function dayAssigned(day, via) { track('day_assigned', { day: day, via: via }); }
   function today() { return W.localDateStr(new Date()); }
-  function ctx() { return { recipes: RECIPES, L: L, swaps: CRapp.swaps(), manual: CRapp.manualChanges ? CRapp.manualChanges() : {}, fresh: window.CR_FRESH || { items: {}, prep: {} }, videos: window.CR_VIDEOS || {}, baseUrl: ROOT }; }
+  function ctx() { return { recipes: RECIPES, L: L, swaps: CRapp.swaps(), manual: CRapp.manualChanges(), fresh: window.CR_FRESH, videos: window.CR_VIDEOS, baseUrl: ROOT }; }
   function loadState() { return W.load(localStorage, RECIPES); }
   function saveState(s) { if (!s.start && W.plannedCount(s)) s.start = W.weekStart(s, today()); W.save(localStorage, s); updateWeekBadge(s); }
   function updateWeekBadge(s) {
-    var b = document.getElementById('week-count'); if (!b) return; s = s || loadState();
+    var b = document.getElementById('week-count'); s = s || loadState();
     var n = W.plannedCount(s); b.textContent = n; b.hidden = n === 0;
   }
   function dateLabel(s, i) { return W.fmtDate(W.dayDate(s, i, today())); }
@@ -32,11 +32,11 @@
 
   /* ---------- video ---------- */
   var VIDEO_ICON = 'Video';
-  function videoOf(id) { var v = (window.CR_VIDEOS || {})[id]; return v ? W.parseVideo(v) : null; }
+  function videoOf(id) { var v = window.CR_VIDEOS[id]; return v ? W.parseVideo(v) : null; }
   function addVideoBadges() {
     document.querySelectorAll('.card[data-id]').forEach(function (card) {
       if (!videoOf(card.getAttribute('data-id')) || card.querySelector('.vbadge')) return;
-      var band = card.querySelector('.card-band'); if (band) band.appendChild(el('span', { class: 'vbadge', text: VIDEO_ICON }));
+      card.querySelector('.card-band').appendChild(el('span', { class: 'vbadge', text: VIDEO_ICON }));
     });
   }
   function renderVideoSlot(slot, id) {
@@ -44,7 +44,7 @@
     slot.innerHTML = ''; slot.hidden = false;
     slot.appendChild(el('h2', { text: 'Video' }));
     var frameBox = el('div', { class: 'video-frame' });
-    var title = byId[id] ? 'How to make ' + byId[id].title : 'Recipe video';
+    var title = 'How to make ' + byId[id].title;
     function mount(start) {
       frameBox.innerHTML = '';
       if (v.type === 'mp4') {
@@ -52,7 +52,6 @@
         vid.appendChild(el('source', { src: v.src, type: 'video/mp4' }));
         vid.appendChild(document.createTextNode('Your browser cannot play this video.'));
         frameBox.appendChild(vid);
-        if (start) vid.addEventListener('loadedmetadata', function () { vid.currentTime = start; }, { once: true });
       } else {
         frameBox.appendChild(el('iframe', { src: v.embed(start), title: title, loading: 'lazy', allow: 'accelerometer; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: 'allowfullscreen', referrerpolicy: 'strict-origin-when-cross-origin' }));
       }
@@ -62,7 +61,7 @@
       var ul = el('ul', { class: 'chapters', 'aria-label': 'Chapters' });
       v.chapters.forEach(function (c) {
         ul.appendChild(el('li', {}, [el('button', { type: 'button', class: 'linkbtn chapter', 'data-seconds': String(c.seconds), onclick: function () {
-          if (v.type === 'mp4') { var vd = frameBox.querySelector('video'); if (vd) { vd.currentTime = c.seconds; vd.play && vd.play().catch(function () {}); } } else mount(c.seconds);
+          if (v.type === 'mp4') { var vd = frameBox.querySelector('video'); vd.currentTime = c.seconds; vd.play().catch(function () {}); } else mount(c.seconds);
         } }, [c.t + ' ']), c.label]));
       });
       slot.appendChild(ul);
@@ -71,7 +70,7 @@
 
   /* ---------- add to my week: day chooser ---------- */
   var openPop = null;
-  function closePop() { if (openPop) { var b = openPop.btn; openPop.node.remove(); openPop = null; if (b) b.setAttribute('aria-expanded', 'false'); } }
+  function closePop() { if (openPop) { var b = openPop.btn; openPop.node.remove(); openPop = null; b.setAttribute('aria-expanded', 'false'); } }
   function refreshAddButtons() {
     var s = loadState();
     document.querySelectorAll('.week-add').forEach(function (b) {
@@ -83,17 +82,16 @@
   }
   function openChooser(btn) {
     closePop();
-    var id = btn.getAttribute('data-id'), s = loadState(), r = byId[id]; if (!r) return;
+    var id = btn.getAttribute('data-id'), s = loadState(), r = byId[id];
     var node = el('div', { class: 'week-pop', role: 'dialog', 'aria-label': 'Add ' + r.title + ' to my week' });
     node.appendChild(el('p', { class: 'week-pop-h', text: 'Which day for ' + r.title + '?' }));
     var status = el('p', { class: 'small week-pop-status', role: 'status', 'aria-live': 'polite' });
     var grid = el('div', { class: 'week-pop-days' });
     function choose(day) {
       var st = loadState(), f = CRapp.factorOf(id);
-      W.addItem(st, id, day, f); saveState(st); refreshAddButtons(); track('add_to_week', { id: id, day: day });
+      W.addItem(st, id, day, f); saveState(st); refreshAddButtons(); track('add_to_week', { id: id, day: day }); dayAssigned(day, 'chooser');
       var where = day === 'auto' ? 'waiting for a day (use Order by freshness)' : dateLabel(st, day);
       status.textContent = ''; status.appendChild(document.createTextNode('Added to ' + where + '. ')); status.appendChild(el('a', { href: ROOT + 'week.html', text: 'Open My week' }));
-      if (page === 'week' || page === 'plan') { window.dispatchEvent(new CustomEvent('cr-week-changed')); }
     }
     for (var i = 0; i < 7; i++) (function (i) {
       var has = s.days[i].items.some(function (x) { return x.id === id; });
@@ -106,14 +104,14 @@
     node.appendChild(el('button', { type: 'button', class: 'linkbtn', onclick: closePop }, ['Close']));
     btn.insertAdjacentElement('afterend', node); btn.setAttribute('aria-expanded', 'true');
     openPop = { node: node, btn: btn };
-    var first = node.querySelector('button'); if (first) first.focus();
+    node.querySelector('button').focus();
   }
   function wireAddButtons() {
     document.querySelectorAll('.week-add').forEach(function (b) {
       b.setAttribute('aria-haspopup', 'dialog'); b.setAttribute('aria-expanded', 'false');
       b.addEventListener('click', function (e) { e.preventDefault(); if (openPop && openPop.btn === b) closePop(); else openChooser(b); });
     });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openPop) { var b = openPop.btn; closePop(); if (b) b.focus(); } });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openPop) { var b = openPop.btn; closePop(); b.focus(); } });
     document.addEventListener('click', function (e) { if (openPop && !openPop.node.contains(e.target) && e.target !== openPop.btn) closePop(); });
     refreshAddButtons();
   }
@@ -121,7 +119,7 @@
   /* ---------- printable cards ---------- */
   function cardNode(d) {
     var n = el('article', { class: 'print-dish' });
-    n.appendChild(el('h3', { text: d.title })); n.appendChild(el('p', { class: 'small', text: d.serves + (d.source ? ' \u00b7 ' + d.source : '') }));
+    n.appendChild(el('h3', { text: d.title })); n.appendChild(el('p', { class: 'small', text: d.serves + ' \u00b7 ' + d.source }));
     var ul = el('ul', { class: 'p-ings' }), g = null;
     d.ingredients.forEach(function (i) { if (i.group && i.group !== g) ul.appendChild(el('li', { class: 'grp', text: i.group })); g = i.group; ul.appendChild(el('li', { text: i.text })); });
     var two = el('div', { class: 'p-two' }, [el('section', {}, [el('h4', { text: 'Ingredients' }), ul]), el('section', {}, [el('h4', { text: 'Method' }), el('ol', { class: 'p-steps' }, d.steps.map(function (s) { return el('li', { text: s }); }))])]);
@@ -162,10 +160,10 @@
 
   /* ---------- the My week page ---------- */
   function initWeek() {
-    var root = document.getElementById('flow-app') || document.getElementById('week-app'), printHost = document.getElementById('print-view'), printBar = document.getElementById('print-bar');
+    var root = document.getElementById('flow-app'), printHost = document.getElementById('print-view'), printBar = document.getElementById('print-bar');
     var state = loadState(), proposal = null, clearArm = false, banner = document.getElementById('wk-banner');
     var statusEl = document.getElementById('wk-status');
-    function say(msg) { statusEl.textContent = msg; statusEl.hidden = !msg; clearTimeout(say._t); if (msg) say._t = setTimeout(function () { statusEl.hidden = true; }, 6000); }
+    function say(msg) { statusEl.textContent = msg; statusEl.hidden = false; clearTimeout(say._t); say._t = setTimeout(function () { statusEl.hidden = true; }, 6000); }
     function commit(opts) { proposal = (opts && opts.keepProposal) ? proposal : null; saveState(state); render(); window.dispatchEvent(new CustomEvent('cr-week-saved')); }
     function startStr() { return W.weekStart(state, today()); }
 
@@ -191,7 +189,7 @@
     document.getElementById('wk-add-btn').addEventListener('click', function () {
       var id = addRecipe.value; if (!id) { say('Pick a recipe first.'); return; }
       var d = addDay.value === 'auto' ? 'auto' : Number(addDay.value);
-      W.addItem(state, id, d, CRapp.factorOf(id)); track('add_to_week', { id: id, day: d, from: 'week' }); say('Added ' + byId[id].title + '.'); commit();
+      W.addItem(state, id, d, CRapp.factorOf(id)); track('add_to_week', { id: id, day: d, from: 'week' }); dayAssigned(d, 'chooser'); say('Added ' + byId[id].title + '.'); commit();
     });
     window.addEventListener('cr-week-changed', function () { state = loadState(); proposal = null; render(); });
     window.addEventListener('cr-flow-updated', function () { render(); });
@@ -203,7 +201,7 @@
     });
     document.getElementById('wk-ics').addEventListener('click', function () {
       var rem = [], al = document.getElementById('wk-alarm-shop');
-      if (al && al.checked && window.CRFlow && CRapp.flow) rem = window.CRFlow.reminders(CRapp.flow.groups(), CRapp.flow.placed(), {});
+      if (al.checked) rem = window.CRFlow.reminders(CRapp.flow.groups(), CRapp.flow.placed(), {});
       var ics = W.buildICS(ctx(), state, { now: new Date(), today: today(), reminders: rem });
       if (!ics) { say('Plan at least one meal first.'); return; }
       var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' }), url = URL.createObjectURL(blob);
@@ -216,11 +214,10 @@
       var sel = W.shoppingSelection(state); if (!sel.ids.length) { say('Plan at least one recipe first.'); return; }
       var f = CRapp.store.get('cr.factors', {}); sel.ids.forEach(function (id) { f[id] = sel.factors[id]; }); CRapp.store.set('cr.factors', f);
       CRapp.setPlan(sel.ids); track('shop_this_week', { recipes: sel.ids.length });
-      if (window.CR_FLOW) {            // one page: stay here, show the cart step
-        try { history.pushState(null, '', ROOT + 'plan.html#cart'); } catch (e) { location.href = ROOT + 'plan.html#cart'; return; }
-        window.dispatchEvent(new CustomEvent('cr-week-saved'));
-        var c = document.getElementById('cart'); if (c && c.scrollIntoView) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else location.href = ROOT + 'plan.html';
+      // one page: stay here, show the cart step
+      try { history.pushState(null, '', ROOT + 'plan.html#cart'); } catch (e) { location.href = ROOT + 'plan.html#cart'; return; }
+      window.dispatchEvent(new CustomEvent('cr-week-saved'));
+      document.getElementById('cart').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     document.getElementById('wk-export').addEventListener('click', function () {
       var blob = new Blob([W.exportJSON(state)], { type: 'application/json' }), url = URL.createObjectURL(blob);
@@ -230,7 +227,7 @@
     var fileIn = document.getElementById('wk-import-file');
     document.getElementById('wk-import').addEventListener('click', function () { fileIn.click(); });
     fileIn.addEventListener('change', function () {
-      var f = fileIn.files && fileIn.files[0]; if (!f) return;
+      var f = fileIn.files[0]; if (!f) return;
       var rd = new FileReader(); rd.onload = function () {
         var res = W.importJSON(String(rd.result), RECIPES);
         if (!res.ok) { say(res.error); return; }
@@ -260,11 +257,11 @@
       move.appendChild(el('option', { value: '', text: 'Move to\u2026' }));
       for (var i = 0; i < 7; i++) if (i !== where) move.appendChild(el('option', { value: String(i), text: dayLong(state, i) }));
       if (where !== 'pool') move.appendChild(el('option', { value: 'auto', text: 'Leave the day open' }));
-      move.addEventListener('change', function () { if (move.value === '') return; W.moveItem(state, where, it.id, move.value === 'auto' ? 'auto' : Number(move.value)); commit(); });
+      move.addEventListener('change', function () { if (move.value === '') return; W.moveItem(state, where, it.id, move.value === 'auto' ? 'auto' : Number(move.value)); dayAssigned(move.value === 'auto' ? 'auto' : Number(move.value), 'move'); commit(); });
       var ctl = [sel];
       if (where !== 'pool') {
-        ctl.push(el('button', { type: 'button', class: 'iconbtn wk-up', 'aria-label': 'Move ' + r.title + ' to the previous day', disabled: where === 0 ? 'disabled' : false, onclick: function () { W.moveItem(state, where, it.id, where - 1); commit(); } }, ['\u2191 Earlier']));
-        ctl.push(el('button', { type: 'button', class: 'iconbtn wk-down', 'aria-label': 'Move ' + r.title + ' to the next day', disabled: where === 6 ? 'disabled' : false, onclick: function () { W.moveItem(state, where, it.id, where + 1); commit(); } }, ['\u2193 Later']));
+        ctl.push(el('button', { type: 'button', class: 'iconbtn wk-up', 'aria-label': 'Move ' + r.title + ' to the previous day', disabled: where === 0 ? 'disabled' : false, onclick: function () { W.moveItem(state, where, it.id, where - 1); dayAssigned(where - 1, 'move'); commit(); } }, ['\u2191 Earlier']));
+        ctl.push(el('button', { type: 'button', class: 'iconbtn wk-down', 'aria-label': 'Move ' + r.title + ' to the next day', disabled: where === 6 ? 'disabled' : false, onclick: function () { W.moveItem(state, where, it.id, where + 1); dayAssigned(where + 1, 'move'); commit(); } }, ['\u2193 Later']));
       }
       ctl.push(move);
       ctl.push(el('button', { type: 'button', class: 'iconbtn wk-remove', 'aria-label': 'Remove ' + r.title, onclick: function () { W.removeItem(state, where, it.id); commit(); } }, ['Remove']));
@@ -276,22 +273,22 @@
       var node = el('article', { class: 'day-card' + (isToday ? ' tonight' : '') + (d.pinned ? ' pinned' : '') + (d.items.length ? '' : ' empty'), 'data-day': String(i), 'data-date': date, 'aria-label': W.DAYS[i] + ' ' + W.fmtDate(date) });
       var pin = el('button', { type: 'button', class: 'pin btn small ghost' + (d.pinned ? ' on' : ''), 'aria-pressed': d.pinned ? 'true' : 'false', 'aria-label': (d.pinned ? 'Unpin ' : 'Pin ') + W.DAYS[i], onclick: function () { W.setPinned(state, i, !d.pinned); commit(); } }, [d.pinned ? 'Pinned' : 'Pin day']);
       node.appendChild(el('header', { class: 'day-head' }, [el('h3', {}, [W.DAYS[i] + ' ', el('span', { class: 'date', text: W.fmtDate(date).replace(/^\w+, /, '') })]), isToday ? el('span', { class: 'badge tonight-badge', text: 'Tonight' }) : null, pin]));
-      var bg = CRapp.flow ? (CRapp.flow.badges() || []).filter(function (b) { return b.date === date && b.state !== 'empty' && b.text; })[0] : null;
+      var bg = CRapp.flow.badges().filter(function (b) { return b.date === date && b.state !== 'empty' && b.text; })[0];
       if (bg && d.items.length) node.appendChild(el('p', { class: 'day-badge ' + bg.state, role: 'status', text: bg.text }));
       if (!d.items.length) { node.appendChild(el('p', { class: 'empty small', text: 'Nothing planned. Add a dish above, or tap a suggestion.' })); }
       else {
         node.appendChild(el('ul', { class: 'dish-list' }, d.items.map(function (it) { return dishRow(null, i, it); })));
         var note = W.dayNote(c, i, d.items);
-        if (note.text) node.appendChild(el('p', { class: 'fresh-note ' + note.level, text: note.text }));
+        node.appendChild(el('p', { class: 'fresh-note ' + note.level, text: note.text }));
         c.fresh.prep && d.items.forEach(function (it) { var p = c.fresh.prep[it.id]; if (p && state.alarms.prep) node.appendChild(el('p', { class: 'prep-note small', text: 'Start ahead: ' + byId[it.id].title + '. ' + p.basis })); });
       }
       var pair = W.suggestPairings(c, state, i);
       if (pair.suggestions.length) {
         var box = el('div', { class: 'pair' }, [el('p', { class: 'small pair-text' }, [el('strong', { text: 'Suggested pairing' }), ' (by recipe category only, not flavor): ' + (pair.mode === 'mains' ? 'try a main like ' : 'add ')])]);
-        var pt = box.firstChild; var lst = el('span', { class: 'pair-btns' });
+        var lst = el('span', { class: 'pair-btns' });
         pair.suggestions.forEach(function (sg) {
           lst.appendChild(el('button', { type: 'button', class: 'chip pair-add', 'data-id': sg.id, 'aria-label': 'Add ' + byId[sg.id].title + ' to ' + W.DAYS[i], onclick: function () {
-            W.addItem(state, sg.id, i, W.matchFactor(c, state, i, sg.id)); track('pairing_accept', { id: sg.id }); commit();
+            W.addItem(state, sg.id, i, W.matchFactor(c, state, i, sg.id)); track('pairing_accept', { id: sg.id }); dayAssigned(i, 'suggestion'); commit();
           } }, ['+ ' + byId[sg.id].title + ' (' + sg.label.replace(/^an? /, '') + ')']));
         });
         box.appendChild(lst); node.appendChild(box);
@@ -332,9 +329,9 @@
             var titles = proposal.days[j].items.map(function (x) { return byId[x.id].title; });
             var before = state.days[j].items.map(function (x) { return byId[x.id].title; });
             var chg = titles.join(' + ') !== before.join(' + ');
-            var nn = proposal.days[j].items.length ? W.dayNote(ctx(), j, proposal.days[j].items) : null;
-            if (!titles.length && !chg) continue;
-            ul.appendChild(el('li', { class: chg ? 'chg' : '' }, [el('strong', { text: W.SHORT[j] + ': ' }), titles.join(' + ') || '(open)', proposal.days[j].pinned ? ' (pinned, unchanged)' : '', nn && nn.text && (nn.level === 'first' || nn.level === 'warn') ? el('span', { class: 'small', text: ' \u2014 ' + nn.text }) : null]));
+            if (!titles.length) continue;   // an empty day in the proposal was empty before too: ordering never empties a day
+            var nn = W.dayNote(ctx(), j, proposal.days[j].items);
+            ul.appendChild(el('li', { class: chg ? 'chg' : '' }, [el('strong', { text: W.SHORT[j] + ': ' }), titles.join(' + '), proposal.days[j].pinned ? ' (pinned, unchanged)' : '', nn.text && (nn.level === 'first' || nn.level === 'warn') ? el('span', { class: 'small', text: ' \u2014 ' + nn.text }) : null]));
           }
           pb.appendChild(ul);
           if (proposal.pool.length) pb.appendChild(el('p', { class: 'small', text: proposal.pool.length + ' dish' + (proposal.pool.length === 1 ? '' : 'es') + ' could not be placed because there are no free unpinned days. They stay in the waiting list.' }));
@@ -364,7 +361,7 @@
     function route() {
       var m = /^#print=(.+)$/.exec(location.hash);
       if (m) {
-        var ok = renderPrint(printHost, decodeURIComponent(m[1]));
+        renderPrint(printHost, decodeURIComponent(m[1]));
         document.body.classList.add('print-mode'); root.hidden = true; printHost.hidden = false; printBar.hidden = false; window.scrollTo(0, 0);
         document.title = 'Recipe card \u00b7 Common Roots';
       } else {
@@ -433,7 +430,7 @@
 
   /* ---------- recipe page extras ---------- */
   function initRecipePage() {
-    var slot = document.getElementById('video-slot'); if (slot) renderVideoSlot(slot, window.CR_RECIPE_ID);
+    renderVideoSlot(document.getElementById('video-slot'), window.CR_RECIPE_ID);
     var tr = document.querySelector('.tag-row'); if (tr && videoOf(window.CR_RECIPE_ID) && !tr.querySelector('.vbadge')) tr.appendChild(el('span', { class: 'vbadge inline', text: VIDEO_ICON }));
   }
 
