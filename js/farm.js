@@ -17,14 +17,24 @@
   function route(rows, o) {
     o = o || {};
     var farm = o.farm || root.CR_FARM || null, mode = o.mode === 'farm' && farm ? 'farm' : 'walmart';
-    var res = { mode: mode, walmartRows: [], tyner: { lines: [], url: null, subtotal: 0, freeMin: null, remaining: null }, market: { lines: [] }, farms: {}, options: [], fallbacks: [] };
-    if (mode !== 'farm') { res.walmartRows = (rows || []).slice(); return res; }
+    var res = { mode: mode, overrides: o.overrides || {}, walmartRows: [], tyner: { lines: [], url: null, subtotal: 0, freeMin: null, remaining: null }, market: { lines: [] }, farms: {}, options: [], fallbacks: [] };
+    var ov = o.overrides || {}, hasOv = Object.keys(ov).length > 0;     // overrides: { ingredient: 'walmart' | 'tyner' | 'market' } (the shopper's Where menu, or an automatic reroute)
+    if (mode !== 'farm' && !hasOv) { res.walmartRows = (rows || []).slice(); return res; }
     var ty = farm.tyner || { items: {}, not_covered: {} }, mw = farm.marketwagon || { farms: [], routes: {} };
     var fById = {}; (mw.farms || []).forEach(function (f) { fById[f.id] = f; res.farms[f.id] = { id: f.id, name: f.name, place: f.place, url: f.url, lines: [] }; });
     var byVar = {}, order = [];
     (rows || []).forEach(function (r) {
-      var label = r.label || r.name || r.item, ti = ty.items && ty.items[r.item], rt = (mw.routes && mw.routes[r.item]) || [];
-      if (ti) {
+      var label = r.label || r.name || r.item, want = ov[r.item] || (mode === 'farm' ? 'auto' : 'walmart');
+      var ti = ty.items && ty.items[r.item], rt = (mw.routes && mw.routes[r.item]) || [];
+      if (want === 'walmart') { res.walmartRows.push(r); return; }
+      if (want === 'tyner') {
+        ti = ti || (ty.extras && ty.extras[r.item]);
+        if (!ti) { res.fallbacks.push({ ingredient: r.item, label: label, amount: r.amount || '', reason: 'Tyner Pond Farm does not list this in our Oct 24, 2026 copy of their product list, so it stays at Walmart.' }); res.walmartRows.push(r); return; }
+      } else if (want === 'market') {
+        if (!(rt.length && fById[rt[0]])) { res.fallbacks.push({ ingredient: r.item, label: label, amount: r.amount || '', reason: 'Neither default Market Wagon farm lists this, so it stays at Walmart.' }); res.walmartRows.push(r); return; }
+        ti = null;
+      } else if (want === 'auto') { /* existing farm-mode rules below */ }
+      if (ti && (want === 'tyner' || want === 'auto')) {
         if (ti.in_stock_at_snapshot && /^\d{6,}$/.test(String(ti.variant_id))) {
           var f = W.packFraction(r, ti), rec = byVar[ti.variant_id];
           if (!rec) { rec = byVar[ti.variant_id] = { ingredient: r.item, label: label, variant_id: String(ti.variant_id), title: ti.title, variant_title: ti.variant_title, price: ti.price_usd,
@@ -36,7 +46,7 @@
         res.fallbacks.push({ ingredient: r.item, label: label, amount: r.amount || '', reason: 'Tyner Pond Farm was out of stock for this in our Oct 24, 2026 copy of their product list, so it goes to Walmart.' });
         res.walmartRows.push(r); return;
       }
-      if (ty.not_covered && ty.not_covered[r.item]) {
+      if (want === 'auto' && ty.not_covered && ty.not_covered[r.item]) {
         res.fallbacks.push({ ingredient: r.item, label: label, amount: r.amount || '', reason: ty.not_covered[r.item] });
         res.walmartRows.push(r); return;
       }
@@ -60,6 +70,7 @@
       res.tyner.lines.push({ ingredient: rec.ingredient, label: rec.label, variant_id: rec.variant_id, qty: qty, title: rec.title, variant_title: rec.variant_title, price: rec.price,
         line: Math.round(qty * rec.price * 100) / 100, url: rec.url, note: rec.note, assumed: rec.assumed, amount: rec.amounts.join(' + ') });
     });
+    if (res.tyner.lines.length || res.market.lines.length) res.mode = 'farm';
     if (res.tyner.lines.length) {
       res.tyner.url = (ty.cart_base || 'https://tynerpondfarm.com/cart/') + res.tyner.lines.map(function (l) { return l.variant_id + ':' + l.qty; }).join(',');
       res.tyner.subtotal = Math.round(res.tyner.lines.reduce(function (s, l) { return s + l.line; }, 0) * 100) / 100;
@@ -108,7 +119,7 @@
       var pr = doc.createElement('progress'); pr.max = routed.tyner.freeMin || 63; pr.value = Math.min(routed.tyner.subtotal, pr.max); pr.setAttribute('aria-label', 'Progress toward free delivery');
       prog.appendChild(pr);
       prog.appendChild(el('span', 'small', ' About ' + money(routed.tyner.subtotal) + ' of the ' + money(routed.tyner.freeMin || 63) + ' free-delivery minimum' +
-        (routed.tyner.remaining > 0 ? ' (about ' + money(routed.tyner.remaining) + ' to go)' : ' (reached)') + ' \u2014 per their site, check at checkout.'));
+        (routed.tyner.remaining > 0 ? ' (about ' + money(routed.tyner.remaining) + ' to go)' : ' (reached)') + ' \u2014 per their site, check at checkout. ' + (ty.free_delivery_min_conflict || '')));
       c1.appendChild(prog);
     } else {
       c1.appendChild(el('p', '', 'Nothing on this list is a Tyner pick right now (it needs meat from the recipes you chose).'));
@@ -167,6 +178,11 @@
   }
   function L_cap(s) { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
 
-  var api = { route: route, vendorOf: vendorOf, renderCards: renderCards, money: money };
+  /** One Tyner cart link for a subset of the routed Tyner lines (an order group: the lines that arrive on the same delivery day). */
+  function tynerUrlFor(lines, farm) {
+    farm = farm || root.CR_FARM || {}; var base = (farm.tyner && farm.tyner.cart_base) || 'https://tynerpondfarm.com/cart/';
+    return lines && lines.length ? base + lines.map(function (l) { return l.variant_id + ':' + l.qty; }).join(',') : null;
+  }
+  var api = { tynerUrlFor: tynerUrlFor, route: route, vendorOf: vendorOf, renderCards: renderCards, money: money };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.CRFarm = api;
 })(typeof window !== 'undefined' ? window : globalThis);

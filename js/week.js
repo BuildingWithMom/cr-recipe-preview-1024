@@ -273,7 +273,13 @@
   function dishCard(ctx, id, f) {
     var L = ctx.L, sw = ctx.swaps || {}, r = byIdOf(ctx)[id]; if (!r) return null;
     var video = ctx.videos && ctx.videos[r.id] ? videoUrlOf(ctx.videos[r.id]) : null;
+    var changes = [], seenCh = {};
+    if (ctx.manual) r.ingredients.forEach(function (ing) { (ing.m || []).forEach(function (m) {
+      var c = ctx.manual[m.item]; if (!c || seenCh[m.item]) return; seenCh[m.item] = 1;
+      changes.push({ from: m.item, to: c.to, note: c.note || '', timeNote: c.timeNote || '' });
+    }); });
     return {
+      changes: changes,
       id: r.id, title: r.title, serves: servesText(r, f, L), f: f, category: r.category, source: r.source,
       ingredients: r.ingredients.map(function (ing) { return { group: ing.group || null, text: L.swapText(L.scaleText(ing.text, f), sw) }; }),
       steps: r.steps.map(function (st) { return L.swapText(L.scaleStep(st, f).replace(/\[\[|\]\]/g, ''), sw); }),
@@ -302,6 +308,10 @@
       o.push('INGREDIENTS' + (d.scaled ? ' (scaled to ' + d.serves.toLowerCase() + ')' : ''));
       var g = null; d.ingredients.forEach(function (i) { if (i.group && i.group !== g) { o.push(i.group + ':'); } g = i.group; o.push('- ' + i.text); });
       o.push('METHOD'); d.steps.forEach(function (s, k) { o.push((k + 1) + '. ' + s); });
+      if (d.changes && d.changes.length) {
+        o.push('YOUR CHANGES');
+        d.changes.forEach(function (c) { o.push('- Using ' + c.to + ' instead of ' + c.from + '.' + (c.note ? ' ' + c.note : '')); if (c.timeNote) o.push('  Time: ' + c.timeNote); });
+      }
       if (d.tips.length) { o.push('GOOD TO KNOW'); d.tips.forEach(function (t) { o.push('- ' + t); }); }
       o.push('Recipe: ' + d.url);
       if (d.video) o.push('Video: ' + d.video);
@@ -365,6 +375,16 @@
       });
       lines.push('END:VEVENT');
     }
+    (opts.reminders || []).forEach(function (rm) {
+      if (!rm || !parseDate(rm.date)) return;
+      var ev = ['BEGIN:VEVENT', 'UID:' + rm.uid, 'DTSTAMP:' + stamp];
+      if (rm.allDay) { ev.push('DTSTART;VALUE=DATE:' + compactDate(rm.date), 'DTEND;VALUE=DATE:' + compactDate(addDays(rm.date, 1)), 'TRANSP:TRANSPARENT'); }
+      else { var e2 = addMinutes(rm.date, rm.time, rm.mins || 15); ev.push('DTSTART' + tzp + ':' + dtLocal(rm.date, rm.time), 'DTEND' + tzp + ':' + dtLocal(e2.date, e2.time), 'TRANSP:TRANSPARENT'); }
+      ev.push('SUMMARY:' + icsEscape(rm.summary), 'DESCRIPTION:' + icsEscape(rm.description), 'CATEGORIES:' + icsEscape('Common Roots') + ',' + icsEscape('Shopping'), 'SEQUENCE:0', 'STATUS:CONFIRMED');
+      if (rm.allDay) ev.push('BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEscape(rm.summary), 'TRIGGER:PT9H', 'END:VALARM');
+      else ev.push('BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEscape(rm.summary), 'TRIGGER:PT0S', 'END:VALARM');
+      ev.push('END:VEVENT'); lines = lines.concat(ev); n++;
+    });
     if (!n) return null;
     lines.push('END:VCALENDAR');
     return lines.map(foldLine).join('\r\n') + '\r\n';
@@ -380,11 +400,13 @@
     var must = ['Menu: ' + c.titles.join(' + ') + ' (dinner at ' + fmtTime(c.time) + ')'];
     if (c.pairing.text) must.push(c.pairing.text);
     if (c.freshness.level === 'first' || c.freshness.level === 'warn') must.push('Freshness: ' + c.freshness.text);
+    c.dishes.forEach(function (d) { (d.changes || []).forEach(function (ch) { must.push('Your change: ' + ch.to + ' instead of ' + ch.from + (ch.timeNote ? '. Time: ' + ch.timeNote : '')); }); });
     var links = c.dishes.map(function (d) { return d.title + ' full recipe: ' + d.url + (d.video ? '\nVideo: ' + d.video : ''); });
     var extra = [];
     c.dishes.forEach(function (d) {
       extra.push('', d.title + ' (' + d.serves + ')', 'Ingredients:'); d.ingredients.forEach(function (i) { extra.push('- ' + i.text); });
       extra.push('Method:'); d.steps.forEach(function (s, k) { extra.push((k + 1) + '. ' + s); });
+      (d.changes || []).forEach(function (c) { extra.push('Your change: using ' + c.to + ' instead of ' + c.from + '.' + (c.note ? ' ' + c.note : '') + (c.timeNote ? ' Time: ' + c.timeNote : '')); });
     });
     function make(nExtra, cut) {
       var body = must.concat([''], extra.slice(0, nExtra));

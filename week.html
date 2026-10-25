@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My week · Common Roots</title>
+<title>Plan &amp; shop · Common Roots</title>
 <meta name="description" content="Recipes to groceries in one tap.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23c2562f%27/%3E%3C/svg%3E">
@@ -9,13 +9,31 @@
 </head><body>
 <header class="site-header"><div class="wrap bar">
 <a class="logo" href="index.html" aria-label="Common Roots home"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 29V14" stroke="#2f4a3a" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 15C16 9 11 6 5 7c0 6 4 9 11 8z" fill="#7a9a5b"/><path d="M16 12c0-5 4-8 10-8 0 5-3 8-10 8z" fill="#c2562f"/><path d="M16 22c-2 2-5 3-8 3M16 24c2 1 5 1 8 0" stroke="#2f4a3a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span>Common Roots</span></a>
-<nav aria-label="Main"><a href="index.html" data-nav="home">Recipes</a><a href="kitchen.html" data-nav="kitchen">My Kitchen</a><a href="week.html" class="week-link" data-nav="week">My week <span id="week-count" class="badge" hidden>0</span></a><a href="plan.html" class="plan-link" data-nav="plan">Plan <span id="plan-count" class="badge" hidden>0</span></a></nav>
+<nav aria-label="Main"><a href="index.html" data-nav="home">Recipes</a><a href="kitchen.html" data-nav="kitchen">My Kitchen</a><a href="week.html" class="week-link" data-nav="week">Plan my week <span id="week-count" class="badge" hidden>0</span></a><a href="plan.html" class="plan-link" data-nav="plan">Cart <span id="plan-count" class="badge" hidden>0</span></a></nav>
 </div></header>
 <main class="wrap">
 
+<div id="flow-app" class="flow-app">
+<h1 class="flow-title">Plan &amp; shop</h1>
+<nav class="stepbar" id="stepbar" aria-label="Steps">
+<a href="#pick" data-step="pick" class="step"><span class="stepn">1</span><span class="stept"><strong>Pick</strong><span class="sb-sub" id="sb-pick"></span></span></a>
+<a href="#days" data-step="days" class="step"><span class="stepn">2</span><span class="stept"><strong>Days</strong><span class="sb-sub" id="sb-days"></span></span></a>
+<a href="#cart" data-step="cart" class="step"><span class="stepn">3</span><span class="stept"><strong>Cart</strong><span class="sb-sub" id="sb-cart"></span></span></a>
+</nav>
+<div id="shop-banner" class="shop-banner" role="status" aria-live="polite" hidden></div>
+
+<section id="pick" class="flow-step plan-pick" aria-labelledby="pick-h">
+<h2 id="pick-h"><span class="stepn">1</span> Pick recipes</h2>
+<p class="lead">Tick the recipes you want. They go on your list, and the next step puts them on days. Amounts are added up across recipes: when one recipe uses a count ("2 medium onions") and another a measure ("1 cup chopped"), they are combined into one line in whole items, rounded up, with the breakdown underneath.</p>
+<div class="household" id="household-box"></div>
+<div id="plan-picker" class="picker"></div>
+<p class="step-next"><a class="btn" href="#days" data-go="days">Next: put them on days &rarr;</a></p>
+</section>
+
+<section id="days" class="flow-step" aria-labelledby="days-h">
 <div id="week-app" class="week-app">
-<h1>My week</h1>
-<p class="lead">Put dinners on the days you will cook them. Each day shows its dishes together as one meal, with a suggested pairing. Order them by freshness if you like, then add the week to your calendar, with the recipe card inside each event. Everything stays in this browser.</p>
+<h2 id="days-h"><span class="stepn">2</span> Put them on days</h2>
+<p class="lead">Put dinners on the days you will cook them. Each day shows its dishes together as one meal, with a suggested pairing and a badge that says when to order. Order them by freshness if you like, then add the week to your calendar, with the recipe card inside each event. Everything stays in this browser.</p>
 <p id="wk-status" class="wk-status" role="status" aria-live="polite" hidden></p>
 <div id="wk-banner" class="wk-banner" role="status" hidden></div>
 <p id="wk-stale" class="wk-stale" hidden>This plan's week has already passed. <button type="button" id="wk-today-next" class="linkbtn">Move it to the coming week</button></p>
@@ -26,6 +44,7 @@
 <label for="wk-tz">Time zone<select id="wk-tz"></select></label>
 <label class="chk" for="wk-alarm-dinner"><input type="checkbox" id="wk-alarm-dinner" checked> Reminder 1 hour before dinner</label>
 <label class="chk" for="wk-alarm-prep"><input type="checkbox" id="wk-alarm-prep" checked> Start-ahead reminders (only where a recipe's own text says to start early)</label>
+<label class="chk" for="wk-alarm-shop"><input type="checkbox" id="wk-alarm-shop" checked> Shopping reminders: order-by and delivery days (in the calendar file)</label>
 </section>
 <div class="wk-add" role="group" aria-label="Add a recipe to a day">
 <label class="sr-only" for="wk-add-recipe">Recipe</label><select id="wk-add-recipe"><option value="">Pick a recipe…</option></select>
@@ -35,8 +54,8 @@
 </div>
 <section id="wk-pool" class="wk-fresh" hidden></section>
 <section class="wk-fresh" aria-label="Freshness">
-<h2>Freshness</h2>
-<p class="small">Fresh fish, ground meat and chicken keep only 1 to 2 days in the fridge; steaks and ribs 3 to 5; most vegetables longer. <strong>Order by freshness</strong> suggests cooking the shortest-lived meals first. It only suggests: you choose, and pinned days never move.</p>
+<h3>Freshness</h3>
+<p class="small">Fresh fish, ground meat and chicken keep only 1 to 2 days in the fridge; steaks and ribs 3 to 5; most vegetables longer. <strong>Order by freshness</strong> suggests cooking the shortest-lived meals first. It only suggests: you choose, and pinned days never move. The badges on each day also look at delivery days: farm orders arrive on set days, so a day can say <em>Order by ...</em> or <em>Too late</em>.</p>
 <div class="actions"><button type="button" id="wk-order" class="btn small dark">Order by freshness</button></div>
 <div id="wk-proposal" hidden></div>
 <p class="small wk-disclaimer">Assumes you buy fresh at the start of the week; freezing extends it. Numbers are conservative USDA refrigerator ranges (a few are marked as estimates). Package dates and your own judgement come first. Sources are listed in <code>data/freshness.js</code>.</p>
@@ -45,18 +64,50 @@
 <section class="wk-actions" aria-label="Calendar and list actions">
 <button type="button" id="wk-ics" class="btn">Download calendar file (.ics)</button>
 <button type="button" id="wk-print-all" class="btn ghost">Print all recipe cards</button>
-<button type="button" id="wk-shop" class="btn dark">Shop this week</button>
+<button type="button" id="wk-shop" class="btn dark">Shop this week &rarr; Cart</button>
 </section>
-<p class="wk-note">The .ics file has one event per planned day. The event's description is the recipe card: dishes, servings, ingredients (scaled to your servings, with your swaps), numbered steps, the pairing line and recipe links. Each day also has an Add to Google Calendar link (its card is shortened to fit a link; the recipe links are kept). We have checked the .ics with a standards validator. We have not yet tried it in Apple Calendar, Google Calendar or Outlook, so tell us if an import looks off. Links in the card point to this site as it is hosted today. "Shop this week" replaces the recipes on your shopping list with this week's, at the servings you planned.</p>
+<p class="wk-note">The .ics file has one event per planned day. The event's description is the recipe card: dishes, servings, ingredients (scaled to your servings, with your swaps), numbered steps, your own changes with any cooking-time note, the pairing line and recipe links. With shopping reminders on, it also has an order-by reminder and a delivery-day reminder for each vendor. Each day also has an Add to Google Calendar link (its card is shortened to fit a link; the recipe links are kept). We have checked the .ics with a standards validator. We have not yet tried it in Apple Calendar, Google Calendar or Outlook, so tell us if an import looks off. Links in the card point to this site as it is hosted today. Everything you pick or plan already appears in the Cart step: there is nothing to send.</p>
 <details class="wk-move"><summary>Move this week to another device</summary>
 <div class="wk-actions"><button type="button" id="wk-export" class="btn small ghost">Export week (JSON)</button><button type="button" id="wk-import" class="btn small ghost">Import week (JSON)</button><button type="button" id="wk-share" class="btn small ghost">Copy share link</button><input type="file" id="wk-import-file" accept="application/json,.json" class="sr-only" aria-label="Choose a week file"></div>
 <label class="sr-only" for="wk-share-url">Share link</label><input type="text" id="wk-share-url" readonly placeholder="The share link appears here after you press Copy share link">
-<p class="small">The share link carries the plan inside the link itself, so nothing is uploaded. Opening it on another device asks before replacing that device's week.</p></details>
+<p class="small">The share link carries the plan inside the link itself, so nothing is uploaded. Opening it on another device asks before replacing that device's week. Order records, pantry answers and manual swaps stay on the device where you made them.</p></details>
 <p><button type="button" id="wk-clear" class="btn ghost small">Clear week</button></p>
+<p class="step-next"><a class="btn" href="#cart" data-go="cart">Next: go to the cart &rarr;</a></p>
 </div>
-<div id="print-bar" hidden><button type="button" id="print-now" class="btn">Print or save as PDF</button><a href="week.html" id="print-back" class="btn ghost">Back to My week</a></div>
+</section>
+
+<section id="cart" class="flow-step plan-list" aria-labelledby="cart-h">
+<h2 id="cart-h"><span class="stepn">3</span> Cart</h2>
+<p class="lead">One list for everything you picked, grouped by where it comes from and when it arrives. Open each vendor, then tell us what you ordered.</p>
+<div class="sub-pref" data-sub-pref></div>
+<details class="deliv-settings" id="deliv-settings"><summary>Delivery settings</summary><div id="deliv-box"></div></details>
+<div id="pantry-box" class="pantry-box" hidden></div>
+<div id="tier-box" class="buy-box"></div>
+<div id="source-box" class="buy-box"></div>
+<div id="total-box" class="total-box" aria-live="polite"></div>
+<div class="actions">
+<button id="btn-copy" class="btn">Copy list</button>
+<button id="btn-walmart" class="btn dark">Add to Walmart cart</button>
+<button id="btn-staples" class="btn ghost small">Mark pantry staples as "have"</button>
+<button id="btn-clear" class="btn ghost small">Clear plan</button>
+</div>
+<p id="walmart-clear-warning" class="small wm-cartwarn-top"><strong>Empty your Walmart cart first.</strong> The Walmart link adds to whatever is already in your cart, so items left from earlier tries pile up and inflate the total.</p>
+<p id="walmart-disclosure" class="small walmart-disc"></p>
+<div id="walmart-check" class="wm-check" hidden></div>
+<div id="walmart-note" class="note" hidden></div>
+<div id="walmart-subs" hidden></div>
+<p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
+<div id="order-groups" class="order-groups" hidden></div>
+<div id="source-cards" class="src-cards" hidden></div>
+<div id="list-out"><p class="empty">No recipes picked yet.</p></div>
+<section id="ordered-wrap" hidden><h3 class="aisle ordered-h">Ordered, waiting to arrive (<span id="ordered-count">0</span>)</h3><div id="ordered-out"></div></section>
+<section id="have-wrap" hidden><h3 class="aisle have-h" data-flip="have-h">Have it (<span id="have-count">0</span>)</h3><p class="small have-note">Includes pantry staples you have, items you marked bought, and anything you bought elsewhere. Untick to put one back on your list.</p><div id="have-out"></div></section>
+<p class="small">Pantry staples (salt, pepper, oil and similar) are marked, and the Pantry check above asks you once. Your choices are remembered on this device. We cannot see your orders at any store: a line only turns to "ordered" or "bought" when you tell us.</p>
+</section>
+</div>
+<div id="print-bar" hidden><button type="button" id="print-now" class="btn">Print or save as PDF</button><a href="week.html" id="print-back" class="btn ghost">Back to the plan</a></div>
 <div id="print-view" hidden></div>
-<script>window.CR_PAGE="week";</script>
+<script>window.CR_PAGE="week"; window.CR_FLOW=true;</script>
 </main>
 <footer class="site-footer"><div class="wrap">
 <section class="signup" aria-labelledby="su-h">
@@ -74,9 +125,18 @@
 </div></footer>
 <script src="js/lib.js"></script>
 <script src="data/recipes.js"></script>
-<script src="js/app.js"></script>
 <script src="data/freshness.js"></script>
 <script src="data/videos.js"></script>
+<script src="data/walmart_map.js"></script>
+<script src="data/walmart_alts.js"></script>
+<script src="data/walmart_backups.js"></script>
+<script src="data/walmart_tiers.js"></script>
+<script src="data/farm_sources.js"></script>
+<script src="data/vendors.js"></script>
+<script src="js/walmart.js"></script>
+<script src="js/farm.js"></script>
 <script src="js/week.js"></script>
+<script src="js/flow.js"></script>
+<script src="js/app.js"></script>
 <script src="js/weekui.js"></script>
 </body></html>

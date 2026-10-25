@@ -20,7 +20,7 @@
   }
   function track(n, p) { try { CRapp.track(n, p); } catch (e) {} }
   function today() { return W.localDateStr(new Date()); }
-  function ctx() { return { recipes: RECIPES, L: L, swaps: CRapp.swaps(), fresh: window.CR_FRESH || { items: {}, prep: {} }, videos: window.CR_VIDEOS || {}, baseUrl: ROOT }; }
+  function ctx() { return { recipes: RECIPES, L: L, swaps: CRapp.swaps(), manual: CRapp.manualChanges ? CRapp.manualChanges() : {}, fresh: window.CR_FRESH || { items: {}, prep: {} }, videos: window.CR_VIDEOS || {}, baseUrl: ROOT }; }
   function loadState() { return W.load(localStorage, RECIPES); }
   function saveState(s) { if (!s.start && W.plannedCount(s)) s.start = W.weekStart(s, today()); W.save(localStorage, s); updateWeekBadge(s); }
   function updateWeekBadge(s) {
@@ -93,7 +93,7 @@
       W.addItem(st, id, day, f); saveState(st); refreshAddButtons(); track('add_to_week', { id: id, day: day });
       var where = day === 'auto' ? 'waiting for a day (use Order by freshness)' : dateLabel(st, day);
       status.textContent = ''; status.appendChild(document.createTextNode('Added to ' + where + '. ')); status.appendChild(el('a', { href: ROOT + 'week.html', text: 'Open My week' }));
-      if (page === 'week') { window.dispatchEvent(new CustomEvent('cr-week-changed')); }
+      if (page === 'week' || page === 'plan') { window.dispatchEvent(new CustomEvent('cr-week-changed')); }
     }
     for (var i = 0; i < 7; i++) (function (i) {
       var has = s.days[i].items.some(function (x) { return x.id === id; });
@@ -162,11 +162,11 @@
 
   /* ---------- the My week page ---------- */
   function initWeek() {
-    var root = document.getElementById('week-app'), printHost = document.getElementById('print-view'), printBar = document.getElementById('print-bar');
+    var root = document.getElementById('flow-app') || document.getElementById('week-app'), printHost = document.getElementById('print-view'), printBar = document.getElementById('print-bar');
     var state = loadState(), proposal = null, clearArm = false, banner = document.getElementById('wk-banner');
     var statusEl = document.getElementById('wk-status');
     function say(msg) { statusEl.textContent = msg; statusEl.hidden = !msg; clearTimeout(say._t); if (msg) say._t = setTimeout(function () { statusEl.hidden = true; }, 6000); }
-    function commit(opts) { proposal = (opts && opts.keepProposal) ? proposal : null; saveState(state); render(); }
+    function commit(opts) { proposal = (opts && opts.keepProposal) ? proposal : null; saveState(state); render(); window.dispatchEvent(new CustomEvent('cr-week-saved')); }
     function startStr() { return W.weekStart(state, today()); }
 
     /* controls */
@@ -194,6 +194,7 @@
       W.addItem(state, id, d, CRapp.factorOf(id)); track('add_to_week', { id: id, day: d, from: 'week' }); say('Added ' + byId[id].title + '.'); commit();
     });
     window.addEventListener('cr-week-changed', function () { state = loadState(); proposal = null; render(); });
+    window.addEventListener('cr-flow-updated', function () { render(); });
 
     /* actions */
     document.getElementById('wk-order').addEventListener('click', function () {
@@ -201,7 +202,9 @@
       proposal = W.orderByFreshness(ctx(), state); track('order_by_freshness', { changes: proposal.changes.length }); render();
     });
     document.getElementById('wk-ics').addEventListener('click', function () {
-      var ics = W.buildICS(ctx(), state, { now: new Date(), today: today() });
+      var rem = [], al = document.getElementById('wk-alarm-shop');
+      if (al && al.checked && window.CRFlow && CRapp.flow) rem = window.CRFlow.reminders(CRapp.flow.groups(), CRapp.flow.placed(), {});
+      var ics = W.buildICS(ctx(), state, { now: new Date(), today: today(), reminders: rem });
       if (!ics) { say('Plan at least one meal first.'); return; }
       var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' }), url = URL.createObjectURL(blob);
       var a = el('a', { href: url, download: 'common-roots-week-' + startStr() + '.ics' }); document.body.appendChild(a); a.click(); a.remove();
@@ -212,7 +215,12 @@
     document.getElementById('wk-shop').addEventListener('click', function () {
       var sel = W.shoppingSelection(state); if (!sel.ids.length) { say('Plan at least one recipe first.'); return; }
       var f = CRapp.store.get('cr.factors', {}); sel.ids.forEach(function (id) { f[id] = sel.factors[id]; }); CRapp.store.set('cr.factors', f);
-      CRapp.setPlan(sel.ids); track('shop_this_week', { recipes: sel.ids.length }); location.href = ROOT + 'plan.html';
+      CRapp.setPlan(sel.ids); track('shop_this_week', { recipes: sel.ids.length });
+      if (window.CR_FLOW) {            // one page: stay here, show the cart step
+        try { history.pushState(null, '', ROOT + 'plan.html#cart'); } catch (e) { location.href = ROOT + 'plan.html#cart'; return; }
+        window.dispatchEvent(new CustomEvent('cr-week-saved'));
+        var c = document.getElementById('cart'); if (c && c.scrollIntoView) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else location.href = ROOT + 'plan.html';
     });
     document.getElementById('wk-export').addEventListener('click', function () {
       var blob = new Blob([W.exportJSON(state)], { type: 'application/json' }), url = URL.createObjectURL(blob);
@@ -268,6 +276,8 @@
       var node = el('article', { class: 'day-card' + (isToday ? ' tonight' : '') + (d.pinned ? ' pinned' : '') + (d.items.length ? '' : ' empty'), 'data-day': String(i), 'data-date': date, 'aria-label': W.DAYS[i] + ' ' + W.fmtDate(date) });
       var pin = el('button', { type: 'button', class: 'pin btn small ghost' + (d.pinned ? ' on' : ''), 'aria-pressed': d.pinned ? 'true' : 'false', 'aria-label': (d.pinned ? 'Unpin ' : 'Pin ') + W.DAYS[i], onclick: function () { W.setPinned(state, i, !d.pinned); commit(); } }, [d.pinned ? 'Pinned' : 'Pin day']);
       node.appendChild(el('header', { class: 'day-head' }, [el('h3', {}, [W.DAYS[i] + ' ', el('span', { class: 'date', text: W.fmtDate(date).replace(/^\w+, /, '') })]), isToday ? el('span', { class: 'badge tonight-badge', text: 'Tonight' }) : null, pin]));
+      var bg = CRapp.flow ? (CRapp.flow.badges() || []).filter(function (b) { return b.date === date && b.state !== 'empty' && b.text; })[0] : null;
+      if (bg && d.items.length) node.appendChild(el('p', { class: 'day-badge ' + bg.state, role: 'status', text: bg.text }));
       if (!d.items.length) { node.appendChild(el('p', { class: 'empty small', text: 'Nothing planned. Add a dish above, or tap a suggestion.' })); }
       else {
         node.appendChild(el('ul', { class: 'dish-list' }, d.items.map(function (it) { return dishRow(null, i, it); })));
@@ -431,6 +441,6 @@
   updateWeekBadge();
   wireAddButtons();
   addVideoBadges();
-  if (page === 'week') initWeek(); else if (page === 'kitchen') initKitchen(); else if (page === 'recipe') initRecipePage();
+  if (page === 'week' || page === 'plan') initWeek(); else if (page === 'kitchen') initKitchen(); else if (page === 'recipe') initRecipePage();
   window.CRWeekUI = { renderVideoSlot: renderVideoSlot, videoOf: videoOf };
 })();

@@ -221,7 +221,7 @@
       rec.frac += f;
     });
     order.forEach(function (id) {
-      var rec = byId[id]; out.items.push({ id: rec.id, qty: ceilPacks(rec.frac), ingredient: rec.ingredient, name: rec.name, size: rec.size, assumed: rec.assumed,
+      var rec = byId[id]; out.items.push({ id: rec.id, qty: ceilPacks(rec.frac), frac: rec.frac, ingredient: rec.ingredient, name: rec.name, size: rec.size, assumed: rec.assumed,
         tier: rec.tier, requested: rec.requested, fallback: rec.fallback, price: rec.price, source: rec.source,
         ingredients: rec.ingredients, kind: rec.kind, swappedFrom: rec.swappedFrom, userSwap: rec.userSwap, options: rec.options });
     });
@@ -371,6 +371,7 @@
       if (!open || (res.mode !== 'link' && !res.allOut.length)) { box.hidden = true; return; }
       box.hidden = false;
       box.appendChild(el('h3', 'wm-h', 'Check your Walmart items (' + res.items.length + ')'));
+      var warn = el('p', 'wm-cartwarn', ''); warn.appendChild(el('strong', '', 'Empty your Walmart cart first. ')); warn.appendChild(doc.createTextNode('This link ADDS to whatever is already in your Walmart cart. Items left from earlier tries will pile up and inflate the total.')); box.appendChild(warn);
       box.appendChild(el('p', 'small', 'We can\u2019t see stock at your store. Swap an item if you prefer another, or press \u201cOut of stock for me\u201d and we\u2019ll switch to the next backup and remember that on this device. Prices are approximate (public search results, Oct 24, 2026).'));
       var live = el('p', 'wm-status', status); live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite'); live.hidden = !status;
       if (undo) { var ub = el('button', 'btn ghost small wm-undo', 'Undo'); ub.type = 'button'; ub.addEventListener('click', function () { stock.unmark(undo.id); status = 'Back in stock: \u201c' + undo.name + '\u201d.'; undo = null; changed(); }); live.appendChild(doc.createTextNode(' ')); live.appendChild(ub); }

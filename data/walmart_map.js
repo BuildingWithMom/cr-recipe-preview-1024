@@ -237,12 +237,14 @@
  },
  {
   "ingredient": "cheese filled tortellini",
-  "status": "NOT_FOUND",
-  "item_id": "",
-  "product_name": "",
-  "package_size": "9 oz refrigerated Buitoni three-cheese tortellini (target)",
-  "per_pack": {},
-  "confidence": "none"
+  "status": "VERIFIED",
+  "item_id": "17142507463",
+  "product_name": "Marketside Five Cheese Tortellini, No Artificial Ingredients, 18 oz Tray",
+  "package_size": "18 oz refrigerated tray (Marketside Five Cheese)",
+  "per_pack": {
+   "wt": 18
+  },
+  "confidence": "medium"
  },
  {
   "ingredient": "chicken breast",

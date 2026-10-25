@@ -741,6 +741,25 @@
     "evidence": "tier_search"
    }
   ],
+  "cheese filled tortellini": [
+   {
+    "status": "VERIFIED",
+    "item_id": "13908655",
+    "product_name": "Barilla Classic Non-GMO, Filled Three Cheese Tortellini Pasta, 12 oz",
+    "package_size": "12 oz",
+    "per_pack": {
+     "wt": 12.0
+    },
+    "price_usd": "5.23",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Barilla-Classic-Non-GMO-Filled-Three-Cheese-Tortellini-Pasta-12-oz/13908655",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "for": "base",
+    "note": "",
+    "evidence": "tier_search"
+   }
+  ],
   "sour cream": [
    {
     "status": "VERIFIED",

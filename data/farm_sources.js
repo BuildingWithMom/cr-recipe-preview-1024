@@ -102,16 +102,48 @@
     "url": "https://tynerpondfarm.com/products/pastured-ground-turkey"
    }
   },
+  "extras": {
+   "ground chicken": {
+    "handle": "ground-chicken-1-lb",
+    "product_id": 8041722445961,
+    "variant_id": "43777493401737",
+    "title": "Pasture-Raised Ground Chicken – 1 lb Pack, Clean and Versatile",
+    "variant_title": "Default Title",
+    "price_usd": 20.0,
+    "in_stock_at_snapshot": true,
+    "per_pack": {
+     "wt": 16
+    },
+    "note": "pasture-raised ground chicken, 1 lb pack, sold frozen",
+    "url": "https://tynerpondfarm.com/products/ground-chicken-1-lb"
+   },
+   "chicken broth": {
+    "handle": "chicken-broth-stock-25-oz",
+    "product_id": 8041724051593,
+    "variant_id": "43777497989257",
+    "title": "Farm-Made Chicken Broth – From Pasture-Raised Chickens",
+    "variant_title": "Default Title",
+    "price_usd": 14.0,
+    "in_stock_at_snapshot": true,
+    "per_pack": {
+     "vol": 150
+    },
+    "note": "farm-made chicken broth, 25 oz (about 3 cups); shown as a Where-menu option only",
+    "url": "https://tynerpondfarm.com/products/chicken-broth-stock-25-oz"
+   }
+  },
   "not_covered": {
    "round steak": "No round steak in their feed (closest are cube steak, rump roast, sirloin tip), so it stays at Walmart.",
    "roasted chicken": "They sell raw whole chickens, not cooked rotisserie chickens, so it stays at Walmart.",
    "cod fillet": "No cod (their only fish is wild salmon), so it stays at Walmart."
-  }
+  },
+  "free_delivery_min_conflict": "We have seen $63 (earlier copy of their site) and \"usually around $99\" (their Dec 2025 blog). Unconfirmed: check at checkout.",
+  "delivery_days_note": "Tuesday and Thursday to your house (from you); their order cutoff is not published and not confirmed."
  },
  "marketwagon": {
   "name": "Market Wagon",
   "zip": "46074",
-  "delivery_note": "Delivery date shows after you enter 46074; last seen Tue Oct 27; confirm at checkout.",
+  "delivery_note": "Westfield (46074) delivers on Thursdays; orders close Wednesday 1:00 AM (Tuesday night). The exact date shows after you enter 46074; confirm at checkout.",
   "checked": "Sat Oct 24, 2026, read-only, by hand",
   "stock_note": "Stock changes; confirm at checkout. Prices are not shown here because they change.",
   "farms": [

@@ -185,6 +185,39 @@
   };
   var NUT_RE = /almond|walnut|pecan|cashew|pistachio|hazelnut|macadamia|brazil nut|pine nut|chestnut|praline|nut\b/i;
 
+  /* ---------- manual swaps the shopper defines (saved on her device as cr.customSwaps; registered here at page load) ----------
+   * { 'ground turkey': { to:'ground chicken', aisle?, note?, timeNote?, conv?:{perUnit:24, fam:'wt'}, textTo?, match?:'regex source' } }
+   * A custom swap works exactly like a built-in one (shopping list, recipe text, calendar card) because it is added to SUBS as one more option
+   * whose id is 'custom:<item>'. Tree-nut names are refused (family allergy), same rule as the built-in table. */
+  var CUSTOM = {}, CUSTOM_BASE = {};
+  function escRe(t) { return String(t).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function customCheck(item, def) {
+    if (!def || typeof def.to !== 'string') return 'Type what you are using instead.';
+    var to = def.to.trim().toLowerCase();
+    if (!to || to.length > 60) return 'Use a short name (up to 60 characters).';
+    if (!/^[a-z0-9][a-z0-9 ,'()&\/\-]*$/.test(to)) return 'Use letters and numbers only.';
+    if (NUT_RE.test(to)) return 'Common Roots keeps tree nuts out of swaps, so that name is not allowed.';
+    if (to === item) return 'That is the same ingredient.';
+    return '';
+  }
+  function setCustomSwaps(map) {
+    Object.keys(CUSTOM).forEach(function (item) {
+      var s = SUBS[item]; if (!s) return;
+      s.options = s.options.filter(function (o) { return !o.custom; });
+      if (CUSTOM_BASE[item] === false) delete SUBS[item];
+    });
+    CUSTOM = {}; CUSTOM_BASE = {};
+    Object.keys(map || {}).forEach(function (item) {
+      var d = map[item]; if (customCheck(item, d)) return;
+      var to = d.to.trim().toLowerCase();
+      CUSTOM_BASE[item] = !!SUBS[item];
+      if (!SUBS[item]) SUBS[item] = { label: item, custom: true, match: d.match ? new RegExp(d.match, 'i') : new RegExp('\\b' + escRe(item) + 's?\\b', 'i'), options: [] };
+      var opt = { id: 'custom:' + item, name: to, aisle: d.aisle || 'Other', staple: false, note: d.note || '', timeNote: d.timeNote || '', custom: true, conv: d.conv || null, textTo: d.textTo || null };
+      SUBS[item].options.push(opt);
+      CUSTOM[item] = opt;
+    });
+  }
+  function customSwapsDef() { return CUSTOM; }
   function subOptions(item) { var s = SUBS[item]; return s ? s.options : []; }
   function subOption(item, optId) {
     var o = subOptions(item); for (var i = 0; i < o.length; i++) if (o[i].id === optId) return o[i]; return null;
@@ -206,7 +239,7 @@
     Object.keys(swaps || {}).forEach(function (item) {
       var s = SUBS[item], o = s && subOption(item, swaps[item]); if (!o) return;
       var re = new RegExp(s.match.source, 'gi'), m;
-      while ((m = re.exec(text)) !== null) hits.push({ i: m.index, len: m[0].length, to: o.name, src: m[0] });
+      while ((m = re.exec(text)) !== null) hits.push({ i: m.index, len: m[0].length, to: o.textTo || o.name, src: m[0] });
     });
     hits.sort(function (a, b) { return a.i - b.i; });
     var out = '', pos = 0;
@@ -225,7 +258,8 @@
   function swapEntry(e, optId) {
     var o = subOption(e.item, optId); if (!o) return e;
     var n = {}; Object.keys(e).forEach(function (k) { n[k] = e[k]; });
-    n.item = o.id; n.name = o.name; n.plural = undefined; n.aisle = o.aisle; n.staple = o.staple; n.swappedFrom = e.item;
+    n.item = o.custom ? o.name : o.id; n.name = o.name; n.plural = undefined; n.aisle = o.aisle; n.staple = o.staple; n.swappedFrom = e.item;
+    if (o.conv && o.conv.fam === 'wt' && o.conv.perUnit > 0) { n.fam = 'wt'; n.qty = (e.qty || 0) * o.conv.perUnit; n.cu = undefined; n.size = undefined; n.noqty = undefined; }
     return n;
   }
   /** The entries of an ingredient line with swaps applied. */
@@ -443,25 +477,9 @@
     return out.join('\n').trim() + '\n';
   }
 
-  var INSTACART_UNITS = { medium: 'each', head: 'each', bunch: 'each', package: 'each', tsp: 'teaspoon', tbsp: 'tablespoon', cup: 'cup', qt: 'quart', oz: 'ounce', lb: 'pound', can: 'can', each: 'each', clove: 'each', stalk: 'each', slice: 'each' };
-  /** Shape of the payload the Instacart shopping-list endpoint expects (not sent anywhere yet). */
-  function instacartPayload(rows, title) {
-    return {
-      title: title || 'Common Roots shopping list', link_type: 'shopping_list',
-      line_items: rows.filter(function (r) { return r.fam !== 'none' || true; }).map(function (r) {
-        var meas;
-        if (r.fam === 'vol') meas = [{ quantity: Math.round(r.qty / 48 * 1000) / 1000, unit: 'cup' }];
-        else if (r.fam === 'wt') meas = [{ quantity: Math.round(r.qty / 16 * 1000) / 1000, unit: 'pound' }];
-        else if (r.fam === 'none') meas = [{ quantity: 1, unit: 'each' }];
-        else meas = [{ quantity: r.qty, unit: INSTACART_UNITS[r.cu] || 'each' }];
-        return { name: r.item.replace(/^(fresh|dried) /, ''), display_text: capital(r.label), line_item_measurements: meas };
-      })
-    };
-  }
-
   var api = { fmtQty: fmtQty, parseNum: parseNum, scaleText: scaleText, scaleStep: scaleStep, fmtVol: fmtVol, fmtWt: fmtWt,
-              fmtAmount: fmtAmount, mergeSelection: mergeSelection, mergeConverted: mergeConverted, CONV: CONV, ALIAS: ALIAS, listToText: listToText, instacartPayload: instacartPayload,
-              capital: capital, AISLES: AISLES,
+              fmtAmount: fmtAmount, mergeSelection: mergeSelection, mergeConverted: mergeConverted, CONV: CONV, ALIAS: ALIAS, listToText: listToText,
+              capital: capital, AISLES: AISLES, setCustomSwaps: setCustomSwaps, customCheck: customCheck, customSwapsDef: customSwapsDef,
               SUBS: SUBS, NUT_RE: NUT_RE, subOptions: subOptions, subOption: subOption, effectiveSwaps: effectiveSwaps, swapText: swapText,
               originalWording: originalWording, swapEntry: swapEntry, effectiveEntries: effectiveEntries, swappableItem: swappableItem, swapIndex: swapIndex };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.CRLib = api;

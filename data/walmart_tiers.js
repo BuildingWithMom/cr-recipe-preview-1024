@@ -627,6 +627,40 @@
     "note": ""
    }
   },
+  "cheese filled tortellini": {
+   "budget": {
+    "tier": "budget",
+    "status": "VERIFIED",
+    "item_id": "17142507463",
+    "product_name": "Marketside Five Cheese Tortellini, No Artificial Ingredients, 18 oz Tray",
+    "package_size": "18 oz refrigerated tray (Marketside Five Cheese)",
+    "per_pack": {
+     "wt": 18
+    },
+    "price_usd": "6.97",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Marketside-Five-Cheese-Tortellini-No-Artificial-Ingredients-18-oz-Tray/17142507463",
+    "source_type": "single_map",
+    "seen": "2026-10-24",
+    "note": "the existing verified single-map pick"
+   },
+   "better": {
+    "tier": "better",
+    "status": "VERIFIED",
+    "item_id": "365251082",
+    "product_name": "Giovanni Rana Tortellini 5 Cheese Premium Flat Cut Pasta Bag, 18 oz, Refrigerated",
+    "package_size": "18 oz, five cheese, refrigerated (Giovanni Rana)",
+    "per_pack": {
+     "wt": 18
+    },
+    "price_usd": "7.37",
+    "price_source": "search snippet, Oct 24, 2026",
+    "source_url": "https://www.walmart.com/ip/Giovanni-Rana-Tortellini-5-Cheese-Premium-Flat-Cut-Pasta-Bag-Family-Size-18oz-Refrigerated/365251082",
+    "source_type": "search_result_ip_url",
+    "seen": "2026-10-24",
+    "note": "price varies by store ($7.37 to $8.74 in three snippets)"
+   }
+  },
   "avocado oil": {
    "budget": {
     "tier": "budget",
